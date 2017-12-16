@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>EPICS websocket Node js</title>
+<script src="socket.io/socket.io.js"></script>
+<script>
+var serverIP="192.168.1.12"
+var socket = io.connect(serverIP+':9021');
+socket.on('hanlfHost:ai1', function (data) {
+    document.getElementById("container2").innerHTML=data;
+  });
+socket.on('hanlfHost:ai2', function (data) {
+    document.getElementById("container1").innerHTML=data;
+  });
+
+</script>
+
+</head>
+
+<body>
+    <h1 align="center">EPICS 网页 websocket</h1>
+    <address align="center">
+    <a href="mailto:hanlifeng@sinap.ac.cn"> Johnson Han @TMSR</a>
+    </address>
+    <div>
+      <p> </p>
+      </div>  
+    
+    <div>
+            <p>hanlfHost:ai1 <b id="container1">未连接</b></p>
+    </div>
+        <div>
+            <p>hanlfHost:ai2 <b id="container2">未连接</b></p>
+    </div>
+</body>
+</html>

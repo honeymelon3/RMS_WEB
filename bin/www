@@ -1,19 +1,22 @@
 #!/usr/bin/env node
 
 /**
- * Module dependencies.
+ * Module dependencies.12
  */
 
 var app = require('../app');
-var debug = require('debug')('rms-web:server');
+var debug = require('debug')('rms_web:server');
 var http = require('http');
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '8080');
+var port = normalizePort(process.env.PORT || '9021');
 app.set('port', port);
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/index.html');
+});
 
 /**
  * Create HTTP server.
@@ -25,11 +28,74 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 var io = require('socket.io')(server);
-// server.listen(port);
-
 server.listen(port,'0.0.0.0',function(){
     console.log("Express server listening on port " + app.get('port'));
 });
+io.on('connection', function (socket) {
+ console.log("a client is connected on");
+pv1.on("value", function(data) {
+   console.log(pv1.pvName, data);
+  socket.emit(pv1.pvName, data);
+});
+
+pv1S.on("value", function(data) {
+   console.log('Alarm:',pv1S.pvName,data);
+  socket.emit(pv1S.pvName, data);
+});
+
+pv2.on("value", function(data) {
+  // console.log('Current1:', data);
+  socket.emit(pv2.pvName, data);
+});
+
+pv3.on("value", function(data) {
+  // console.log('Current1:', data);
+  socket.emit(pv3.pvName, data);
+});
+
+pv4.on("value", function(data) {
+  // console.log('Current1:', data);
+  socket.emit(pv4.pvName, data);
+});
+
+pv5.on(pv5.pvName, function(data) {
+  // console.log(data);
+  socket.emit(pv5.pvName, data);
+});
+
+socket.on(pv6.pvName, function(data) {
+    console.log(pv6.pvName,"has been set to",data);
+    pv6.put(data);
+});
+
+pv6.on(pv6.pvName, function(data) {
+  // console.log(data);
+  socket.emit(pv6.pvName, data);
+});
+
+socket.on(pv7.pvName, function(data) {
+    console.log(pv7.pvName,"has been set to",data);
+    pv7.put(data);
+});
+
+pv7.on(pv7.pvName, function(data) {
+  // console.log(data);
+  socket.emit(pv7.pvName, data);
+});
+
+socket.on(pv8.pvName, function(data) {
+    console.log(pv8.pvName,"has been set to",data);
+    pv8.put(data);
+});
+
+pv8.on(pv8.pvName, function(data) {
+  // console.log(data);
+  socket.emit(pv8.pvName, data);
+});
+// socket.on("hanlfHost:ao1",funtion(data){
+//    console.log(value)});
+
+ });
 
 server.on('error', onError);
 server.on('listening', onListening);
@@ -93,3 +159,90 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+
+var epics = require('epics');
+
+var pv1 = new epics.Channel('hanlfHost:ai1');
+var pv1S = new epics.Channel('hanlfHost:ai1.SEVR');
+var pv2 = new epics.Channel('hanlfHost:ai2');
+var pv3 = new epics.Channel('hanlfHost:ai3');
+var pv4 = new epics.Channel('hanlfHost:calc1');
+var pv5 = new epics.Channel('hanlfHost:compressExample');
+var pv6 = new epics.Channel('hanlfHost:ao1');
+var pv7 = new epics.Channel('hanlfHost:ao2');
+var pv8 = new epics.Channel('hanlfHost:ao3');
+// val = pv1.pvName;
+// console.log(pv1.pvName);
+// console.log(pv2.pvName);
+// console.log(pv3.pvName);
+// console.log(pv4.pvName);
+// console.log(pv5.pvName);
+// console.log(pv6.pvName);
+// console.log(pv7.pvName);
+// console.log(pv8.pvName);
+
+
+
+val=pv1.connect(function(err) {
+  if(pv1.state())
+   {pv1.monitor();
+  console.log(pv1.pvName+" is connect")};
+});
+
+val=pv1S.connect(function(err) {
+  if(pv1S.state())
+   {pv1S.monitor();
+  console.log(pv1S.pvName+" is connect")};
+});
+
+
+val=pv2.connect(function(err) {
+  if(pv2.state()){
+  pv2.monitor();
+  console.log(pv2.pvName+" is connect");}
+});
+
+val=pv3.connect(function(err) {
+  if(pv3.state()){
+  pv3.monitor();
+  console.log(pv3.pvName+" is connect");}
+  });
+
+val=pv4.connect(function(err) {
+  if(pv4.state()){
+  pv4.monitor();
+  console.log(pv4.pvName+" is connect");}
+});
+
+val=pv5.connect(function(err) {
+  if(pv5.state()){
+  pv5.monitor();
+  console.log(pv5.pvName+" is connect");
+} 
+});
+
+
+ val=pv6.connect(function(err) {
+  if(pv6.state()){
+    // console.log(pv6.state());
+  pv6.monitor();
+  console.log(pv6.pvName+" is connect");
+  } 
+ });
+
+  val=pv7.connect(function(err) {
+  if(pv7.state()){
+    // console.log(pv7.state());
+  pv7.monitor();
+  console.log(pv7.pvName+" is connect");
+  } 
+ });
+
+  val=pv8.connect(function(err) {
+  if(pv8.state()){
+    // console.log(pv8.state());
+  pv8.monitor();
+  console.log(pv8.pvName+" is connected");
+  } 
+ });
