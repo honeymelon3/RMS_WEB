@@ -31,69 +31,43 @@ var io = require('socket.io')(server);
 server.listen(port,'0.0.0.0',function(){
     console.log("Express server listening on port " + app.get('port'));
 });
+
+/**
+ * Define PVs
+ */
+
+var pvs={ai:[{pvname:"hanlfHost:ai1"},{pvname:"hanlfHost:ai2"},{pvname:"hanlfHost:ai3"}],
+         ao:[{pvname:"hanlfHost:ao1"}, {pvname:"hanlfHost:ao2"}, {pvname:"hanlfHost:ao3"}]
+        }
+
+// console.log("test"+pvs.ai[0].pvname);
+
+/**
+ * Socket Events for change of value  or severity
+ * 监听变量值的变化或报警状态的变化
+ *  */
 io.on('connection', function (socket) {
- console.log("a client is connected on");
-pv1.on("value", function(data) {
-   console.log(pv1.pvName, data);
-  socket.emit(pv1.pvName, data);
-});
+  console.log('Connection from'+socket.handshake.address);
 
-pv1S.on("value", function(data) {
-   console.log('Alarm:',pv1S.pvName,data);
-  socket.emit(pv1S.pvName, data);
-});
+  connect_pvs(pvs.ai,function(err,results){
+      async.map(results,function(item,callback){
+        item.on("value", function(data) {
+        console.log('Value:',item.pvName,data);
+        socket.emit(item.pvName, data);
+        console.log(item.pvName+" value change socket evnet emit")
+        });  
+      })
+  });
 
-pv2.on("value", function(data) {
-  // console.log('Current1:', data);
-  socket.emit(pv2.pvName, data);
-});
-
-pv3.on("value", function(data) {
-  // console.log('Current1:', data);
-  socket.emit(pv3.pvName, data);
-});
-
-pv4.on("value", function(data) {
-  // console.log('Current1:', data);
-  socket.emit(pv4.pvName, data);
-});
-
-pv5.on(pv5.pvName, function(data) {
-  // console.log(data);
-  socket.emit(pv5.pvName, data);
-});
-
-socket.on(pv6.pvName, function(data) {
-    console.log(pv6.pvName,"has been set to",data);
-    pv6.put(data);
-});
-
-pv6.on(pv6.pvName, function(data) {
-  // console.log(data);
-  socket.emit(pv6.pvName, data);
-});
-
-socket.on(pv7.pvName, function(data) {
-    console.log(pv7.pvName,"has been set to",data);
-    pv7.put(data);
-});
-
-pv7.on(pv7.pvName, function(data) {
-  // console.log(data);
-  socket.emit(pv7.pvName, data);
-});
-
-socket.on(pv8.pvName, function(data) {
-    console.log(pv8.pvName,"has been set to",data);
-    pv8.put(data);
-});
-
-pv8.on(pv8.pvName, function(data) {
-  // console.log(data);
-  socket.emit(pv8.pvName, data);
-});
-// socket.on("hanlfHost:ao1",funtion(data){
-//    console.log(value)});
+  connect_pvs_SEVR(pvs.ai,function(err,results){
+      async.map(results,function(item,callback){
+        item.on("value", function(data) {
+        console.log('Value:',item.pvName,data);
+        socket.emit(item.pvName, data);
+        console.log(item.pvName+" severity change socket evnet emit")
+        });  
+      })
+  });
 
  });
 
@@ -162,87 +136,44 @@ function onListening() {
 
 
 var epics = require('epics');
-
-var pv1 = new epics.Channel('hanlfHost:ai1');
-var pv1S = new epics.Channel('hanlfHost:ai1.SEVR');
-var pv2 = new epics.Channel('hanlfHost:ai2');
-var pv3 = new epics.Channel('hanlfHost:ai3');
-var pv4 = new epics.Channel('hanlfHost:calc1');
-var pv5 = new epics.Channel('hanlfHost:compressExample');
-var pv6 = new epics.Channel('hanlfHost:ao1');
-var pv7 = new epics.Channel('hanlfHost:ao2');
-var pv8 = new epics.Channel('hanlfHost:ao3');
-// val = pv1.pvName;
-// console.log(pv1.pvName);
-// console.log(pv2.pvName);
-// console.log(pv3.pvName);
-// console.log(pv4.pvName);
-// console.log(pv5.pvName);
-// console.log(pv6.pvName);
-// console.log(pv7.pvName);
-// console.log(pv8.pvName);
+var pv_ai=new Array();
 
 
 
-val=pv1.connect(function(err) {
-  if(pv1.state())
-   {pv1.monitor();
-  console.log(pv1.pvName+" is connect")};
-});
-
-val=pv1S.connect(function(err) {
-  if(pv1S.state())
-   {pv1S.monitor();
-  console.log(pv1S.pvName+" is connect")};
-});
+/**
+ * PV创建并监听异步回调 
+ */
 
 
-val=pv2.connect(function(err) {
-  if(pv2.state()){
-  pv2.monitor();
-  console.log(pv2.pvName+" is connect");}
-});
 
-val=pv3.connect(function(err) {
-  if(pv3.state()){
-  pv3.monitor();
-  console.log(pv3.pvName+" is connect");}
+async= require('async');
+
+function connect_pvs(pvs,callback){
+    async.map(pvs, function(item, callback) {
+        // console.log(item.pvname+" is connect*");
+       var pv = new epics.Channel(item.pvname);
+       pv.connect(function(err) {
+       if(pv.state()){
+          pv.monitor()};
+          callback(null,pv);
+          console.log(item.pvname+" is connected*");
+      });
+    }, function(err,results){
+         callback(err,results); 
   });
+};
 
-val=pv4.connect(function(err) {
-  if(pv4.state()){
-  pv4.monitor();
-  console.log(pv4.pvName+" is connect");}
-});
-
-val=pv5.connect(function(err) {
-  if(pv5.state()){
-  pv5.monitor();
-  console.log(pv5.pvName+" is connect");
-} 
-});
-
-
- val=pv6.connect(function(err) {
-  if(pv6.state()){
-    // console.log(pv6.state());
-  pv6.monitor();
-  console.log(pv6.pvName+" is connect");
-  } 
- });
-
-  val=pv7.connect(function(err) {
-  if(pv7.state()){
-    // console.log(pv7.state());
-  pv7.monitor();
-  console.log(pv7.pvName+" is connect");
-  } 
- });
-
-  val=pv8.connect(function(err) {
-  if(pv8.state()){
-    // console.log(pv8.state());
-  pv8.monitor();
-  console.log(pv8.pvName+" is connected");
-  } 
- });
+function connect_pvs_SEVR(pvs,callback){
+    async.map(pvs, function(item, callback) {
+        // console.log(item.pvname+" is connect*");
+       var pv = new epics.Channel(item.pvname+".SEVR");
+       pv.connect(function(err) {
+       if(pv.state()){
+          pv.monitor()};
+          callback(null,pv);
+          console.log(item.pvname+"alarm severity is monitored*");
+      });
+    }, function(err,results){
+         callback(err,results); 
+  });
+};
