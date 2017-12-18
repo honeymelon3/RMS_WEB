@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <title>EPICS websocket Node js</title>
 <script src="socket.io/socket.io.js"></script>
-<script src="async/async.js"></script>
+<!--<script src="async/async.js"></script>-->
 <script>
-var serverIP="192.168.1.12"
+var serverIP="192.168.2.105"
 var socket = io.connect(serverIP+':9021');
 socket.on('hanlfHost:ai1', function (data) {
     document.getElementById("container2").innerHTML=data;

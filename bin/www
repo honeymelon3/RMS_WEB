@@ -47,8 +47,8 @@ var pvs={ai:[{pvname:"hanlfHost:ai1"},{pvname:"hanlfHost:ai2"},{pvname:"hanlfHos
  * 监听变量值的变化或报警状态的变化
  *  */
 io.on('connection', function (socket) {
-  console.log('Connection from'+socket.handshake.address);
-
+  console.log('Connection from remote ip addr:'+socket.handshake.address);
+  // console.log(pvs);
   connect_pvs(pvs.ai,function(err,results){
       async.map(results,function(item,callback){
         item.on("value", function(data) {
@@ -68,6 +68,43 @@ io.on('connection', function (socket) {
         });  
       })
   });
+
+
+  connect_pvs(pvs.ao,function(err,results){
+    async.map(results,function(item,callback){
+      item.on("value", function(data) {
+      console.log('Value:',item.pvName,data);
+      socket.emit(item.pvName, data);
+      console.log(item.pvName+" value change socket evnet emit")
+       });  
+      })
+  });
+
+    connect_pvs_SEVR(pvs.ao,function(err,results){
+    async.map(results,function(item,callback){
+      item.on("value", function(data) {
+      console.log('Value:',item.pvName,data);
+      socket.emit(item.pvName, data);
+      console.log(item.pvName+" value change socket evnet emit")
+       });  
+      })
+  });
+
+/**
+ *  监测AO :客户端的变量设定
+ *  Monitor AO : configure from the web client;
+ */
+
+  connect_pvs(pvs.ao,function(err,results){
+    async.map(results,function(item,callback){
+      socket.on(item.pvName, function(data) {
+      console.log('Value:',item.pvName,data);
+      item.put(item.pvName, data);
+      console.log(item.pvName+"Set pv value from web client  ")
+       });  
+      })
+  });
+
 
  });
 
