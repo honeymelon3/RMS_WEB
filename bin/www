@@ -12,7 +12,8 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '9021');
+// var port = normalizePort(process.env.PORT || '9021');
+var port = normalizePort(process.env.PORT || '80');
 app.set('port', port);
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');

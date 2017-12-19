@@ -45,16 +45,18 @@
 	<script src="socket.io/socket.io.js"></script>
 	
 	<script src="bower_components/async/dist/async.js"></script>
+	<script src="js/echarts.min.js"></script>
+
 
 <script>
-		var serverIP="192.168.2.105";
-		// var serverIP="210.72.8.90";
-		var socket = io.connect(serverIP+':9021');
-		// var socket = io.connect(serverIP+':80');
+		// var serverIP="192.168.2.105";
+		var serverIP="210.72.8.90";
+		// var socket = io.connect(serverIP+':9021');
+		var socket = io.connect(serverIP+':80');
 		var pvs={ai:[{pvname:"hanlfHost:ai1"},{pvname:"hanlfHost:ai2"},{pvname:"hanlfHost:ai3"}],
          ao:[{pvname:"hanlfHost:ao1"}, {pvname:"hanlfHost:ao2"}, {pvname:"hanlfHost:ao3"}]
         }
-// console.log(pvs.ai);
+		// console.log(pvs.ai);
        async.map(pvs.ai,function(item,callback){
           console.log(item.pvname);
           socket.on(item.pvname, function (data) {
@@ -227,7 +229,7 @@
 
 						</li>
 
-						<li class="active">
+						<li >
 												
 							<a href="layout_horizontal_sidebar_menu.html">
 												
@@ -246,7 +248,7 @@
 
 					<a href="javascript:;">
 
-					<i class="icon-th-list"></i> 
+					<i class="icon-dashboard"></i> 
 
 					<span class="title">监视控件</span>
 
@@ -309,7 +311,7 @@
 
 					<a href="javascript:;">
 
-					<i class="icon-map-marker"></i> 
+					<i class="icon-puzzle-piece"></i> 
 
 					<span class="title">控制控件</span>
 
@@ -343,25 +345,14 @@
 
 					<a href="charts.html">
 
-					<i class="icon-bar-chart"></i> 
+					<i class="icon-film"></i> 
 
 					<span class="title">其它</span>
 
 					</a>
 
 				</li>
-<!-- 
-				<li class="last">
 
-					<a href="login.html">
-
-					<i class="icon-user"></i> 
-
-					<span class="title">Login Page</span>
-
-					</a>
-
-				</li> -->
 
 			</ul>
 
@@ -697,15 +688,15 @@
 
 								<ul class="inline">
 
-									<li class="color-black current color-default" data-style="default"></li>
+									<!-- <li class="color-black current color-default" data-style="default"></li> -->
 
-									<li class="color-blue" data-style="blue"></li>
+									<!-- <li class="color-blue" data-style="blue"></li>
 
 									<li class="color-brown" data-style="brown"></li>
 
 									<li class="color-purple" data-style="purple"></li>
 
-									<li class="color-grey" data-style="grey"></li>
+									<li class="color-grey" data-style="grey"></li> -->
 
 									<li class="color-white color-light" data-style="light"></li>
 
@@ -823,23 +814,167 @@
 
 						<p>EPICS（Experimental Physics and Industrial Control System）是一个开源的分布式控制系统（DCS: Distributed Control System）软件架构，在国内外重大科技基础设施上的应用已经超过25年，应用范围涵盖聚变堆、同步辐射光源、粒子对撞机、射电望远镜、自由电子激光装置等。美国能源部的统计报告显示EPICS为这些大科学装置节约平均超过20人年的控制系统软件开发时间。
 						</p>
+						<br>
+						<div class="row-fluid">
+							
+							<div class="span6">
+									<div id="chart1" class="chart">
+											<script type="text/javascript">
+												 // 基于准备好的dom，初始化echarts实例
+												 var lineChart = echarts.init(document.getElementById('chart1'));
+								   
+												 // 指定图表的配置项和数据
+												 option1 = {
+													title : {
+														text: 'EPICS客户端性能比较',
+														// subtext: '纯属虚构'
+													},
+													tooltip : {
+													    trigger: 'axis'
+													},
+													legend: {
+													    orient : 'vertical',
+													    x : 'right',
+													    y : 'bottom',
+													    data:['CSS','EDM']
+													},
+													toolbox: {
+													    show : false,
+													    feature : {
+														   mark : {show: false},
+														   dataView : {show: true, readOnly: false},
+														   restore : {show: false},
+														   saveAsImage : {show: true}
+													    }
+													},
+													polar : [
+													   {
+														  indicator : [
+														  { text: '便利性', max: 100},
+														  { text: '安全性', max: 100},
+														  { text: '稳定性', max: 100},
+														  { text: '可靠性', max: 100},
+														  { text: '美观度', max: 100},
+														  { text: '扩展性', max: 100}
+														   ]
+													    }
+													],
+													calculable : true,
+													series : [
+													    {
+														   name: 'EDM vs CSS',
+														   type: 'radar',
+														   data : [															 
+															     {
+																 value : [85, 75, 80, 70, 95, 70],
+																 name : 'CSS'
+															 	 },
+															  {
+																 value : [65, 50, 70, 70, 75, 70],
+																 name : 'EDM'
+															  }
 
-						<p>相对于EPICS传统的客户端程序，Web与EPICS技术结合的优势包括：
-						</p>
-						<ol>
-							<li>便利性：跨平台、跨系统、无客户端限制、界面同步更新。</li>
-							<li>安全性：数据据传输使用enypt等算法加密，解决了EPICS协议明文传输的弊端。</li>
-							<li>实时性：基于“事件"驱动机制，可使客户端实时响应EPICS变量更新或报警事件。</li>
-							<li>可靠性：客户端和服务器之间建立TCP长连接，提供可靠的双向数据通道。</li>
-							<li>美观性：专业的UI设计保证可视化效果。前端布局使用推特公司bootstrap框架渲染，数据绘图使用百度公司echart组件等。</li>
-							<li>扩展性：不仅在局域网能完全取代传统EPICS客户端，并可作为物联网平台，实现广域设备的互连互通。</li>
-						</ol>
+														   ]
+													    }
+													]
+												 };
+																 
+								   
+												 // 使用刚指定的配置项和数据显示图表。
+											 lineChart.setOption(option1);
+											 window.onresize = lineChart.resize
+											  </script>
+									  
+		
+									</div>
+							</div>							
+							<div class="span6">
+									<div id="chart2" class="chart">
+											<script type="text/javascript">
+												 // 基于准备好的dom，初始化echarts实例
+												 var lineChart = echarts.init(document.getElementById('chart2'));
+								   
+												 // 指定图表的配置项和数据
+												 option1 = {
+
+													tooltip : {
+													    trigger: 'axis'
+													},
+													legend: {
+													    orient : 'vertical',
+													    x : 'right',
+													    y : 'bottom',
+													    data:['NODE-WEB']
+													},
+													toolbox: {
+													    show : false,
+													    feature : {
+														   mark : {show: false},
+														   dataView : {show: true, readOnly: false},
+														   restore : {show: false},
+														   saveAsImage : {show: true}
+													    }
+													},
+													polar : [
+													   {
+														  indicator : [
+														  { text: '便利性', max: 100},
+														  { text: '安全性', max: 100},
+														  { text: '稳定性', max: 100},
+														  { text: '可靠性', max: 100},
+														  { text: '美观度', max: 100},
+														  { text: '扩展性', max: 100}
+														   ]
+													    }
+													],
+													calculable : true,
+													series : [
+													    {
+														   name: 'EDM vs CSS',
+														   type: 'radar',
+														   data : [
+															  {
+																 value : [65, 93, 95, 85, 97, 100],
+																 name : 'NODE-WEB'
+															  }
+														   ]
+													    }
+													]
+												 };
+																 
+								   
+												 // 使用刚指定的配置项和数据显示图表。
+											 lineChart.setOption(option1);
+											 window.onresize = lineChart.resize
+											  </script>
+									  
+		
+									</div>
+							</div>	
+						</div>
+						
+						<div class="container">
+							<br>
+							<p>相对于EPICS传统的客户端程序，Web与EPICS技术结合的优势包括：
+							</p>
+							<ol>
+								<li>便利性：跨平台、跨系统、无客户端限制、界面同步更新。</li>
+								<li>安全性：数据据传输使用enypt等算法加密，解决了EPICS协议明文传输的弊端。</li>
+								<li>实时性：基于“事件"驱动机制，可使客户端实时响应EPICS变量更新或报警事件。</li>
+								<li>可靠性：客户端和服务器之间建立TCP长连接，提供可靠的双向数据通道。</li>
+								<li>美观性：专业的UI设计保证可视化效果。前端布局使用推特公司bootstrap框架渲染，数据绘图使用百度公司echart组件等。</li>
+								<li>扩展性：不仅在局域网能完全取代传统EPICS客户端，并可作为物联网平台，实现广域设备的互连互通。</li>
+							</ol>						
+
+						</div>
 
 					</div>
 
 				</div>
 
 				<div class="row-fluid">
+
+
 
 					<div class="span6">
 
@@ -932,7 +1067,8 @@
 											</td>
 										
 										</tr>
-
+										
+															
 									</tbody>
 
 								</table>
@@ -944,7 +1080,6 @@
 						<!-- END SAMPLE TABLE PORTLET-->
 
 					</div>
-
 					<div class="span6">
 
 						<!-- BEGIN BORDERED TABLE PORTLET-->
@@ -967,9 +1102,37 @@
 
 							</div>
 
-							<div class="portlet-body">
-
-								
+							<div class="portlet-body"  style="display:none">
+								<div id="chart4" class="chart">
+									<script type="text/javascript">
+								 		// 基于准备好的dom，初始化echarts实例
+								 		var lineChart = echarts.init(document.getElementById('chart4'));
+						   
+								 		// 指定图表的配置项和数据
+										 var option2 = {
+										title: {
+									 		   text: 'ECharts line波形示例'
+											},
+										tooltip: {},
+											legend: {
+											    data:['实时值']
+												},
+										xAxis: {
+									    data: ["1","2","3","4","5","6","7","8","9","10"]
+										},
+										yAxis: {},
+										series: [{
+										    name: '实时值',
+										    type: 'line',
+										    data: [3, 1, 2, 3, 7, 5,6,7,2,1]
+										}]
+								 		};
+						   
+								 		// 使用刚指定的配置项和数据显示图表。
+									 lineChart.setOption(option2);
+									 window.onresize = lineChart.resize
+							  		</script>
+							  
 
 							</div>
 
