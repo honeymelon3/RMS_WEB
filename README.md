@@ -12,5 +12,13 @@ Web应用程序具有跨平台、跨系统的特点，任何拥有浏览器的�
 ```bask
 2107-12-18
     mac 下安装node-epics 包以来的ffi和ref 包需要mac 安装xcode。
-    enots6.3 下安装node-epics 需要升级系统
+    cenots6.3 下安装node-epics 需要升级系统
+    编译ffi 出错，node版本 降低至7.4.0
+
+2017-12-19
+    客户端的批量处理 引入async异步处理包。
+    引入metronic-bootstrap框架，更新public
+    更新index界面
+    页面调转的初步设计
 ```
+
