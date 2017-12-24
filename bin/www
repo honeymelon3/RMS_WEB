@@ -16,7 +16,6 @@ var http = require('http');
 var port = normalizePort(process.env.PORT || '80');
 app.set('port', port);
 app.get('/', function (req, res) {
-  console.log(req.ip)
   res.sendFile(__dirname + '/index.html');
 });
 
@@ -54,9 +53,9 @@ io.on('connection', function (socket) {
   connect_pvs(pvs.ai,function(err,results){
       async.map(results,function(item,callback){
         item.on("value", function(data) {
-        console.log('Value:',item.pvName,data);
+        // console.log('Value:',item.pvName,data);
         socket.emit(item.pvName, data);
-        console.log(item.pvName+" value change socket evnet emit")
+        // console.log(item.pvName+" value change socket evnet emit")
         });  
       })
   });
@@ -64,9 +63,9 @@ io.on('connection', function (socket) {
   connect_pvs_SEVR(pvs.ai,function(err,results){
       async.map(results,function(item,callback){
         item.on("value", function(data) {
-        console.log('Value:',item.pvName,data);
+        // console.log('Value:',item.pvName,data);
         socket.emit(item.pvName, data);
-        console.log(item.pvName+" severity change socket evnet emit")
+        // console.log(item.pvName+" severity change socket evnet emit")
         });  
       })
   });
@@ -75,9 +74,9 @@ io.on('connection', function (socket) {
   connect_pvs(pvs.ao,function(err,results){
     async.map(results,function(item,callback){
       item.on("value", function(data) {
-      console.log('Value:',item.pvName,data);
+      // console.log('Value:',item.pvName,data);
       socket.emit(item.pvName, data);
-      console.log(item.pvName+" value change socket evnet emit")
+      // console.log(item.pvName+" value change socket evnet emit")
        });  
       })
   });
@@ -85,9 +84,9 @@ io.on('connection', function (socket) {
     connect_pvs_SEVR(pvs.ao,function(err,results){
     async.map(results,function(item,callback){
       item.on("value", function(data) {
-      console.log('Value:',item.pvName,data);
+      // console.log('Value:',item.pvName,data);
       socket.emit(item.pvName, data);
-      console.log(item.pvName+" value change socket evnet emit")
+      // console.log(item.pvName+" value change socket evnet emit")
        });  
       })
   });
