@@ -16,6 +16,7 @@ var http = require('http');
 var port = normalizePort(process.env.PORT || '80');
 app.set('port', port);
 app.get('/', function (req, res) {
+  console.log(req.ip)
   res.sendFile(__dirname + '/index.html');
 });
 
