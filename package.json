@@ -22,7 +22,6 @@
     "express-validator":"*",
     "express-session":"*",
     "express-messages":"*",
-    "multer":"*",
-    "monent":""
+    "multer":"*"
   }
 }
