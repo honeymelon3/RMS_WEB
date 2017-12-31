@@ -9,6 +9,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 
 var multer = require('multer');
+var upload =multer({dest: './public/image/uploads'});
 var flash = require('connect-flash');
 var index = require('./routes/index');
 var system_structure = require('./routes/system_structure');
@@ -23,7 +24,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
-app.use(multer({dest:'./public/image/uploads'}));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
