@@ -42,7 +42,7 @@ app.use(expressValidator({
     var namespace = param.split('.'),
     root = namespace.shift(),
     formParam = root;
-    wihle(namespace.length){
+    while(namespace.length){
      fromParam += '[' + namespace.shift() + ']'; 
     }
     return {
