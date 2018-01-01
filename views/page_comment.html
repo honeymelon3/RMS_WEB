@@ -76,7 +76,7 @@
 	app.controller('myCtrl', function($scope, $http) {   
 	var myUrl = "http://47.100.41.42/comment/posts?callback=JSON_CALLBACK";
 	$http.jsonp(myUrl).success(function(response) {
-	    $scope.alloy_report = response;
+	    $scope.posts = response;
 
 	    console.log(response);
  
@@ -649,161 +649,57 @@
 		
 						<div class="row-fluid">
 		
-							<div class="span12 blog-tag-data">
+							
+							<div class="span8 blog-tag-data" ng-repeat="x in posts">
+									
+								<h1>{{x.title}}</h1>
+									<p style="text-align:center"><img src="media/image/system_arch.png" alt=""></p>
 		
-								<h1>最新留言</h1>
-		
-								<p style="text-align:center"><img src="media/image/system_arch.png" alt=""></p>
-		
-								<div class="row-fluid">
-		
-									<div class="span6">
-		
-										<ul class="unstyled inline blog-tags">
-		
-											<li>
-		
-												<i class="icon-tags"></i>
-		
-												<a href="https://Node.js.org/en">Node.js</a>
-		
-												<a href="https://www.websocket.org">websocket</a>
-		
-												<a href="https://epics.anl.gov">EPICS</a>
-		
-											</li>
-		
-										</ul>
-		
+									<div class="row-fluid"  >
+			
+										<div class="span6">
+			
+											<ul class="unstyled inline blog-tags">
+			
+												<li>
+			
+													<i class="icon-tags"></i>
+			
+													<a href="#">{{x.category}};</a>
+			
+													<a href="#">{{x.author}};</a>
+			
+			
+												</li>
+			
+											</ul>
+			
+										</div>
+			
+										<div class="span6 blog-tag-data-inner">
+			
+											<ul class="unstyled inline">
+			
+												<li>
+													<i class="icon-calendar"></i>
+													<a href="#">{{x.date}}</a>
+												</li>
+			
+											</ul>
+			
+										</div>
+			
 									</div>
-		
-									<div class="span6 blog-tag-data-inner">
-		
-										<ul class="unstyled inline">
-		
-											<li>
-												<i class="icon-calendar"></i>
-												<a href="#">december 20, 2017</a>
-											</li>
-		
-										</ul>
-		
+			
+									<div class="news-item-page" style="text-indent: 2em">
+										<br>	
+										<p><strong>{{x.index}}</strong>{{x.body}</p>
 									</div>
-		
-								</div>
-		
-								<div class="news-item-page" style="text-indent: 2em">
-									<br>	
-									<p><strong>Node.js</strong> 是一个让 JavaScript 运行在服务端的开发平台，它让 JavaScript 成为脚本语言世界的一等公民。可以说，Node.js开创了javascript模块化开发的先河。早期的javascript需求都很简单，基本都是写成函数的，然后是面向过程的写法，后来慢慢的引入面向对象开发思想，再后来就慢慢写成类，最后Node.js的出现才开始有了js模块化开发的概念。</p>
+			
+									<hr>
 
-									<p>Node.js的技术优势体现在：</p>
-									<p>丰富的代码仓库和便捷的软件模块管理工具（npm）。代码仓库包括功能齐全的软件模块，例如web应用开发框架express模块，Postgresql数据库接口模块，EPICS接口模块，图像opencv模块等等。更是提供了很多系统级的API，如文件操作、网络编程等，使得Nodejs不仅仅可以作为一个建站工具，成为一个功能齐全的后端服务器平台</p>
-									<p>Node.js采用事件驱动、异步编程，适合高并发应用。Node.js非阻塞模式的IO处理给Node.js带来在相对低系统资源耗用下的高性能与出众的负载能力，非常适合用作依赖其它IO资源的中间层服务。Node.js轻量高效，可完美解决数据密集型分布式部署环境下的实时应用系统。</p>
-									<p>Node.js采用google V8引擎作为编译器，使得javascript的执行速度远超Ruby、Python等脚本语言。</p>
-									<br>
-									<blockquote class="hero">
-		
-										<p>V8引擎一出场就以其一骑绝尘般的速度打败了所有对手，成为JavaScript 引擎的速度之王，并带动了解释器的革新运动。JavaScript 已经成为了当今速度最快的脚本语言之一，昔日“丑小鸭”终于成了惊艳绝俗的“白天鹅”。</p>
-		
-										<small>
-											<cite title="Source Title">Node.js 开发指南</cite>
-										</small>
-		
-									</blockquote>
-									<br>
-									<p><strong>Websocket协议</strong>是基于TCP的一种新的网络协议。它实现了浏览器与服务器全双工(full-duplex)通信——允许服务器主动发送信息给客户端。长久以来, 创建实现客户端和用户端之间双工通讯的web app都会造成HTTP轮询的滥用: 客户端向主机不断发送不同的HTTP呼叫来进行询问。服务器被迫为每个客户端使用许多不同的底层TCP连接：一个用于向客户端发送信息，其它用于接收每个传入消息。有些协议有很高的开销，每一个客户端和服务器之间都有HTTP头。简单的解决方案是使用单个TCP连接双向通信，这就是WebSocket协议所提供的功能。
-									</p>
-									<p><strong>EPICS IOC</strong>是运行在内存的实时数据库，能把与硬件交互的信息转化为实时数据库的若干记录（Recrod），客户端通过PV(Process Varivable)变量名的形式访问这些记录。进而实现对硬件设备的数据采集和控制。EPICS具有丰富硬件驱动支持，几乎可兼容所有类型的工业接口设备。即使是面向私有协议的驱动开发也不是特别困难。</p>
-								</div>
-		
-								<hr>
-		
-								<div class="media">
-		
-										<h3>EXPRESS模块</h3>
-										<a href="#" class="pull-left">
-		
-											<img alt="" src="media/image/12.jpg" class="media-object">
-		
-										</a>
-		
-										<div class="media-body">
-		
-											<!-- <h4 class="media-heading"><strong>EXPRESS</strong> -->
-												<span>Web开发框架
-													<a href="http://www.expressjs.com.cn">快速、开放、极简</a>
-												</span>
-											<!-- </h4> -->
-		
-											<p>node-express 是一个基于 Node.js 平台的web 应用开发框架，完全由路由和中间件构成。提供一系列强大的特性，帮助你创建各种Web。从本质上来说，一个 Express 应用就是在调用各种中间件。中间件（Middleware） 是一个函数，它可以访问请求对象（request object (req)）, 响应对象（response object (res)）, 和 web 应用中处于请求-响应循环流程中的中间件，一般被命名为 next 的变量。中间件的功能包括：执行代码；修改请求和响应对象；终结请求-响应循环；调用堆栈中的下一个中间件。
-											</p>
-											<p>Express 中间件包括有应用层中间件、路由器层中间件、错误处理中间件、内置中间件、第三方中间件。
-											</p>	
-											
-		
-										<!-- Nested media object -->
-										</div>
-										<hr>
+							</div>
 
-
-									<h3>EPICS模块</h3>
-										<a href="#" class="pull-left">
-		
-											<img alt="" src="media/image/13.png" class="media-object">
-		
-										</a>
-		
-										<div class="media-body">
-		
-											<!-- <h4 class="media-heading"><strong>EPICS</strong> -->
-												<span>CA接口模块
-													<a href="https://github.com/Johnson-Han/node-epics">get、put、monitor</a>
-												</span>
-											<!-- </h4> -->
-		
-											<p>node-epics 是一个基于 Node.js 平台的EPICS CA接口软件模块。该模块通过使用ffi模块直接调用EPICS的libca库函数，实现PV变量定义函数和PV变量“对象”get、put、monitor等“方法”。
-
-											</p>	
-											<br>
-											<br>
-											<br>
-											
-		
-										<!-- Nested media object -->
-										</div>
-										<hr>
-
-									<h3>WEBSOCKET模块</h3>
-										<a href="#" class="pull-left">
-		
-											<img alt="" src="media/image/14.jpg" class="media-object">
-		
-										</a>
-		
-										<div class="media-body">
-		
-											<!-- <h4 class="media-heading"><strong>EPICS</strong> -->
-												<span>Socket.io通讯模块
-													<a href="https://socket.io">HTML5、全双工、事件</a>
-												</span>
-											<!-- </h4> -->
-		
-											<p>node-socket.io是HTML5一种新的协议(protocol)。它是实现了浏览器与服务器全双工通信(full-duplex)。使用WebSocket API，浏览器和服务器只需要要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道。两者之间就直接可以数据互相传送。在此WebSocket 协议中，为我们实现即时服务带来了两大好处：
-												1. 互相沟通的Header是很小的-大概只有 2 Bytes。
-												2. 服务器可以主动传送数据给客户端。
-											</p>	
-											
-		
-										<!-- Nested media object -->
-										</div>
-										<hr>
-
-
-								</div>			
-								
-
-						
-							</div>	
 
 		
 		
