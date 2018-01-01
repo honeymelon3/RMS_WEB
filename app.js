@@ -13,6 +13,7 @@ var upload =multer({dest: './public/image/uploads'});
 var flash = require('connect-flash');
 var index = require('./routes/index');
 var system_structure = require('./routes/system_structure');
+var comment = require('./routes/comment');
 
 var app = express();
 
