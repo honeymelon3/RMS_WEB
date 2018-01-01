@@ -46,7 +46,7 @@
 	
 	<script src="bower_components/async/dist/async.js"></script>
 	<script src="js/echarts.min.js"></script>
-
+	<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script> 
 <!-- 
 <script>
 		var serverIP="210.72.8.90";
@@ -69,6 +69,22 @@
        });
 
 </script> -->
+<script>
+                
+                
+	var app = angular.module('myApp', []);
+	app.controller('myCtrl', function($scope, $http) {   
+	var myUrl = "http://47.100.41.42/posts?callback=JSON_CALLBACK";
+	$http.jsonp(myUrl).success(function(response) {
+	    $scope.alloy_report = response;
+
+	    console.log(response);
+ 
+		});		
+
+
+	});
+</script>
 
 </head>
 
@@ -76,7 +92,7 @@
 
 <!-- BEGIN BODY -->
 
-<body class="page-header-fixed">
+<body class="page-header-fixed" ng-app="myApp" ng-controller="myCtrl">
 
 	<!-- BEGIN HEADER -->
 
