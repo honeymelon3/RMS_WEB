@@ -652,8 +652,8 @@
 							
 							<div class="span8 blog-tag-data" ng-repeat="x in posts">
 									
-								<h1>{{x.title}}</h1>
-									<p style="text-align:center"><img src="media/image/system_arch.png" alt=""></p>
+								<h3>{{x.title}}</h3>
+									
 		
 									<div class="row-fluid"  >
 			
@@ -665,9 +665,9 @@
 			
 													<i class="icon-tags"></i>
 			
-													<a href="#">{{x.category}};</a>
+													<a href="#">类型：{{x.category}};</a>
 			
-													<a href="#">{{x.author}};</a>
+													<a href="#">作者：{{x.author}};</a>
 			
 			
 												</li>
@@ -682,7 +682,7 @@
 			
 												<li>
 													<i class="icon-calendar"></i>
-													<a href="#">{{x.date}}</a>
+													<a href="#">日期：{{x.date}}</a>
 												</li>
 			
 											</ul>
@@ -693,7 +693,8 @@
 			
 									<div class="news-item-page" style="text-indent: 2em">
 										<br>	
-										<p><strong>{{x.index}}</strong>{{x.body}</p>
+										<p style="text-align:center"><img src="media/image/system_arch.png" alt=""></p>
+										<p><strong>{{x.index}}</strong>{{x.body}}</p>
 									</div>
 			
 									<hr>
