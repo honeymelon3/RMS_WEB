@@ -16,7 +16,13 @@ router.get('/posts', function(req, res, next) {
 		res.jsonp(result.rows);
     //console.log(result.rows); 
     
-	}); 
+  }); 
+  
+  router.get('/add', function (req, res, next) {
+
+    res.render('add_comment', { title: 'Add comments' });
+
+  });
  
 });
 module.exports = router;
