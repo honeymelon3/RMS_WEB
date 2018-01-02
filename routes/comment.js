@@ -34,7 +34,7 @@ router.get('/add', function (req, res, next) {
   });
   router.post('/add', function (req, res, next) {
         // 获得form Value
-      var  titile =req.body.title;
+      var  title =req.body.title;
       var  category = req.body.category;
       var  body = req.body.body;
       var  author = req.body.editor;
@@ -49,9 +49,13 @@ router.get('/add', function (req, res, next) {
       } else{
         var mainImageName = "noimage.png";
       } 
-
-      req.checkbody
-    res.render('add_comment', { title: 'Add comments' });
+      sql='insert into posts(title,category,body,author,date,mainimage) value(\'' +title+'\',\''+category+'\',\''+body+'\',\''+author+'\',\''+date+'\',\''+mainImageName+'\');';
+      pg.query(sql,function(result){		
+        res.jsonp(result.rows);
+        console.log(result); 
+        
+      }); 
+       
 
   });
 
