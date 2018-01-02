@@ -649,15 +649,16 @@
 							<h3>添加评论:&nbsp&nbsp {{x.title}}</h3>
 
 								<form method="post" action="/comment/add"  class="horizontal-form">
-									<input type="text" class="control-group form-control" name="title1" id="title1" required="required" data-validation-required-message="标题" ></input>
+									<label>标题:</label>
+									<input type="text" class="control-group form-control" name="title" id="title" required="required" data-validation-required-message="标题" ></input>
 
-										<div class="form-group">
+										<!-- <div class="form-group">
 											<div class="controls">
 												<label>标题:</label>
 												<input type="text" class="control-group form-control" name="title" id="title" required="required" data-validation-required-message="标题" ></input>
 												<p class="help-block"></p>
 											</div>
-										</div>
+										</div> -->
 										<div class="form-group">
 											<div class="controls">
 												<label>类型:</label>
