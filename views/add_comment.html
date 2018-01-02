@@ -648,7 +648,7 @@
 							<div class="span8 blog-tag-data">
 							<h3>添加评论:&nbsp&nbsp {{x.title}}</h3>
 
-								<form method="post" action="/comment/add"  class="horizontal-form">
+								<form method="post" action="/comment/add"  class="horizontal-form" enctype="multipart/form-data">
 									<label>标题:</label>
 									<input type="text" class="control-group form-control" name="title" id="title" required="required" data-validation-required-message="标题" ></input>
 
@@ -684,10 +684,8 @@
 										</div>
 
 										<div class="form-group">
-											<div class="controls">
 												<label>添加图片:</label>
 												<input type="file" class="control-group form-control" name="mainimage" id="mainimage" required data-validation-required-message="作者姓名" ></input>
-											</div>
 										</div>
 
 										<div id="success"></div>

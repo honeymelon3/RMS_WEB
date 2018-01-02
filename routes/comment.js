@@ -53,7 +53,7 @@ router.post('/add', function (req, res, next) {
          var mainImageSize = req.files.mainImage.size;
       } else{
         var mainImageName = "noimage.png";
-      } 
+      }; 
       sql='insert into posts(title,category,body,author,date,mainimage) value(\'' +title+'\',\''+category+'\',\''+body+'\',\''+author+'\',\''+date+'\',\''+mainImageName+'\');';
       console.log(sql);
       pg.query(sql,function(result){		
