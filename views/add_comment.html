@@ -74,9 +74,9 @@
                 
 	var app = angular.module('myApp', []);
 	app.controller('myCtrl', function($scope, $http) {   
-	var myUrl = "http://47.100.41.42/comment/posts?callback=JSON_CALLBACK";
+	var myUrl = "http://47.100.41.42/comment/category?callback=JSON_CALLBACK";
 	$http.jsonp(myUrl).success(function(response) {
-	    $scope.posts = response;
+	    $scope.category = response;
 
 	    console.log(response);
  
@@ -662,7 +662,9 @@
 										<div class="form-group">
 											<div class="controls">
 												<label>类型:</label>
-												<select type="text" class="control-group form-control" name="category" id="category" required="required" data-validation-required-message="类型"></select>
+												<select type="text" class="control-group form-control" name="category" id="category" required="required" data-validation-required-message="类型" ng-model="$parent.select[$index]">
+													<option ng-repeat="x in category">{{x.category}}</option>
+												</select>
 												<p class="help-block"></p>
 											</div>
 										</div>

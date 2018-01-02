@@ -11,13 +11,22 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/posts', function(req, res, next) {
-  sql="select * from posts order by index desc limit 5;";
+  sql="select * from posts order by index limit 5;";
 	pg.query(sql,function(result){		
 		res.jsonp(result.rows);
     //console.log(result.rows); 
     
   }); 
   });
+
+router.get('/category', function (req, res, next) {
+  sql = "select category from categories order by index;";
+  pg.query(sql, function (result) {
+    res.jsonp(result.rows);
+    //console.log(result.rows); 
+
+  });
+});
 router.get('/add', function (req, res, next) {
 
     res.render('add_comment', { title: 'Add comments' });
