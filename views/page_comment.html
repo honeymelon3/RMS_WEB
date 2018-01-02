@@ -650,9 +650,12 @@
 						<div class="row-fluid">
 		
 							
-							<div class="span8 blog-tag-data" ng-repeat="x in posts">
-									
-								<h3>题目:&nbsp&nbsp {{x.title}}</h3>
+							<div class="span8 blog-tag-data container-fluid" ng-repeat="x in posts">
+								<header class="jumbotron">
+
+									<h3>题目:&nbsp&nbsp {{x.title}}</h3>
+								</header>	
+								
 									
 		
 									<div class="row-fluid"  >
@@ -694,7 +697,7 @@
 			
 									<div class="news-item-page" style="text-indent: 2em">
 										<br>	
-										<p style="text-align:center" class="bg-success"><img src="media/image/image5.jpg" alt=""></p>
+										<p style="text-align:center"><img src="media/image/image5.jpg" alt=""></p>
 										<pre>{{x.body}}</pre>
 									</div>
 			
