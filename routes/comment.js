@@ -35,7 +35,7 @@ router.get('/add', function (req, res, next) {
 router.post('/add', function (req, res, next) {
         // 获得form Value
       console.log(req);
-      console.log(req.file);
+      // console.log(req.file);
 
       var  title =req.body.title;
       // console.log(title);
@@ -44,17 +44,17 @@ router.post('/add', function (req, res, next) {
       var  author = req.body.author;
       var  date   = new Date();
       
-      if (req.files.mainimage){
-         var mainImageOriginalName= req.files.mainimage.originalname;
-         var mainImageName = req.file.mainImage.name;
-         var mainImageMime = req.file.mainImage.mimetype;
-         var mainImagePath = req.file.mainImage.path;
-         var mainImageExt = req.file.mainImage.extension;
-         var mainImageSize = req.file.mainImage.size;
-      } else{
-        var mainImageName = "noimage.png";
-      }; 
-      sql='insert into posts(title,category,body,author,date,mainimage) value(\'' +title+'\',\''+category+'\',\''+body+'\',\''+author+'\',\''+date+'\',\''+mainImageName+'\');';
+      // if (req.files.mainimage){
+      //    var mainImageOriginalName= req.files.mainimage.originalname;
+      //    var mainImageName = req.file.mainImage.name;
+      //    var mainImageMime = req.file.mainImage.mimetype;
+      //    var mainImagePath = req.file.mainImage.path;
+      //    var mainImageExt = req.file.mainImage.extension;
+      //    var mainImageSize = req.file.mainImage.size;
+      // } else{
+      //   var mainImageName = "noimage.png";
+      // }; 
+      sql='insert into posts(title,category,body,author,date,mainimage) value(\'' +title+'\',\''+category+'\',\''+body+'\',\''+author+'\',\''+date+'\',\''+'\');';
       console.log(sql);
       pg.query(sql,function(result){		
         res.jsonp(result.rows);
