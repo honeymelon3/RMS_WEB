@@ -34,13 +34,13 @@ router.get('/add', function (req, res, next) {
   });
 router.post('/add', function (req, res, next) {
         // 获得form Value
-      
+      console.log(req);
       var  title =req.body.title;
       var  category = req.body.category;
       var  body = req.body.body;
       var  author = req.body.editor;
       var  date   = new Date();
-    
+      
       if (req.files.mainimage){
          var mainImageOriginalName= req.files.mainimage.originalname;
          var mainImageName = req.files.mainImage.name;
@@ -52,7 +52,7 @@ router.post('/add', function (req, res, next) {
         var mainImageName = "noimage.png";
       } 
       sql='insert into posts(title,category,body,author,date,mainimage) value(\'' +title+'\',\''+category+'\',\''+body+'\',\''+author+'\',\''+date+'\',\''+mainImageName+'\');';
-      console.log(sql);
+      
       pg.query(sql,function(result){		
         res.jsonp(result.rows);
         console.log(result); 
