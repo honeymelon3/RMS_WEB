@@ -648,7 +648,7 @@
 							<div class="span8 blog-tag-data">
 							<h3>添加评论:&nbsp&nbsp {{x.title}}</h3>
 
-								<form method="post" action="/comment/add" enctype="multipart/form-data" name="sentMessage" id="commentForm"  class="horizontal-form">
+								<form method="post" action="/comment/add" enctype="multipart/form-data"   class="horizontal-form">
 										<div class="form-group">
 											<div class="controls">
 												<label>标题:</label>
@@ -689,7 +689,7 @@
 
 										<div id="success"></div>
 										<!-- For success/fail messages -->
-										<button type="submit" class="btn-info" id="sendMessageButton">提交</button>
+										<button type="submit" class="btn-info" name="submit">提交</button>
 								</form>
 							</div>
 						</div>
