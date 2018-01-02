@@ -648,7 +648,9 @@
 							<div class="span8 blog-tag-data">
 							<h3>添加评论:&nbsp&nbsp {{x.title}}</h3>
 
-								<form method="post" action="/comment/add" enctype="multipart/form-data"   class="horizontal-form">
+								<form method="post" action="/comment/add"  class="horizontal-form">
+									<input type="text" class="control-group form-control" name="title1" id="title1" required="required" data-validation-required-message="标题" ></input>
+
 										<div class="form-group">
 											<div class="controls">
 												<label>标题:</label>
@@ -789,7 +791,10 @@
 
 	<!-- END JAVASCRIPTS -->
 
-<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>
+<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script>
+
+
+</body>
 
 <!-- END BODY -->
 
