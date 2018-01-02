@@ -68,7 +68,7 @@
 </script> -->
 <script>
                 
-     CKEDITOR.replace('body');         
+             
 	var app = angular.module('myApp', []);
 	app.controller('myCtrl', function($scope, $http) {   
 	var myUrl = "http://47.100.41.42/comment/category?callback=JSON_CALLBACK";
@@ -675,8 +675,8 @@
 										<div class=" form-group">
 											<div class="controls">
 												<label>内容:</label>
-												<textarea rows="10" cols="100" class="control-group form-control" name="body" id="body" required data-validation-required-message="评论内容"
-												maxlength="999" style="resize:none" style=" width: 800px;"></textarea>
+												<textarea  class="ckeditor control-group form-control" name="body" id="body" required data-validation-required-message="评论内容"
+												maxlength="999"  style="width: 800px"></textarea>
 											</div>
 										</div>
 
