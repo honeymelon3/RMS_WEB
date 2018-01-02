@@ -61,7 +61,7 @@ router.post('/add', function (req, res, next) {
         if(result.name== 'error'){        
         console.log(result.code); 
         }else{
-          res.render('page_comment', { title: 'Comments' });
+          res.redirect('/');
         }
       }); 
        
