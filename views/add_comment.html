@@ -42,7 +42,7 @@
 
 	<link rel="shortcut icon" href="../media/image/favicon.ico" />
 
-	<script src="//cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
+	<script src="../ckeditor/ckeditor.js"></script>
 	<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script> 
 <!-- 
 <script>
@@ -652,14 +652,14 @@
 										<div class="form-group">
 											<div class="controls">
 												<label>标题:</label>
-												<input type="text" class="control-group form-control" name="title" id="title" required="required" data-validation-required-message="标题" style=" width: 800px;"></input>
+												<input type="text" class="control-group form-control" name="title" id="title" required="required" data-validation-required-message="标题" ></input>
 												<p class="help-block"></p>
 											</div>
 										</div>
 										<div class="form-group">
 											<div class="controls">
 												<label>类型:</label>
-												<select type="text" class="control-group form-control" name="category" id="category" required="required" data-validation-required-message="类型" ng-model="$parent.select[$index]" style=" width: 800px;">
+												<select type="text" class="control-group form-control" name="category" id="category" required="required" data-validation-required-message="类型" ng-model="$parent.select[$index]">
 													<option ng-repeat="x in category">{{x.category}}</option>
 												</select>
 												<p class="help-block"></p>
@@ -668,7 +668,7 @@
 										<div class="form-group">
 											<div class="controls">
 												<label>作者:</label>
-												<input type="text" class="control-group form-control" name="author" id="author" required="required" data-validation-required-message="作者姓名" style=" width: 800px;"></input>
+												<input type="text" class="control-group form-control" name="author" id="author" required="required" data-validation-required-message="作者姓名" ></input>
 											</div>
 										</div>
 
@@ -683,7 +683,7 @@
 										<div class="form-group">
 											<div class="controls">
 												<label>添加图片:</label>
-												<input type="file" class="control-group form-control" name="mainimage" id="mainimage" required data-validation-required-message="作者姓名" style=" width: 800px;"></input>
+												<input type="file" class="control-group form-control" name="mainimage" id="mainimage" required data-validation-required-message="作者姓名" ></input>
 											</div>
 										</div>
 
