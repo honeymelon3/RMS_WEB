@@ -706,7 +706,7 @@
 							
 								<div class="container-fluid">
 							
-									<button ng-href="/comment/add" class="btn-primary btn-lg">添加留言&nbsp<i class="icon-comments-alt"></i></button>
+									<button type="submit" onclick="jump()" class="btn-primary btn-lg">添加留言&nbsp<i class="icon-comments-alt"></i></button>
 																
 																						
 								</div>
@@ -792,7 +792,11 @@
 	<!-- END CORE PLUGINS -->
 
 	<script src="media/js/app.js"></script>      
-
+	<script>
+			function jump(){
+				window.open("/comment/add")
+			}
+	</script>
 	<script>
 
 		jQuery(document).ready(function() {    
