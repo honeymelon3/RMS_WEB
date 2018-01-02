@@ -1,4 +1,5 @@
 var express = require('express');
+var dateU = require('date-utils')
 var router = express.Router();
 var pg = require('./pgconn');
 /* GET home page. */
@@ -42,7 +43,7 @@ router.post('/add', function (req, res, next) {
       var  category = req.body.category;
       var  body = req.body.body;
       var  author = req.body.author;
-      var  date   = new Date();
+      var  date   = new Date().toFormat("YYYY-MM-DD HH24:MI:SS");
       
       // if (req.files.mainimage){
       //    var mainImageOriginalName= req.files.mainimage.originalname;
@@ -54,12 +55,14 @@ router.post('/add', function (req, res, next) {
       // } else{
       //   var mainImageName = "noimage.png";
       // }; 
-      sql='insert into posts(title,category,body,author,date,mainimage) value(\'' +title+'\',\''+category+'\',\''+body+'\',\''+author+'\',\''+date+'\',\''+'\');';
+      sql='insert into posts(title,category,body,author,date) values (\'' +title+'\',\''+category+'\',\''+body+'\',\''+author+'\',\''+date+'\');';
       console.log(sql);
       pg.query(sql,function(result){		
-        res.jsonp(result.rows);
-        console.log(result); 
-        
+        if(result.name== 'error'){        
+        console.log(result.code); 
+        }else{
+          res.render('page_comment', { title: 'Comments' });
+        }
       }); 
        
 
