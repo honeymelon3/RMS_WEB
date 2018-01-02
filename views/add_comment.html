@@ -608,7 +608,7 @@
 		
 						<h3 class="page-title">
 		
-							留言板
+							添加留言
 							<small>欢迎打call</small>
 		
 						</h3>
@@ -652,24 +652,31 @@
 							<h3>添加评论:&nbsp&nbsp {{x.title}}</h3>
 
 							<form name="sentMessage" id="contactForm" novalidate>
-										<div class="control-group form-group">
+										<div class="form-group">
 											<div class="controls">
 												<label>标题:</label>
-												<input type="text" class="form-control" id="title" required data-validation-required-message="标题">
+												<input type="text" class="form-control" name="title" id="title" required data-validation-required-message="标题">
 												<p class="help-block"></p>
 											</div>
 										</div>
-										<div class="control-group form-group">
+										<div class="form-group">
+											<div class="controls">
+												<label>类型:</label>
+												<select type="text" class="form-control" name="category" id="category" required data-validation-required-message="类型">
+												<p class="help-block"></p>
+											</div>
+										</div>
+										<div class="form-group">
 											<div class="controls">
 												<label>作者:</label>
-												<input type="tel" class="form-control" id="phone" required data-validation-required-message="作者姓名">
+												<input type="tel" class="form-control" name="name" id="name" required data-validation-required-message="作者姓名">
 											</div>
 										</div>
 
-										<div class="control-group form-group">
+										<div class=" form-group">
 											<div class="controls">
 												<label>内容:</label>
-												<textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="评论内容"
+												<textarea class="form-control" name="body" id="body" required data-validation-required-message="评论内容"
 												maxlength="999" style="resize:none"></textarea>
 											</div>
 										</div>
