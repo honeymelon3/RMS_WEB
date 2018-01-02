@@ -34,11 +34,13 @@ router.get('/add', function (req, res, next) {
   });
 router.post('/add', function (req, res, next) {
         // 获得form Value
-      console.log(req);
+      console.log(req.body);
+      console.log(req.files);
+
       var  title =req.body.title;
       var  category = req.body.category;
       var  body = req.body.body;
-      var  author = req.body.editor;
+      var  author = req.body.author;
       var  date   = new Date();
       
       if (req.files.mainimage){
