@@ -32,8 +32,9 @@ router.get('/add', function (req, res, next) {
     res.render('add_comment', { title: 'Add comments' });
 
   });
-  router.post('/add', function (req, res, next) {
+router.post('/add', function (req, res, next) {
         // 获得form Value
+      console.log("good");
       var  title =req.body.title;
       var  category = req.body.category;
       var  body = req.body.body;
