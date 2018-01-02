@@ -650,16 +650,17 @@
 						<div class="row-fluid">
 		
 							
-							<div class="span8 blog-tag-data" ng-repeat="x in posts">
-								<header class="jumbotron">
+							<div class="span8 blog-tag-data" >
+								<div class="row-fluid" ng-repeat="x in posts">
+									<header class="jumbotron">
 
 									<h3>题目:&nbsp&nbsp {{x.title}}</h3>
-								</header>	
+									</header>	
 								
 									
 
 			
-										<div class="span6">
+									<div class="span6">
 			
 											<ul class="unstyled inline blog-tags">
 			
@@ -675,10 +676,10 @@
 												</li>
 			
 											</ul>
+											
+									</div>
 			
-										</div>
-			
-										<div class="span6 blog-tag-data-inner">
+									<div class="span6 blog-tag-data-inner">
 			
 											<ul class="unstyled inline">
 			
@@ -689,17 +690,17 @@
 			
 											</ul>
 			
-										</div>
-										<p style="text-align:left"><img src="media/image/image5.jpg" alt=""></p>
-										<pre>{{x.body}}</pre>
-										<hr>
+									</div>
+									<p style="text-align:left"><img src="media/image/image5.jpg" alt=""></p>
+									<pre>{{x.body}}</pre>
+									<hr>
 
 
 
-							</div>
+							    </div>
 
-								
-							<div class="span4">
+							</div>		
+								<div class="span4">
 							
 								<h2>前端设计</h2>
 							
@@ -716,12 +717,12 @@
 		
 		
 		
-						</div>
+							</div>
 		
 				<!-- END PAGE CONTENT-->
 		
 					</div>
-		
+	
 			<!-- END PAGE CONTAINER-->
 		
 				</div>
