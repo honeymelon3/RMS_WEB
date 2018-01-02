@@ -34,7 +34,7 @@ router.get('/add', function (req, res, next) {
   });
 router.post('/add', function (req, res, next) {
         // 获得form Value
-      console.log(req.body);
+      console.log(req);
       console.log(req.files);
 
       var  title =req.body.title;
