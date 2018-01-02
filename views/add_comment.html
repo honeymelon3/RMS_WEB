@@ -669,7 +669,7 @@
 										<div class="form-group">
 											<div class="controls">
 												<label>作者:</label>
-												<input type="text" class="control-group form-control" name="name" id="name" required data-validation-required-message="作者姓名"></input>
+												<input type="text" class="control-group form-control" name="editor" id="editor" required data-validation-required-message="作者姓名"></input>
 											</div>
 										</div>
 
@@ -680,6 +680,14 @@
 												maxlength="999" style="resize:none"></textarea>
 											</div>
 										</div>
+
+										<div class="form-group">
+											<div class="controls">
+												<label>添加图片:</label>
+												<input type="file" class="control-group form-control" name="mainimage" id="mainimage" required data-validation-required-message="作者姓名"></input>
+											</div>
+										</div>
+
 										<div id="success"></div>
 										<!-- For success/fail messages -->
 										<button type="submit" class="btn-info" id="sendMessageButton">提交</button>
