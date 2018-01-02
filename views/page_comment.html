@@ -42,10 +42,7 @@
 
 	<link rel="shortcut icon" href="media/image/favicon.ico" />
 
-	<script src="socket.io/socket.io.js"></script>
 	
-	<script src="bower_components/async/dist/async.js"></script>
-	<script src="js/echarts.min.js"></script>
 	<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script> 
 <!-- 
 <script>
@@ -78,7 +75,7 @@
 	$http.jsonp(myUrl).success(function(response) {
 	    $scope.posts = response;
 
-	    console.log(response);
+	    // console.log(response);
  
 		});		
 
@@ -794,7 +791,7 @@
 	<script src="media/js/app.js"></script>      
 	<script>
 			function jump(){
-				window.open("/comment/add")
+				window.open("/comment/add",true)
 			}
 	</script>
 	<script>
