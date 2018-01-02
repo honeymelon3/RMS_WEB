@@ -35,7 +35,7 @@ router.get('/add', function (req, res, next) {
 router.post('/add', function (req, res, next) {
         // 获得form Value
       console.log(req);
-      console.log(req.files);
+      console.log(req.file);
 
       var  title =req.body.title;
       // console.log(title);
@@ -46,11 +46,11 @@ router.post('/add', function (req, res, next) {
       
       if (req.files.mainimage){
          var mainImageOriginalName= req.files.mainimage.originalname;
-         var mainImageName = req.files.mainImage.name;
-         var mainImageMime = req.files.mainImage.mimetype;
-         var mainImagePath = req.files.mainImage.path;
-         var mainImageExt = req.files.mainImage.extension;
-         var mainImageSize = req.files.mainImage.size;
+         var mainImageName = req.file.mainImage.name;
+         var mainImageMime = req.file.mainImage.mimetype;
+         var mainImagePath = req.file.mainImage.path;
+         var mainImageExt = req.file.mainImage.extension;
+         var mainImageSize = req.file.mainImage.size;
       } else{
         var mainImageName = "noimage.png";
       }; 
