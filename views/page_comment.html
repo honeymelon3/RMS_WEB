@@ -83,6 +83,21 @@
 
 	});
 </script>
+<script>
+	function load()
+	{
+		$(".post").each(function () {
+				 var content = $(this).html();
+				 console.log(content);
+				 $(this).text()=content;
+
+
+			 })
+			console.log("结束");	
+	// window.status="Page is loaded"
+	}
+</script>
+
 
 </head>
 
@@ -90,7 +105,7 @@
 
 <!-- BEGIN BODY -->
 
-<body class="page-header-fixed" ng-app="myApp" ng-controller="myCtrl">
+<body class="page-header-fixed" ng-app="myApp" ng-controller="myCtrl" onload="load()">
 
 	<!-- BEGIN HEADER -->
 
@@ -818,22 +833,12 @@
 
 	</script>
 
-	<script>
-				 
-			window.onload(function(){
- 				$(".post").each(function () {
-				 var content = $(this).html();
-				 console.log(content);
-				 $(this).text()=content;
 
 
-			 })
-			console.log("结束");
 
-			})	 
-				
-	
-	</script>
+
+
+
 
 	<!-- END JAVASCRIPTS -->
 
