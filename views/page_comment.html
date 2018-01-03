@@ -690,8 +690,8 @@
 			
 									</div>
 									<div class="span12 blog-tag-data-inner" >
-										<pre name={{x.index}} >
-											{{x.body}}
+										<pre class="post" >
+											 {{x.body}}
 										</pre>
 									<hr>
 									<!-- <script>
@@ -809,6 +809,14 @@
 	<script>
 
 		jQuery(document).ready(function() {  
+
+			 $(":post").each(function () {
+				 var content = $(this).html();
+				 $(this).text()=content;
+
+
+			 })
+
 			
 		   App.init();
 
