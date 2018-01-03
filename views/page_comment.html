@@ -691,7 +691,6 @@
 									</div>
 									<div class="span12 blog-tag-data-inner">
 										<pre name={{x.index}} >
-											'{{x.body}}.html()'
 										</pre>
 									<hr>
 									<!-- <script>
@@ -807,7 +806,10 @@
 	</script>
 	<script>
 
-		jQuery(document).ready(function() {    
+		jQuery(document).ready(function() {  
+			
+			console.log(scope.posts)
+
 		   App.init();
 
 		});
