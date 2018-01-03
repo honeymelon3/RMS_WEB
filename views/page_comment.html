@@ -67,7 +67,22 @@
        });
 
 </script> -->
+<script>
+                
+                
+	var app = angular.module('myApp', []);
+	app.controller('myCtrl', function($scope, $http) {   
+	var myUrl = "http://47.100.41.42/comment/posts?callback=JSON_CALLBACK";
+	$http.jsonp(myUrl).success(function(response) {
+	    $scope.posts = response;
+		console.log("when");
+	    // console.log(response);
+ 
+		});		
 
+
+	});
+</script>
 
 </head>
 
@@ -78,7 +93,6 @@
 <body class="page-header-fixed" ng-app="myApp" ng-controller="myCtrl">
 
 	<!-- BEGIN HEADER -->
-
 
 	<div class="header navbar navbar-inverse navbar-fixed-top">
 
@@ -793,23 +807,21 @@
 	</script>
 	
 	<script>
-                
-                
-		var app = angular.module('myApp', []);
-			 app.controller('myCtrl', function($scope, $http) {   
-			 var myUrl = "http://47.100.41.42/comment/posts?callback=JSON_CALLBACK";
-			 $http.jsonp(myUrl).success(function(response) {
-				$scope.posts = response;
-				 console.log("when");
-				// console.log(response);
-		  
-				 });		
-		 
-		 
-			 });
+
 		jQuery(document).ready(function() {  
 			console.log("开始");
-			 $(".post").each(function () {
+
+			
+		   App.init();
+
+		});
+
+	</script>
+
+	<script>
+				 
+			window.onload(function(){
+ 				$(".post").each(function () {
 				 var content = $(this).html();
 				 console.log(content);
 				 $(this).text()=content;
@@ -817,11 +829,10 @@
 
 			 })
 			console.log("结束");
-			
-		   App.init();
 
-		});
-
+			})	 
+				
+	
 	</script>
 
 	<!-- END JAVASCRIPTS -->
