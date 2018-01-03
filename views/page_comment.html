@@ -75,7 +75,7 @@
 	var myUrl = "http://47.100.41.42/comment/posts?callback=JSON_CALLBACK";
 	$http.jsonp(myUrl).success(function(response) {
 	    $scope.posts = response;
-
+		console.log("when");
 	    // console.log(response);
  
 		});		
