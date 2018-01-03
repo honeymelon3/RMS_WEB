@@ -689,8 +689,11 @@
 			
 									</div>
 									<div class="span12 blog-tag-data-inner">
-									<pre>{{x.body}}</pre>
+										<pre name=($index) id=($index)></pre>
 									<hr>
+									<script>
+									$($index).pappend({{x.body}});
+									</script>
 									</div>
 									
 									
@@ -800,7 +803,6 @@
 	<script>
 
 		jQuery(document).ready(function() {    
-
 		   App.init();
 
 		});
