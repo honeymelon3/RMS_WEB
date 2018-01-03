@@ -690,11 +690,11 @@
 			
 									</div>
 									<div class="span12 blog-tag-data-inner">
-										<pre name=($index) id=($index)></pre>
+										<pre name={{x.index}} ></pre>
 									<hr>
 									<script>
 										jQuery(function(){
-												$('$index').append(x.body);
+												$(x.index).append(x.body);
 										})
 								
 									</script>
