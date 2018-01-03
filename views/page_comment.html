@@ -67,22 +67,7 @@
        });
 
 </script> -->
-<script>
-                
-                
-	var app = angular.module('myApp', []);
-	app.controller('myCtrl', function($scope, $http) {   
-	var myUrl = "http://47.100.41.42/comment/posts?callback=JSON_CALLBACK";
-	$http.jsonp(myUrl).success(function(response) {
-	    $scope.posts = response;
-		console.log("when");
-	    // console.log(response);
- 
-		});		
 
-
-	});
-</script>
 
 </head>
 
@@ -93,6 +78,22 @@
 <body class="page-header-fixed" ng-app="myApp" ng-controller="myCtrl">
 
 	<!-- BEGIN HEADER -->
+<script>
+                
+                
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope, $http) {   
+		var myUrl = "http://47.100.41.42/comment/posts?callback=JSON_CALLBACK";
+		$http.jsonp(myUrl).success(function(response) {
+		    $scope.posts = response;
+			console.log("when");
+		    // console.log(response);
+	 
+			});		
+	
+	
+		});
+</script>
 
 	<div class="header navbar navbar-inverse navbar-fixed-top">
 
