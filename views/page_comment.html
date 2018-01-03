@@ -87,9 +87,9 @@
 	function load()
 	{
 		$(".post").each(function () {
-				 var content = $(this).html();
+				 var content = $(this).text();
 				 console.log(content);
-				 $(this).text(content);
+				 $(this).html(content);
 
 
 			 })
