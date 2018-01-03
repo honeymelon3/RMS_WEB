@@ -797,7 +797,22 @@
 	<script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
 
 	<!-- END CORE PLUGINS -->
+<script>
 
+
+	var app = angular.module('myApp', []);
+	app.controller('myCtrl', function ($scope, $http) {
+		var myUrl = "http://47.100.41.42/comment/posts?callback=JSON_CALLBACK";
+		$http.jsonp(myUrl).success(function (response) {
+			$scope.comment = response;
+
+			 console.log(comment);
+
+		});
+
+
+	});
+</script>
 	<script src="media/js/app.js"></script>      
 	<script>
 			function jump(){
