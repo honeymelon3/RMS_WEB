@@ -44,7 +44,7 @@ router.post('/add', function (req, res, next) {
       var  category = req.body.category;
       var  body = req.body.body;
       var  author = req.body.author;
-      var  date   = new Date();
+      var  date   = new Date().toFormat("YYYY-MM-DD HH24:MI:SS");
       
       // if (req.files.mainimage){
       //    var mainImageOriginalName= req.files.mainimage.originalname;
