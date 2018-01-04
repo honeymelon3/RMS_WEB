@@ -26,7 +26,7 @@
 
 	<link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
 
-	<link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<!-- <link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/> -->
 
 	<link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
 
@@ -58,7 +58,7 @@
         }
 		// console.log(pvs.ai);
        async.map(pvs.ai,function(item,callback){
-          console.log(item.pvname);
+        //   console.log(item.pvname);
           socket.on(item.pvname, function (data) {
             if(document.getElementById(item.pvname)){
              document.getElementById(item.pvname).innerHTML=data;
@@ -67,7 +67,7 @@
                
        }, function(err,results){
          callback(err,results); 
-         console.log(results);
+        //  console.log(results);
        });
 
 </script>
