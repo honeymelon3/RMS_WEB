@@ -7,7 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('rms_web:server');
 var http = require('http');
-var my_conn = require("./pgconn");
+var my_conn = require("../routes/pgconn");
 
 /**
  * Get port from environment and store in Express.
