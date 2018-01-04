@@ -50,6 +50,8 @@ var pvs={ai:[{pvname:"hanlfHost:ai1"},{pvname:"hanlfHost:ai2"},{pvname:"hanlfHos
  *  */
 io.on('connection', function (socket) {
   console.log('Connection from remote ip addr:'+socket.handshake.address);
+  
+  var myDate = new Date();
   var loginTime = myDate.toLocaleString();
   
   sql_record = 'insert into login_record(ip_addr,login_time) values (\''+socket.handshake.address+'\',\''+loginTime+'\')';
