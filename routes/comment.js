@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/posts', function(req, res, next) {
   process.env.TZ = "Asia/Shanghai";
-  sql="select * from posts order by index desc limit 5;";
+  sql="select * from posts order by index desc limit 15;";
 	pg.query(sql,function(result){		
 		res.jsonp(result.rows);
     // console.log(result.rows); 
