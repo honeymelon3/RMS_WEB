@@ -58,10 +58,14 @@ router.post('/add', function (req, res, next) {
       // }; 
       sql='insert into posts(title,category,body,author,date) values (\'' +title+'\',\''+category+'\',\''+body+'\',\''+author+'\',\''+date+'\');';
       console.log(sql);
-      pg.query(sql,function(result){		
-        if(result.name== 'error'){        
-        console.log(result.code); 
+      pg.query(sql,function(err,result){		
+        if(error){  
+          console.log('ClientConnectionReady Error: ' + error.message);  
+          client.end();  
+          return;  
         }else{
+          console.log('Inserted: ' + result.affectedRows + ' row.'),  
+          console.log('insert success...\n'); 
           res.redirect('/');
         }
       }); 
