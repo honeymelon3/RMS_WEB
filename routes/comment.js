@@ -58,17 +58,17 @@ router.post('/add', function (req, res, next) {
       // }; 
       sql='insert into posts(title,category,body,author,date) values (\'' +title+'\',\''+category+'\',\''+body+'\',\''+author+'\',\''+date+'\');';
       // console.log(sql);
-      pg.query(sql,function(result){	
+      pg.query(sql,function(error,result){	
         console.log(result);	
-        // if(error){  
-        //   console.log('ClientConnectionReady Error: ' + error.message);  
-        //   client.end();  
-        //   return;  
-        // }else{
-        //   console.log('Inserted: ' + result.affectedRows + ' row.'),  
-        //   console.log('insert success...\n'); 
-        //   res.redirect('/');
-        // }
+        if(error){  
+          console.log('ClientConnectionReady Error: ' + error.message);  
+          pg.disconn();  
+          return;  
+        }else{
+          console.log('Inserted: ' + result.affectedRows + ' row.'),  
+          console.log('insert success...\n'); 
+          res.redirect('/');
+        }
       }); 
        
 
