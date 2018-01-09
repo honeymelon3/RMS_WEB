@@ -67,7 +67,7 @@ router.post('/add', function (req, res, next) {
         // }else{
         //   console.log('Inserted: ' + result.affectedRows + ' row.'),  
           console.log('insert comment success...\n'); 
-          res.redirect('/');
+          res.redirect('/comment');
         // }
       }); 
        

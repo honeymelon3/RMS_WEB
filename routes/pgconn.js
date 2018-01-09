@@ -30,11 +30,4 @@ var query=function(sql,callback){
 pool.on('error', function (err, client) {
   console.error('idle client error', err.message, err.stack)
 })
-
-var disconn=function(){
-	pool.end()
-	};
-
 exports.query = query;
-exports.disconn = disconn;
-
