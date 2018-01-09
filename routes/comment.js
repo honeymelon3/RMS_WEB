@@ -31,7 +31,7 @@ router.get('/category', function (req, res, next) {
 });
 router.get('/add', function (req, res, next) {
 
-  res.redirect('add_comment', { title: 'Add comments' });
+    res.render('add_comment', { title: 'Add comments' });
 
   });
 router.post('/add', function (req, res, next) {
