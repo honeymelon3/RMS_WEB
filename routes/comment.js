@@ -57,8 +57,8 @@ router.post('/add', function (req, res, next) {
       //   var mainImageName = "noimage.png";
       // }; 
       sql='insert into posts(title,category,body,author,date) values (\'' +title+'\',\''+category+'\',\''+body+'\',\''+author+'\',\''+date+'\');';
-      console.log(sql);
-      pg.query(sql,function(err,result){		
+      // console.log(sql);
+      pg.query(sql,function(error,result){		
         if(error){  
           console.log('ClientConnectionReady Error: ' + error.message);  
           client.end();  
