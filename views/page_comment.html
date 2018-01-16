@@ -231,7 +231,7 @@
 
 				</li>
 
-				<li class="start">
+				<li>
 
 					<a href="javascript:;">
 
@@ -644,24 +644,19 @@
 		
 				<!-- BEGIN PAGE CONTENT-->
 		
-				<div class="row-fluid">
+				<div class="row-fluid ">
 		
-					<div class="span12 row-fluid container">
+					<div class="span12 news-page blog-page">
 		
 						<div class="row-fluid">
 		
 							
-							<div class="span8 " >
+							<div class="span8 article-block" >
 								<div class="row-fluid container" ng-repeat="x in posts">
-									<header class="jumbotron">
-
-									<h4>标题:&nbsp&nbsp {{x.title}}</h4>
-									</header>	
-								
 									
-
-			
-									<div class="span6">
+									<h3>标题:&nbsp&nbsp {{x.title}}</h3>
+								
+									<div class="span6 blog-tag-data-inner">
 			
 											<ul class="unstyled inline blog-tags">
 			
@@ -692,10 +687,10 @@
 											</ul>
 			
 									</div>
-									<div class="span12 blog-tag-data-inner" >
-										<pre class="post" >
+									<div  >
+										<p class="post" >
 											 {{x.body}}
-										</pre>
+										</p>
 									<hr>
 									<!-- <script>
 										jQuery(function(){
