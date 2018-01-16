@@ -237,7 +237,7 @@
 
 					<i class="icon-cogs"></i> 
 
-					<span class="title">概述</span>
+					<span class="title"></span>概述</span>
 
 					<span class="selected "></span>
 
@@ -251,22 +251,40 @@
 
 							<a href="/system_structure">
 
-							 	结构介绍                    </a>
+							 	系统结构                    </a>
 
 						</li>
+
+
+
+						
+						<li >
+												
+							<a href="/control_system">
+												
+								控制系统 </a>
+
+								<ul class="sub-menu">
+
+									<li >
+			
+										<a href="portlet_general.html">
+			
+											信号变量</a>
+			
+									</li>
+								</ul>
+
+												
+						</li>
+
+						
 						<li>
 						
 							<a href="build_method.html">
 						
-								发展历史 </a>
+								安装配置 </a>
 						
-						</li>
-						<li >
-												
-							<a href="build_method.html">
-												
-								使用说明 </a>
-												
 						</li>
 
 
@@ -355,9 +373,9 @@
 
 						<li >
 
-							<a href="maps_google.html">
+							<a href="TextInput.html">
 
-							Google Maps                   </a>
+							TextInput                  </a>
 
 						</li>
 
@@ -384,117 +402,87 @@
 					</a>
 
 				</li>
-				<li>
+
+				<li >
+
+					<a href="javascript:;">
+
+					<i class="icon-puzzle-piece"></i> 
+
+					<span class="title">系统应用</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="TextInput.html">
+
+							智能监控                  </a>
+
+						</li>
+
+						<li >
+
+							<a href="maps_vector.html">
+
+							辐射监测                   </a>
+
+						</li>
+
+					</ul>
+
+				</li>
+				<li class="active">
 				
 					<a href="/comment">
 					
 						<i class="icon-comment"></i>
 					
 						<span class="title">留言板</span>
-					
+						<span class="badge" style="background-color: #e02222;padding: 2px 6px 2px 6px;-webkit-border-radius: 12px !important; -moz-border-radius: 12px !important; border-radius: 12px !important; text-shadow: none !important" >new</span>
+
 					</a>
 				
 				</li>
-
 			</ul>
 
 			<!--HORIZONTAL AND SIDEBAR MENU FOR MOBILE & TABLETS-->
 
 			<ul class="page-sidebar-menu visible-phone visible-tablet">
-			
-				<li>
-			
-					<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-			
-					<form class="sidebar-search">
-			
-						<div class="input-box">
-			
-							<a href="javascript:;" class="remove"></a>
-			
-							<input type="text" placeholder="Search..." />
-			
-							<input type="button" class="submit" value=" " />
-			
-						</div>
-			
-					</form>
-			
-					<!-- END RESPONSIVE QUICK SEARCH FORM -->
-			
-				</li>
-			
-				<li >
-			
+
+
+				<li class="start active">
+
 					<a href="/">
-			
-						导航栏
-			
-						<span class="selected"></span>
-			
-						<span class="arrow open"></span>
-			
+
+					概述
+
+					<span class="selected"></span>
+
+					<span class="arrow open"></span>
+
 					</a>
-			
-					<ul class="sub-menu">
-			
-						<li>
-			
-							<a href="javascript:;">
-			
-								<i class="icon-cogs"></i>
-			
-								<span class="title">概述</span>
-			
-								<span class="arrow open"></span>
-			
+
+                         <ul class="sub-menu">
+						<li >
+
+							<a href="/system_structure">
+
+							<i class="icon-cogs"></i> 
+
+							<span class="title" >系统结构</span>
+
+							<span class="arrow open"></span>
+
 							</a>
-			
-							<ul class="sub-menu">
-			
-								<li class="active">
-			
-									<a href="/">
-			
-										EPICS WEB 概述 </a>
-			
-								</li>
-			
-			
-			
-								<li>
-			
-									<a href="/system_structure">
-			
-										系统结构 </a>
-			
-								</li>
-								<li>
-								
-									<a href="epics_web_history.html">
-								
-										发展历史 </a>
-								
-								</li>
-								<li>
-						
-									<a href="build_method.html">
-						
-										安装配置 </a>
-						
-								</li>
-			
-			
-							</ul>
-			
+
 						</li>
-			
-			
-			
 					</ul>
-			
-			
-			
+                    </li>
 			</ul>
 
 		</div>
@@ -663,7 +651,7 @@
 						<div class="row-fluid">
 		
 							
-							<div class="span8 blog-tag-data" >
+							<div class="span8 " >
 								<div class="row-fluid container" ng-repeat="x in posts">
 									<header class="jumbotron">
 
