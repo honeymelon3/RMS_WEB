@@ -12,7 +12,8 @@
 
 	<meta charset="utf-8" />
 
-	<title>小韩 | EPICS - <%= title %></title>
+	<!-- <title>小韩 | EPICS - <%= title %></title> -->
+	<title>小韩 | EPICS - Manuals</title>
 
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
@@ -67,12 +68,12 @@
        });
 
 </script> -->
-<script>
+<!-- <script>
                 
                 
 	var app = angular.module('myApp', []);
 	app.controller('myCtrl', function($scope, $http) {   
-	var myUrl = "http://47.100.41.42/epics_manual/manual?callback=JSON_CALLBACK";
+	var myUrl = 'http://47.100.41.42/epics_manual/manual/' + title  + '?callback=JSON_CALLBACK';
 	$http.jsonp(myUrl).success(function(response) {
 	    $scope.manual = response;
 		// console.log("when");
@@ -82,7 +83,7 @@
 
 
 	});
-</script>
+</script> -->
 <script>
 	function load()
 	{
@@ -609,8 +610,8 @@
 		
 						<h3 class="page-title">
 		
-							留言板
-							<small>欢迎打call</small>
+							EPICS软件
+							<small>配置说明</small>
 		
 						</h3>
 		
