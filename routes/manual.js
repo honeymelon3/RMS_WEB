@@ -26,7 +26,7 @@ router.get('/manual', function(req, res, next) {
     sql='select * from posts where title= \''+req.params.manual_name+'\';';
     console.log(sql);
     pg.query(sql,function(result){		
-    res.render('page_manual', result.rows[anonymous]);
+    res.render('page_manual', result.rows[0]);
       console.log(result.rows[anonymous]); 
       
     }); 
