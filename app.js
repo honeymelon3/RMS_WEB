@@ -14,6 +14,8 @@ var flash = require('connect-flash');
 var index = require('./routes/index');
 var system_structure = require('./routes/system_structure');
 var comment = require('./routes/comment');
+var manual = require('./routes/manual');
+
 
 var app = express();
 
@@ -64,6 +66,7 @@ app.use(function(req,res,next){
 app.use('/', index);
 app.use('/system_structure', system_structure);
 app.use('/comment', comment);
+app.use('/epics_manual', manual);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

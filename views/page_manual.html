@@ -72,11 +72,11 @@
                 
 	var app = angular.module('myApp', []);
 	app.controller('myCtrl', function($scope, $http) {   
-	var myUrl = "http://47.100.41.42/comment/posts?callback=JSON_CALLBACK";
+	var myUrl = "http://47.100.41.42/epics_manual/manual?callback=JSON_CALLBACK";
 	$http.jsonp(myUrl).success(function(response) {
-	    $scope.posts = response;
+	    $scope.manual = response;
 		// console.log("when");
-	    // console.log(response);
+	    console.log(response);
  
 		});		
 
@@ -86,7 +86,7 @@
 <script>
 	function load()
 	{
-		$(".post").each(function () {
+		$(".manual").each(function () {
 				 var content = $(this).text();
 				//  console.log(content);
 				 $(this).html(content);
@@ -231,7 +231,7 @@
 
 				</li>
 
-				<li >
+				<li class="active" >
 
 					<a href="javascript:;">
 
@@ -279,9 +279,9 @@
 						</li>
 
 						
-						<li>
+						<li class="active">
 						
-							<a  href="/epics_manual">
+							<a href="/epics_manual">
 						
 								安装配置 </a>
 						
@@ -436,7 +436,7 @@
 					</ul>
 
 				</li>
-				<li class="active">
+				<li>
 				
 					<a href="/comment">
 					
@@ -652,48 +652,49 @@
 		
 							
 							<div class="span9 article-block" >
-								<div class="row-fluid container" ng-repeat="x in posts">
+								<div class="row-fluid container" ng-repeat="x in manual">
 									<div class="page-header">
 
 						
 									<h3 >标题:&nbsp&nbsp {{x.title}}</h3>			</div>
 									<div class="blog-tag-data">
-										<div class="row-fluid">
-											<div class="span6">
-			
-												<ul class="unstyled inline blog-tags">
-			
-													<li>
-			
-													<i class="icon-tags"></i>
-			
-													<a href="#">类型：{{x.category}}&nbsp&nbsp&nbsp    </a>
-			
-													<a href="#">作者：{{x.author}}</a>
-			
-			
-													</li>
-			
-												</ul>
-											
-											</div>
-			
-											<div class="span6 blog-tag-data-inner">
-			
-											<ul class="unstyled inline">
-			
-												<li>
-													<i class="icon-calendar"></i>
-													<a href="#">日期：{{x.date}}</a>
-												</li>
-			
-											</ul>
-			
-											</div>
-										</div>	
+
 										<div  style="text-indent: 2em" >
-											<p class="post well text-muted"  >
+											<p class="manual well text-muted"  >
 											 {{x.body}}
+																					<div class="row-fluid">
+																						<div class="span6">
+																					
+																							<ul class="unstyled inline blog-tags">
+																					
+																								<li>
+																					
+																									<i class="icon-tags"></i>
+																					
+																									<a href="#">类型：{{x.category}}&nbsp&nbsp&nbsp </a>
+																					
+																									<a href="#">作者：{{x.author}}</a>
+																					
+																					
+																								</li>
+																					
+																							</ul>
+																					
+																						</div>
+																					
+																						<div class="span6 blog-tag-data-inner">
+																					
+																							<ul class="unstyled inline">
+																					
+																								<li>
+																									<i class="icon-calendar"></i>
+																									<a href="#">日期：{{x.date}}</a>
+																								</li>
+																					
+																							</ul>
+																					
+																						</div>
+																					</div>
 											</p>
 										
 										</div>
@@ -705,7 +706,7 @@
 							    </div>
 
 							</div>		
-								<div class="span3">
+								<!-- <div class="span3">
 							
 
 							
@@ -717,7 +718,7 @@
 								</div>
 						
 							
-							</div>
+							</div> -->
 
 		
 		

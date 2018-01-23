@@ -11,9 +11,9 @@ router.get('/', function(req, res, next) {
 
 });
 
-router.get('/posts', function(req, res, next) {
+router.get('/manual', function(req, res, next) {
   process.env.TZ = "Asia/Shanghai";
-  sql="select * from posts order by index desc limit 15;";
+  sql="select * from manual order by index desc limit 15;";
 	pg.query(sql,function(result){		
 		res.jsonp(result.rows);
     // console.log(result.rows); 
@@ -22,7 +22,7 @@ router.get('/posts', function(req, res, next) {
   });
 
 router.get('/category', function (req, res, next) {
-  sql = "select category from categories order by index;";
+  sql = "select category from manual_categories order by index;";
   pg.query(sql, function (result) {
     res.jsonp(result.rows);
     //console.log(result.rows); 
