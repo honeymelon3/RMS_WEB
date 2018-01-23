@@ -22,12 +22,12 @@ router.get('/manual', function(req, res, next) {
   });
 
   router.get('/title/:manual_name', function(req, res, next) {
-    console.log(req.param)
+    console.log(req.params)
     sql='select * from posts where title= \''+req.params.manual_name+'\';';
     console.log(sql);
     pg.query(sql,function(result){		
-    res.render('page_manual', result.rows);
-      console.log(result.rows); 
+    res.render('page_manual', result.rows[anonymous]);
+      console.log(result.rows[anonymous]); 
       
     }); 
 
