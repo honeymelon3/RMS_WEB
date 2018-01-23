@@ -29,8 +29,11 @@ router.get('/manual', function(req, res, next) {
     pg.query(sql,function(result){	
       
       console.log(result.rows[0].title); 
+      console.log(result.rows[0].author);
+      console.log(result.rows[0].date);
+      console.log(result.rows[0].body);   
       // console.log(result.rows[1]);
-    res.render('/page_manual');
+    res.render('page_manual',{title:result.rows[0].title,author:result.rows[0].author, date:result.rows[0].date,body:result.rows[0].date});
       // console.log(result.rows[1]); 
       
     }); 
