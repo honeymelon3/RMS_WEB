@@ -33,7 +33,7 @@ router.get('/manual', function(req, res, next) {
       console.log(result.rows[0].date);
       console.log(result.rows[0].body);   
       // console.log(result.rows[1]);
-    res.render('page_manual',{title:result.rows[0].title,author:result.rows[0].author, date:result.rows[0].date,body:result.rows[0].date});
+    res.render('page_manual',{title:result.rows[0].title,author:result.rows[0].author, date:result.rows[0].date,body:result.rows[0].body});
       // console.log(result.rows[1]); 
       
     }); 
