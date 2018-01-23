@@ -1,7 +1,7 @@
 var express = require('express');
 var dateU = require('date-utils')
 var router = express.Router();
-var pg = require('./pgconn');
+var pg1 = require('./pgconn');
 /* GET home page. */
 
 
@@ -14,8 +14,8 @@ router.get('/', function(req, res, next) {
 router.get('/posts', function(req, res, next) {
   process.env.TZ = "Asia/Shanghai";
   sql ='select * from posts where category != \'配置说明\' order by index desc limit 15;';
-  consle.log(sql);
-  pg.query(sql,function(result){		
+  console.log(sql);
+  pg1.query(sql,function(result){		
 		res.jsonp(result.rows);
     // console.log(result.rows); 
     
@@ -24,7 +24,7 @@ router.get('/posts', function(req, res, next) {
 
 router.get('/category', function (req, res, next) {
   sql = "select category from manual_categories order by index;";
-  pg.query(sql, function (result) {
+  pg1.query(sql, function (result) {
     res.jsonp(result.rows);
     //console.log(result.rows); 
 
@@ -59,7 +59,7 @@ router.post('/add', function (req, res, next) {
       // }; 
       sql='insert into posts(title,category,body,author,date) values (\'' +title+'\',\''+category+'\',\''+body+'\',\''+author+'\',\''+date+'\');';
       // console.log(sql);
-      pg.query(sql,function(error,result){	
+      pg1.query(sql,function(error,result){	
         // console.log(result);	
         // if(error){  
         //   console.log('ClientConnectionReady Error: ' + error.message);  
