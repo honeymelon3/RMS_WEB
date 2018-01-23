@@ -27,7 +27,7 @@ router.get('/manual', function(req, res, next) {
     console.log(sql);
     pg.query(sql,function(result){		
     res.render('page_manual', result.rows[0]);
-      console.log(result.rows[anonymous]); 
+      console.log(result.rows[1]); 
       
     }); 
 
