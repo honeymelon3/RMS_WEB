@@ -23,7 +23,7 @@ router.get('/posts', function(req, res, next) {
   });
 
 router.get('/category', function (req, res, next) {
-  sql = "select category from manual_categories order by index;";
+  sql = "select category from categories order by index;";
   pg1.query(sql, function (result) {
     res.jsonp(result.rows);
     //console.log(result.rows); 
