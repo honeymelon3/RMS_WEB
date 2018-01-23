@@ -7,7 +7,7 @@ var pg = require('./pgconn');
 
 router.get('/', function(req, res, next) {
 
-    res.render('page_manual', { title: 'Manual' });
+    res.render('page_manual', { title: 'Manuals' });
 
 });
 

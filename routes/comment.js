@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 
 });
 
-router.get('/manual', function(req, res, next) {
+router.get('/posts', function(req, res, next) {
   process.env.TZ = "Asia/Shanghai";
   sql ='select * from posts where category != \'配置说明\' order by index desc limit 15;';
   consle.log(sql);
