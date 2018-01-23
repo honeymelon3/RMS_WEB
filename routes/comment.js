@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/manual', function(req, res, next) {
   process.env.TZ = "Asia/Shanghai";
-  sql="select * from manual order by index desc limit 15;";
+  sql ="select * from posts where category != '配置说明' order by index desc limit 15;";
 	pg.query(sql,function(result){		
 		res.jsonp(result.rows);
     // console.log(result.rows); 
