@@ -71,7 +71,7 @@
              
 	var app = angular.module('myApp', []);
 	app.controller('myCtrl', function($scope, $http) {   
-	var myUrl = "http://47.100.41.42/epics_manual/category?callback=JSON_CALLBACK";
+	var myUrl = "http://47.100.41.42/comment/category?callback=JSON_CALLBACK";
 	$http.jsonp(myUrl).success(function(response) {
 	    $scope.category = response;
 
