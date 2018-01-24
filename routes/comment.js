@@ -94,6 +94,8 @@ router.post('/uploadImg',function(req,res,next){
       console.log(path);
       var arr=path.split('/');//注split可以用字符或字符串分割
       var name=arr[arr.length-1];
+      var arr1=name.split('/');
+      var name=arr1[arr1.length-1];
       console.log(name);
       /*上面这里是通过分割字符串来得到文件名*/
       var url="/upload/"+name;
