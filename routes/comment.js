@@ -92,12 +92,12 @@ router.post('/uploadImg',function(req,res,next){
       var path=image.path;      //从本地上传的资源目录加文件名:如E:\\web\\blog\\upload\\upload_0a14.jpg
       /*下面这里是通过分割字符串来得到文件名*/
       /*上面这里是通过分割字符串来得到文件名*/
-      console.log(path);
-      var arr=path.split('\\');//注split可以用字符或字符串分割
+      console.log('test');
+      var arr=path.split('//');//注split可以用字符或字符串分割
       var name=arr[arr.length-1];
             /*上面这里是通过分割字符串来得到文件名*/
       var url="/upload/"+name;
-      // console.log(url);
+      console.log(url);
       var info = {
           "error": 0,
           "url": url
