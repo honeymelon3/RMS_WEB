@@ -91,10 +91,13 @@ router.post('/uploadImg',function(req,res,next){
       var image=files.imgFile;  //这是整个files流文件对象,是转换成有利于传输的数据格式
       var path=image.path;      //从本地上传的资源目录加文件名:如E:\\web\\blog\\upload\\upload_0a14.jpg
       /*下面这里是通过分割字符串来得到文件名*/
-      var arr=path.split('/');//注split可以用字符或字符串分割
-      var name=arr[arr.length-1];
+
+      // var arr=path.split('/');//注split可以用字符或字符串分割
+      // var name=arr[arr.length-1];
+      path = path.replace('/\\/g', '/');
+        var url = '/upload' + path.substr(path.lastIndexOf('/'), path.length);
       /*上面这里是通过分割字符串来得到文件名*/
-      var url="/upload/"+name;
+      // var url="/upload/"+name;
       console.log(url);
       var info = {
           "error": 0,
