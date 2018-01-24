@@ -42,7 +42,16 @@
 
 	<link rel="shortcut icon" href="../media/image/favicon.ico" />
 
-	<script src="../ckeditor/ckeditor.js"></script>
+	<!-- <script src="../ckeditor/ckeditor.js"></script> -->
+	<script src="../kindeditor/kindeditor-all.js"></script> 
+	<script src="../kindeditor/lang/zh-CN.js"></script> 
+
+	<script>
+		KindEditor.ready(function(K) {
+			   window.editor = K.create('#editor_id');
+		});
+ 	 </script>
+
 	<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script> 
 <!-- 
 <script>
@@ -615,8 +624,11 @@
 										<div class=" form-group">
 											<div class="controls">
 												<label>内容:</label>
-												<textarea  class="ckeditor control-group form-control" name="body" id="body" required data-validation-required-message="评论内容"
-												maxlength="999"  style="width: 800px"></textarea>
+												<!-- <textarea  class="ckeditor control-group form-control" name="body" id="body" required data-validation-required-message="评论内容"
+												maxlength="999"  style="width: 800px"></textarea> -->
+												<textarea id="editor_id" name="content" style="width:700px;height:300px;">
+													&lt;strong&gt;HTML内容&lt;/strong&gt;
+												</textarea>
 											</div>
 										</div>
 

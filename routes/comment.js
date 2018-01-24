@@ -43,7 +43,7 @@ router.post('/add', function (req, res, next) {
       var  title =req.body.title;
       // console.log(title);
       var  category = req.body.category;
-      var  body = req.body.body;
+      var  body = req.body.content;
       var  author = req.body.author;
       var  date   = new Date().toFormat("YYYY-MM-DD HH24:MI:SS");
       
