@@ -23,6 +23,7 @@
     "express-session":"*",
     "express-messages":"*",
     "multer":"*",
-    "date-utils":"*"
+    "date-utils":"*",
+    "formidable":"*"
   }
 }
