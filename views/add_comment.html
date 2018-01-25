@@ -52,10 +52,10 @@
      //    width:"550px",    //规定宽度
         uploadJson: '/comment/uploadImg',   //规定服务端处理的路由地址
         allowImageUpload : true,     //是否允许本地上传图片
-        items : [
-            'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic',
-            'underline', 'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright',    'insertorderedlist', 'insertunorderedlist', '|', 'emoticons', 'image', 'link'],       //各种可显示的图标
-     //    resizeType:0                 //是否可以拖动
+    //     items : [
+    //         'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic',
+    //         'underline', 'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright',    'insertorderedlist', 'insertunorderedlist', '|', 'emoticons', 'image', 'link'],       //各种可显示的图标
+    //  //    resizeType:0                 //是否可以拖动
     };
 		KindEditor.ready(function(K) {
 			   window.editor = K.create('#editor_id',options);
