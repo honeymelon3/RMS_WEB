@@ -104,6 +104,7 @@ router.post('/uploadImg',function(req,res,next){
         "error": 0,
         "url": url
     };
+    res.setHeader("P3P", "CP=CAO PSA OUR");
     res.send(info);
   });
 })
