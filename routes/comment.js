@@ -89,7 +89,7 @@ router.post('/uploadImg',function(req,res,next){
     if (err) {
         throw err;
     }
-    // console.log("begin");
+    console.log("begin");
     var image = files.imgFile;
     var path = image.path;
     path = path.replace('/\\/g', '/');
