@@ -88,6 +88,11 @@ router.post('/uploadImg',function(req,res,next){
   form.parse(req, function (err, fields, files) {
     if (err) {
         throw err;
+      var info = {
+        "error": 1,
+        "message": "上传文件错误信息"
+      };
+      res.send(info);
     }
     console.log("begin");
     var image = files.imgFile;
