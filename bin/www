@@ -68,7 +68,7 @@ io.on('connection', function (socket) {
         item.on("value", function(data) {
         // console.log('Value:',item.pvName,data);
         socket.emit(item.pvName, data);
-        // console.log(item.pvName+" value change socket evnet emit")
+         console.log(item.pvName+" value change socket evnet emit")
         });  
       })
   });
