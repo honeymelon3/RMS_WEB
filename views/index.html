@@ -62,7 +62,7 @@
           socket.on(item.pvname, function (data) {
 			 console.log(item.pvname); 
 			 if(item.pvname == "hanlfHost:compressExample"){
-				  console.log(data);
+				  console.log(data.length);
 			  }
             if(document.getElementById(item.pvname)){	 
              document.getElementById(item.pvname).innerHTML=data;
