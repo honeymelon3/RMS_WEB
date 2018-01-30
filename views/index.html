@@ -58,13 +58,15 @@
         }
 		// console.log(pvs.ai);
        async.map(pvs.ai,function(item,callback){
-        console.log(item.pvname);
+      
           socket.on(item.pvname, function (data) {
-            if(document.getElementById(item.pvname)){
-			     // console.log(item.pvname);
-			  if(item.pvname == "hanlfHost:compressExample"){
+			 console.log(item.pvname); 
+			 if(item.pvname == "hanlfHost:compressExample"){
 				  console.log(data);
 			  }
+            if(document.getElementById(item.pvname)){
+			    
+			 
              document.getElementById(item.pvname).innerHTML=data;
             }
                });
