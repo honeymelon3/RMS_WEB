@@ -69,7 +69,7 @@
 				  var valueList = data.map(function (item) {
     								return item[1];
 								});
-							option2.xAxis[0].data = dateList;
+							option2.xAxis.data = dateList;
    							 option2.series[0].data = valueList;
 				 lineChart.setOption(option2,true);
 			}
