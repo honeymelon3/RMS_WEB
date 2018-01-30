@@ -53,7 +53,7 @@
 		var serverIP="47.100.41.42";
 		// var socket = io.connect(serverIP+':9021');
 		var socket = io.connect(serverIP+':80');
-		var pvs={ai:[{pvname:"hanlfHost:ai1"},{pvname:"hanlfHost:ai2"},{pvname:"hanlfHost:ai3"}],
+		var pvs={ai:[{pvname:"hanlfHost:ai1"},{pvname:"hanlfHost:ai2"},{pvname:"hanlfHost:ai3"},{pvname:"hanlfHost:CompressExample"}],
          ao:[{pvname:"hanlfHost:ao1"}, {pvname:"hanlfHost:ao2"}, {pvname:"hanlfHost:ao3"}]
         }
 		// console.log(pvs.ai);
@@ -61,6 +61,9 @@
         //   console.log(item.pvname);
           socket.on(item.pvname, function (data) {
             if(document.getElementById(item.pvname)){
+			  if(item.pvname == "hanlfHost:CompressExample"){
+				  console.log(data);
+			  }
              document.getElementById(item.pvname).innerHTML=data;
             }
                });
