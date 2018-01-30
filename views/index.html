@@ -62,12 +62,9 @@
           socket.on(item.pvname, function (data) {
 			//  console.log(item.pvname); 
 			 if(item.pvname == "hanlfHost:compressExample"){
-				  console.log(data.length);
+				//   console.log(data.length);
 
-
-				console.log(valueList);
-							// option2.xAxis.data = dateList;
-   							 option2.series[0].data = data;
+   				  option2.series[0].data = data;
 				 lineChart.setOption(option2,true);
 			}
             	if(document.getElementById(item.pvname)){	 
