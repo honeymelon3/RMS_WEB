@@ -63,16 +63,11 @@
 			//  console.log(item.pvname); 
 			 if(item.pvname == "hanlfHost:compressExample"){
 				  console.log(data.length);
-				  var dateList = data.map(function (item) {
-    								return item[0];
-								});
-				  var valueList = data.map(function (item) {
-    								return item[1];
-								});
+
 
 				console.log(valueList);
-							option2.xAxis.data = dateList;
-   							 option2.series[0].data = valueList;
+							// option2.xAxis.data = dateList;
+   							 option2.series[0].data = data;
 				 lineChart.setOption(option2,true);
 			}
             	if(document.getElementById(item.pvname)){	 
