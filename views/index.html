@@ -61,6 +61,7 @@
         //   console.log(item.pvname);
           socket.on(item.pvname, function (data) {
             if(document.getElementById(item.pvname)){
+			     console.log(item.pvname);
 			  if(item.pvname == "hanlfHost:compressExample"){
 				  console.log(data);
 			  }
