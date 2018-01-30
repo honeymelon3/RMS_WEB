@@ -38,7 +38,7 @@ server.listen(port,'0.0.0.0',function(){
  * Define PVs
  */
 
-var pvs={ai:[{pvname:"hanlfHost:ai1"},{pvname:"hanlfHost:ai2"},{pvname:"hanlfHost:ai3"},{pvname:"hanlfHost:CompressExample"}],
+var pvs={ai:[{pvname:"hanlfHost:ai1"},{pvname:"hanlfHost:ai2"},{pvname:"hanlfHost:ai3"},{pvname:"hanlfHost:compressExample"}],
          ao:[{pvname:"hanlfHost:ao1"}, {pvname:"hanlfHost:ao2"}, {pvname:"hanlfHost:ao3"}]
         }
 
