@@ -56,14 +56,15 @@
 		var socket = io.connect(serverIP+':80');
 		var pvs={ai:[{pvname:"hanlfHost:ai1"},{pvname:"hanlfHost:ai2"},{pvname:"hanlfHost:ai3"},{pvname:"hanlfHost:compressExample"}],
          ao:[{pvname:"hanlfHost:ao1"}, {pvname:"hanlfHost:ao2"}, {pvname:"hanlfHost:ao3"}]
-        }
+		}
+		var linspace = require('linspace');
 		// console.log(pvs.ai);
        async.map(pvs.ai,function(item,callback){
       
           socket.on(item.pvname, function (data) {
 			//  console.log(item.pvname); 
 			 if(item.pvname == "hanlfHost:compressExample"){
-				  xAxisData=linspace(1,data.length,data.length);
+				  xAxisData= linspace(1,data.length,data.length);
 				  option2.xAxis.data = xAxisData;
    				  option2.series[0].data = data;
 				 lineChart.setOption(option2,true);
