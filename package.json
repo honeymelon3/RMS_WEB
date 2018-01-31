@@ -24,6 +24,7 @@
     "express-messages":"*",
     "multer":"*",
     "date-utils":"*",
-    "formidable":"*"
+    "formidable":"*",
+    "linspace":"*"
   }
 }

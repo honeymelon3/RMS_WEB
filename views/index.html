@@ -45,6 +45,7 @@
 	<script src="socket.io/socket.io.js"></script>
 	
 	<script src="bower_components/async/dist/async.js"></script>
+	<script src="bower_components/linspase/index.js"></script>
 	<script src="js/echarts.min.js"></script>
 
 
@@ -62,8 +63,8 @@
           socket.on(item.pvname, function (data) {
 			//  console.log(item.pvname); 
 			 if(item.pvname == "hanlfHost:compressExample"){
-				//   console.log(data.length);
-
+				  xAxisData=linspace(1,data.length,data.length);
+				  option2.xAxis.data = xAxisData;
    				  option2.series[0].data = data;
 				 lineChart.setOption(option2,true);
 			}
