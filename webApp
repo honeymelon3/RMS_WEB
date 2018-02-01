@@ -23,7 +23,7 @@ stop(){
 echo -n $"Shutting down $Prog:"
 screen -S epicsWeb -p 0 -X eval 'stuff "pm2 delete epicsWeb\015"'
 screen -S epicsWeb -p 0 -X eval 'stuff "exit \015"'
-echo "EPICS IOC is Stoping"
+echo "epicsWeb is Stoping"
 return 0
 }
 restart() {
