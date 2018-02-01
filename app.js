@@ -15,6 +15,7 @@ var index = require('./routes/index');
 var system_structure = require('./routes/system_structure');
 var comment = require('./routes/comment');
 var manual = require('./routes/manual');
+var cors =require('cors');
 
 
 var app = express();
@@ -27,7 +28,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
-
+app.use(cors())
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));

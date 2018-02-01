@@ -25,6 +25,7 @@
     "multer":"*",
     "date-utils":"*",
     "formidable":"*",
-    "linspace":"*"
+    "linspace":"*",
+    "cors":"*"
   }
 }
