@@ -9,7 +9,7 @@ screen -dmS epicsWeb
 sleep 0.5
 echo "epicsWeb app"
 screen -S epicsWeb -p 0 -X eval 'stuff "cd /opt/gitHub/RMS_WEB/ \015"'
-screen -S epicsWeb -p 0 -X eval 'stuff "pm2 start ../bin/www --name epicsWeb --watch \015"'
+screen -S epicsWeb -p 0 -X eval 'stuff "pm2 start ./bin/www --name epicsWeb --watch \015"'
 echo "epicsWeb Node web is Running";
 else
 return 0;
