@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/posts', function(req, res, next) {
   process.env.TZ = "Asia/Shanghai";
-  sql ='select * from posts where category != \'配置说明\' order by index desc limit 15;';
+  sql ='select * from posts where category != \'配置说明\' and category != \'测试\' order by index desc limit 15;';
   console.log(sql);
   pg1.query(sql,function(result){		
 		res.jsonp(result.rows);
