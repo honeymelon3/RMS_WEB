@@ -32,10 +32,78 @@
 	<a href="/upload/upload_2b7a3f75b0b866ce0ce117c3c49ff040.sql">postgresql_partitioning.sql</a>
 </p>
 <br>
-<p>归档数据库记录数据的流程是</p>
+<p><strong>2.2 归档变量的配置</strong></p>
 
-<p><strong>2.2 channel Archiver的配置</strong></p>
+<p>如下图，归档数据库引擎在运行初始化参数时,会指明该应用的'引擎名称'。然后查询数据库逐次得出该'引擎名称'管理的'变量组'，以及各'变量组'管理的'变量名称'。在从数据库中读取了这些跟变量归档有关的配置信息后，归档引擎建立与相关变量的链接，并把变量数据推送到sample数据库表存储。为了避免sample表越来越大，使用分区表程序周期性的增加子表。<br>
+	例如运行名为tmsr_archive的归档引擎<br>
 
-<p><strong>2.3 Archive Engine的配置</strong></p>
+		<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">
+				<em> ./ArchiveEngine -engine tmsr_archive</em>
+		</div>
+   归档引擎存储哪些变量，怎么存储必须事先在数据库中配置好。 也就是说smpl_eng,chan_grp和channel三个表需要提前填写好。RDB channel archiver软件包提供了配置工具Config tool来配置变量分组，但由于xml配置文件写起来不是特别方便。熟悉数据库的可以直接操作数据库，配置引擎对变量的管理。
+    
+</p>
+<p><img alt="EPICS archive engine" src="/upload/epics_archive_engine.png"></p><br>
 
+<p><strong>2.3 归档软件的数据库配置</strong></p>
+<p>归档软件的下载地址：</p>
+<p><a href="/upload/archive.tar">archive.tar</a></p><br>
+<p>Top/ArchiveEngine脚本配合linux服务启动脚本archive.service启动/停止/重启 ArchiveEngine服务。脚本中引擎名称"tmsr_archive"可按照自己的实际需求修改</p><br>
+<p>Top/dbd目录包含数据库安装的SQL运行脚本。</p>
+<p>Top/eclipse目录包含引擎的可执行文件ArchiveEngine,ArchiveEngine可指定的参数包括：</p>
+<pre>
+   -port 4812                     		                   HTTP服务器端口号<br>
+   -engine demo_engine                                     引擎名称<br>
+   -data /home/fred/Workspace                              eclipse的工作目录,默认是top目录<br>
+   -pluginCustomization /path/to/mysettings.ini:           数据库链接参数设定。如果不设定，将使用插件org.csstudio.archive.engine 中plugin_customization.ini文件<br>
+</pre>
+<p>数据库参数链接文件plugin_customization.ini的内容包括三部分：归档RDB数据库的链接配置，EPICS IOC的链接配置和软件日志服务器的配置</p>
+<pre>
+		# 归档RDB数据库的链接配置<br>
+		org.csstudio.archive.rdb/url=jdbc:postgresql://127.0.0.1:5432/archive?rewriteBatchedStatements=true<br>
+		org.csstudio.archive.rdb/user=archive<br>
+		org.csstudio.archive.rdb/password=$archive<br>
+		org.csstudio.archive.rdb/schema=ppublic<br>
+		org.csstudio.archive.rdb/use_array_blob=false<br>
+		
+		# EPICS IOC CA链接配置<br>
+		org.csstudio.platform.libs.epics/use_pure_java=true<br>
+		org.csstudio.platform.libs.epics/monitor=ARCHIVE<br>
+		org.csstudio.platform.libs.epics/addr_list=127.0.0.1:5064<br>
+		org.csstudio.platform.libs.epics/auto_addr_list=false<br>
+		
+		# 日志数据库的链接配置<br>
+		org.csstudio.logging/console_level=CONFIG<br>
+		org.csstudio.logging/file_level=CONFIG<br>
+		org.csstudio.logging/file_pattern=engine.log<br>
+		org.csstudio.logging/jms_url=<br>
+		org.csstudio.logging/jms_level=SEVERE<br>
+		org.eclipse.ui/SHOW_PROGRESS_ON_STARTUP = false<br>
+</pre><br>
+
+<p><strong>2.4 归档引擎的性能配置</strong></p>
+<p>归档引擎的初始化参数文件是org.csstudio.archive.engine 插件中preferences.ini文件:</p>
+<pre>
+		# Seconds between log messages for Not-a-Number, futuristic, back-in-time values, buffer overruns<br>
+		# 24h = 24*60*60 = 86400<br>
+		log_trouble_samples=86400<br>
+		log_overrun=86400<br>
+		
+		# Write period in seconds<br>
+		write_period=30<br>
+		
+		# Maximum number of repeat counts for scanned channels<br>
+		max_repeats=60<br>
+		
+		# Write batch size<br>
+		batch_size=500<br>
+		
+		# Buffer reserve (N times what's ideally needed)<br>
+		buffer_reserve=2.0<br>
+		
+		# Samples with time stamps this far ahead of the local time<br>
+		# are ignored<br>
+		# 24*60*60 = 86400 = 1 day<br>
+		ignored_future=86400<br>
+</pre>
 
