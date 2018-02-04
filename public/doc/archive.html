@@ -1,0 +1,39 @@
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px"><em>本文介绍了历史归档数据库的构建，包括数据库的安装配置、归档变量的录入、归档引擎的配置、CSS历史数据库访问软件的配置等内容</em></div>
+<br>
+<p>
+	EPICS 历史归档系统目前有三个方案:&nbsp;<a href="https://ics-web.sns.ornl.gov/kasemir/archiver/" target="_blank">channel archiver </a>,&nbsp; <a href="http://cs-studio.sourceforge.net/docbook/ch11.html" target="_blank">RDB channel archiver</a>&nbsp; 和 <a href="http://slacmshankar.github.io/epicsarchiver_docs/index.html" target="_blank">archiver appliance</a>.
+</p>
+<p>
+	目前比较流行的是基于关系型数据库的方案。 而综合考虑对索引、分区表的支持和系统成本因素postgresql 关系型数据库是最好的选择。
+	<br>建议使用pgadmin软件工具管理数据库</p>
+
+<br>
+
+<h4>一、 数据库的安装</h4><br>
+<p>因为历史归档系统对postgresql数据库版本并没有特殊要求，所以postgres的安装、初始化、密码更改等均可参考网络教程。</p>
+<h4>二、历史归档数据库的建立</h4><br>
+<p><strong>2.1 archve数据库的配置</strong></p>
+<p>RDB channel archiver 软件包中有数据库比较详细的配置方法，分别配置了表空间、序列、索引、分区表函数的内容。安装过程中会有一些小bug，稍加修改就可以构建比较完整的历史归档数据库。</p>
+<p>历史数据库表空间构建脚本的下载地址：<a href="/upload/upload_c875638cbfb581d4bfc2bc6e20297633.txt">postgresql_schema.txt</a></p>
+<br>
+
+<p>随着历史数据库的运行，数据的累积使sample表越来越大，势必会影响到检索的性能。通过建立分区表是提高检索性能的重要方法。Postgresql V10之前是不支持内置分区表的。常用的做法是通过构建继承子表，继承父表字段内容，在使用子表存储数据来实现分区存储。
+检索方法是一致的，但是在更加细致的分区查询，性能会提升很多。</p>
+<p>RDB channel archiver通过函数sample_update_partitions来构建分区表。该函数需要被系统周期性的运行。</p>
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">
+	<em> public.sample_update_partitions(begin_time timestamp without time zone, schema_name, table_owner, plan)</em>
+</div>
+<br>
+<p>sample_update_partitions被周期运行的方法是，在系统/etc/crontab文件中加入以下内容</p>
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">
+	<em> 0 * * * * postgres psql -d mydb -c "SELECT public.update_partitions('2012-06-01'::timestamp, 'public', 'postgres', 'week');"</em>
+</div>
+<p>自动分区表函数的SQL构建文件：
+	<a href="/upload/upload_2b7a3f75b0b866ce0ce117c3c49ff040.sql">postgresql_partitioning.sql</a>
+</p>
+<br>
+<p><strong>2.2 channel Archiver的配置</strong></p>
+
+<p><strong>2.3 Archive Engine的配置</strong></p>
+
+
