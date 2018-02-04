@@ -58,7 +58,7 @@
    -pluginCustomization /path/to/mysettings.ini:           数据库链接参数设定。如果不设定，将使用插件org.csstudio.archive.engine 中plugin_customization.ini文件<br>
 </pre>
 <p>数据库参数链接文件plugin_customization.ini的内容包括三部分：归档RDB数据库的链接配置，EPICS IOC的链接配置和软件日志服务器的配置</p>
-<pre>
+<pre style="text-indent: 0em">
 		# 归档RDB数据库的链接配置<br>
 		org.csstudio.archive.rdb/url=jdbc:postgresql://127.0.0.1:5432/archive?rewriteBatchedStatements=true<br>
 		org.csstudio.archive.rdb/user=archive<br>
@@ -83,7 +83,7 @@
 
 <p><strong>2.4 归档引擎的性能配置</strong></p>
 <p>归档引擎的初始化参数文件是org.csstudio.archive.engine 插件中preferences.ini文件:</p>
-<pre>
+<pre style="text-indent: 0em">
 		# Seconds between log messages for Not-a-Number, futuristic, back-in-time values, buffer overruns<br>
 		# 24h = 24*60*60 = 86400<br>
 		log_trouble_samples=86400<br>
