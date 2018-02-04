@@ -38,7 +38,7 @@
 	例如运行名为tmsr_archive的归档引擎<br>
 
 		<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">
-				<em> ./ArchiveEngine -engine tmsr_archive</em>
+				<em> ./ArchiveEngine -engine tmsr_archive -pluginCustomization ./plugin_customization.ini</em>
 		</div>
    归档引擎存储哪些变量，怎么存储必须事先在数据库中配置好。 也就是说smpl_eng,chan_grp和channel三个表需要提前填写好。RDB channel archiver软件包提供了配置工具Config tool来配置变量分组，但由于xml配置文件写起来不是特别方便。熟悉数据库的可以直接操作数据库，配置引擎对变量的管理。
     
@@ -63,7 +63,7 @@
 		org.csstudio.archive.rdb/url=jdbc:postgresql://127.0.0.1:5432/archive?rewriteBatchedStatements=true<br>
 		org.csstudio.archive.rdb/user=archive<br>
 		org.csstudio.archive.rdb/password=$archive<br>
-		org.csstudio.archive.rdb/schema=ppublic<br>
+		org.csstudio.archive.rdb/schema=public<br>
 		org.csstudio.archive.rdb/use_array_blob=false<br>
 		
 		# EPICS IOC CA链接配置<br>
