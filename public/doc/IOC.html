@@ -1,0 +1,110 @@
+<p>
+	1.生成 并进入文件夹
+</p>
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">
+	<em>$makedir test</em>
+	<br>
+	<em>&nbsp&nbsp&nbsp&nbsp$ cd test</em>
+</div>
+
+
+<p>
+	2. 通过拷贝example 模板,构建IOC 应用test&nbsp;
+</p>
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">
+	<em>$makeBaseApp.pl -t example&nbsp; &nbsp;test</em>
+</div>
+
+<p>
+	<span>&nbsp;</span>
+	<span> &nbsp; 注:文件夹下生成 文件夹/configure, /testApp和脚本Makefile</span>
+</p>
+
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">
+	<em>$makeBaseApp.pl -i -t&nbsp; example test</em>
+</div>
+
+
+<p>
+	<span>&nbsp; &nbsp; 注:文件夹下增加生成 iocBoot 启动目录.期间提示你本启动脚本启动的IOC应用名称 填写test</span>
+</p>
+<p>
+	3. 编译应用
+</p>
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">
+	<em>$make</em>
+</div>
+
+
+<p>
+	&nbsp; &nbsp; &nbsp;注:新生成 /bin /lib /include /db 和/dbd文件夹&nbsp;&nbsp;
+</p>
+<p>
+	4. 运行程序:
+</p>
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">
+	<em>$cd iocBoot/ioctest</em>
+	<br>
+	<em>&nbsp&nbsp&nbsp&nbsp$chmod 755 st.cmd</em>
+	<br>
+	<em>&nbsp&nbsp&nbsp&nbsp./st.cmd</em>
+</div>
+
+
+<p>
+	&nbsp; &nbsp; 注:程序进入iocShell: epics&gt;
+</p>
+<p>
+	5. 察看变量列表
+</p>
+
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">
+	<em>epics&gt; dbl</em>
+	<br>
+	<em>&nbsp&nbsp&nbsp&nbsp$chmod 755 st.cmd</em>
+	<br>
+	<em>&nbsp&nbsp&nbsp&nbsp$./st.cmd</em>
+</div>
+
+<p>
+	&nbsp; &nbsp; 注: IOC默认启动端口是5064, 如果需要在局域网访问本IOC实例的变量,需要设置linux 环境变量 EPICS_CA_ADDR_LIST 和&nbsp; EPICS_CA_AUTO_ADDR_LIST.
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 终端不能关闭,终端关闭IOC实例停止运行
+</p>
+<p>
+	6. 本机终端测试:&nbsp;
+</p>
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">
+	<em>$ export EPICS_CA_ADDR_LIST="127.0.0.1:5064"</em>
+
+	<br>
+	<em>&nbsp&nbsp&nbsp&nbsp$ export EPICS_CA_AUTO_ADDR_LIST="NO"</em>
+	<br>
+	<em>&nbsp&nbsp&nbsp&nbsp$ camonitor </span>
+		<span style="background-color:#CCCCCC;">
+			<s>PVName</s>
+		</span>
+	</em>
+</div>
+
+
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 注:此处PVName替换为你的IOC 变量,如
+	<u>hanlfHost:ai1</u>
+</p>
+
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">
+	<em>$camonitor &nbsp hanlfHost:ai1</em>
+</div>
+
+
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</p>
+<p>
+	<span>
+		<br />
+		<a href="http://www.labulador.cn/upload/upload_619972544ec21fd762a6ee9cbf174512.pdf">参考： EPICS应用开发指南</a>
+	</span>
+</p>

@@ -1,0 +1,61 @@
+<p>
+	<strong>1.安装依赖包</strong>
+</p>
+
+<p>使用 ESSS 的
+	<a href="https://europeanspallationsource.se/profile/jeong-han-lee-0">Jeong han Lee</a>的依赖包安装脚本。下载和使用方法参考地址：</p>
+
+<p>
+	<a href="https://github.com/jeonghanlee/pkg_automation.git">https://github.com/jeonghanlee/pkg_automation.git</a>
+</p>
+
+<p>
+	<strong>2.下载base 包：</strong>
+</p>
+
+<p>例如
+	<a href="https://epics.anl.gov/download/base/base-3.16.1.tar.gz">base-3.16.1.tar.gz</a>
+</p>
+
+<p>
+	<strong>3. 解压到EPICS根目录 </strong>
+</p>
+
+<p>环境变量&nbsp;EPICS_BASE指向该目录如：export EPICS_BASE=/usr/local/epics/base-3.16.1</p>
+
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">
+	<em>tar -zxvf&nbsp;base-3.16.1.tar.gz&nbsp; -C /usr/local/epics</em>
+</div>
+
+<p>
+	<strong>4. 在base文件夹中编译</strong>
+</p>
+
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">
+	<em>make</em>
+</div>
+
+<p>
+	<strong>5.设置环境变量：</strong>
+</p>
+
+<div style="background:#eeeeee; border:1px solid #cccccc">export EPICS_BASE=/usr/local/epics/base-3.16.1
+	<br /> &nbsp &nbsp &nbsp &nbspexport EPICS_ARCH=linux-x86_64
+	<br /> &nbsp &nbsp &nbsp &nbspexport EPICS_CA_ADDR_LIST=127.0.0.1:5064
+	<br /> &nbsp &nbsp &nbsp &nbspexport EPICS_CA_AUTO_ADDR_LIST=no
+	<br /> &nbsp &nbsp &nbsp &nbspexport NODE_EPICS_LIBCA=/usr/local/epics/base-3.16.1/lib/linux-x86_64/libca
+	<br /> &nbsp &nbsp &nbsp &nbspexport PATH=${EPICS_BASE}/bin/${EPICS_ARCH}:${PATH}</div>
+
+<p>可以把这些命令拷贝到/etc/profile.d/epics.sh文件中（自定义文件）</p>
+
+<p>
+	<strong>6. 检查测试</strong>
+</p>
+
+<p>确定能访问EPICS命令</p>
+
+<div style="background:#eeeeee; border:1px solid #cccccc">makeBaseApp.pl</div>
+
+
+
+<p>有此命令说明EPPICS Base环境设置好了, EPICS命令已经加入到PATH路径&nbsp;</p>

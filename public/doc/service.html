@@ -1,0 +1,182 @@
+<h3>
+	一、概述
+</h3>
+<blockquote>
+	<p>
+		&nbsp;&nbsp;&nbsp;&nbsp;把EPICS IOC实例或archive engine软件、数据库等配置成Linux系统的服务，可实现软件开机自启动，手动启动、关闭、重启、状态查询等操作。方便EPICS软件的管理。
+	</p>
+	<p>
+		&nbsp;&nbsp;&nbsp;&nbsp;本文介绍Centos7 系统服务文件的配置，以及EPICS软件服务的启动脚本。
+	</p>
+</blockquote>
+<h3>
+
+	二、Centos7系统服务
+</h3>
+<blockquote>
+	<p>
+		<span style="color:#505050;font-family:微软雅黑, &quot;font-size:14px;background-color:#FFFFFF;">&nbsp;&nbsp;&nbsp;&nbsp;Centos 7 使用Systemd管理单元（Unit）概念，
+			<span style="color:#505050;font-family:微软雅黑, &quot;font-size:14px;background-color:#FFFFFF;">单元（Unit）</span>保存了服务、设备、挂载点和操作系统其他信息的配置文件，并能够处理不同单元之间的依赖关系。</span>服务（Sevice）是其中一种单元。单元的定义请参考
+		<a href="http://blog.csdn.net/u010255859/article/details/74432548"
+		 target="_blank">网页</a>。
+	</p>
+</blockquote>
+<h4>
+
+	2.1 单元有多种状态：
+
+</h4>
+<blockquote>
+	<p>
+		<span style="font-family:微软雅黑, &quot;background-color:#FFFFFF;color:#505050;">处于活动的则是（active），当前正在运行</span>
+	</p>
+	<p>
+		<span style="font-family:微软雅黑, &quot;background-color:#FFFFFF;color:#505050;">停止的则是（inactive），当前已经停止</span>
+	</p>
+	<p>
+		<span style="font-family:微软雅黑, &quot;background-color:#FFFFFF;color:#505050;">启动中的则是（activing），当前正在启动</span>
+	</p>
+	<p>
+		<span style="font-family:微软雅黑, &quot;background-color:#FFFFFF;color:#505050;">停止中的则是（deactiving），当前正在停止</span>
+	</p>
+	<p>
+		<span style="font-family:微软雅黑, &quot;background-color:#FFFFFF;color:#505050;">失败的则是（failed）状态，意思说单元启动过程中遇到错误比如找不到文件、路径或者进程运行中崩溃了等。</span>
+	</p>
+</blockquote>
+<h4>
+	2.2 服务单元脚本的位置：
+</h4>
+<blockquote>
+	<p>
+		&nbsp; &nbsp;
+		<span style="font-family:微软雅黑, &quot;background-color:#FFFFFF;color:#505050;">系统提供两种级别的单元：</span>
+	</p>
+	<p>
+		<span style="font-family:微软雅黑, &quot;background-color:#FFFFFF;color:#505050;">系统单元：在/lib/systemd/system目录中，优先级高于用户单元。</span>
+	</p>
+	<p>
+		<span style="font-family:微软雅黑, &quot;background-color:#FFFFFF;color:#505050;">用户单元：在/usr/lib/systemd/system目录中</span>
+	</p>
+</blockquote>
+<h4>
+	2.3 服务单元的操作：
+</h4>
+<blockquote>
+	<p>
+		查询：systemctl&nbsp;list-unit-files&nbsp;--type=service&nbsp; &nbsp; &nbsp; //查询所有服务单元
+	</p>
+	<p>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;systemctl&nbsp;status&nbsp;服务名称&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//查询服务状态
+	</p>
+	<p>
+		查询结果：
+	</p>
+	<p>
+		<img src="http://www.labulador.cn/upload/upload_ed33a4de173c356d4155cfbaedd76665.png" title="服务状态查询" alt="服务状态查询" width="600"
+		 height="294" align="" />
+	</p>
+	<p>
+		<br />
+	</p>
+	<p>
+		操作：
+		<span>systemctl&nbsp;start 服务名称&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //启动服务</span>
+	</p>
+	<p>
+		<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; systemctl stop 服务名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp; &nbsp; &nbsp;</span>//停止服务
+		<span>
+			<p>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<span>&nbsp;systemctl restart 服务名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;</span>
+				<span>//重启服务</span>
+			</p>
+			<pre>
+          systemctl start epics.service
+          </pre>
+		</span>
+	</p>
+</blockquote>
+<h4>
+	2.4 服务控制脚本
+</h4>
+<blockquote>
+	<p>
+		<a class="ke-insertfile" href="http://www.labulador.cn/upload/epics.service" target="_blank">EPICS IOC服务配置文件</a>&nbsp; &nbsp;
+	</p>
+	<p>
+		<a class="ke-insertfile" href="http://www.labulador.cn/upload/archive.service" target="_blank">EPICS Archvie的服务配置文件</a>&nbsp; &nbsp; 需要将两个文件放置到上节服务单元目录。
+	</p>
+	<p>
+		文件中定义了服务的描述（
+		<span style="color:#E53333;font-family:微软雅黑, &quot;font-size:14px;background-color:#FFFFFF;">Description=</span>
+		<span style="color:#E53333;">）</span>、依赖（
+		<span style="color:#000000;font-family:微软雅黑, &quot;font-size:14px;background-color:#FFFFFF;">Requires=）</span>、晚于（After=）哪些单元启动。
+	</p>
+</blockquote>
+<pre class="prettyprint lang-bsh">[Unit]
+Description=epics IOC database server
+
+#After=network.target
+
+[Service]
+Type=forking
+
+# 环境变量设置
+Environment=EPICS_CAS_SERVER_PORT=5064
+Environment=EPICS_CA_ADDR_LIST=127.0.0.1:5064
+
+#启动、停止和重启执行的命令
+ExecStart=/opt/epics_apps/SerialIOC start 
+ExecStop=/opt/epics_apps/SerialIOC stop 
+ExecReload=/opt/epics_apps/SerialIOC restart 
+
+# 启动/停止的超时时间
+TimeoutSec=300
+
+[Install]
+WantedBy=multi-user.target
+</pre>
+
+<h4>2.5 IOC和archive运行的脚本
+	<h4>
+		<blockquote>
+
+			<a class="ke-insertfile" href="http://www.labulador.cn/upload/SerialIOC" target="_blank">IOC运行脚本</a>
+			<a class="ke-insertfile" href="http://www.labulador.cn/upload/ArchiveEngine" target="_blank">Archive引擎的运行脚本</a>
+			<p>
+				说明：脚本中用到screen软件使程序运行在后端。screen的安装和使用请自行查询。
+			</p>
+
+			<p>
+				脚本中Screen定义的端口名称需要修改。
+			</p>
+
+			<p>
+				脚本中的IOC和Archive Engine启动命令的路径需要按照实际情况修改。
+			</p>
+
+			<p>
+
+
+			</p>
+		</blockquote>
+
+		<h4>
+
+			2.6 服务单元的自启动：
+		</h4>
+		<blockquote>
+
+
+			<p>
+				systemctl enable 服务名称 //服务名称例如：epics.service 或archive.service</span>
+			</p>
+			<pre>
+     systemctl enable epics.service
+     </pre>
+			</p>
+		</blockquote>
+		

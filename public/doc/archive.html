@@ -90,16 +90,17 @@
 		log_overrun=86400<br>
 		
 		# Write period in seconds<br>
-		write_period=30<br>
+		write_period=30            开始写数据库操作的时间间隔<br>
 		
 		# Maximum number of repeat counts for scanned channels<br>
-		max_repeats=60<br>
+		max_repeats=60<br>			
 		
 		# Write batch size<br>
-		batch_size=500<br>
+		batch_size=500           每次写入的打包个数<br>
 		
 		# Buffer reserve (N times what's ideally needed)<br>
-		buffer_reserve=2.0<br>
+		buffer_reserve=2.0  <br>
+	    #buffer_size = write_period / scan_period * buffer_reserve<br> 
 		
 		# Samples with time stamps this far ahead of the local time<br>
 		# are ignored<br>
@@ -107,3 +108,7 @@
 		ignored_future=86400<br>
 </pre>
 
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">
+	<em> 写入次数=total_buffer_size/batch_size
+	            =channels*(write_period / scan_period) * buffer_reserve/batchsize</em>
+</div>
