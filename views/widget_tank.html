@@ -231,7 +231,7 @@
 
 				</li>
 
-				<li class="active" >
+				<li  >
 
 					<a href="javascript:;">
 
@@ -279,7 +279,7 @@
 						</li>
 
 						
-						<li class="active">
+						<li >
 						
 							<a href="/epics_manual">
 						
@@ -294,7 +294,7 @@
 
 				</li>
 
-				<li >
+				<li class="active">
 
 					<a href="javascript:;">
 
@@ -308,9 +308,9 @@
 
 					<ul class="sub-menu">
 
-						<li >
+						<li class="active">
 
-							<a href="portlet_general.html">
+							<a href="/widget_tank">
 
 								Tank</a>
 
@@ -623,7 +623,7 @@
 						<h3 class="page-title">
 		
 							EPICS软件
-							<small>配置说明</small>
+							<small>控件说明</small>
 		
 						</h3>
 		
@@ -641,7 +641,7 @@
 		
 							<li>
 		
-								<a href="#">Manuals</a>
+								<a href="/widget_tank">Widget Tank</a>
 		
 							</li>
 		
@@ -658,102 +658,100 @@
 				<!-- BEGIN PAGE CONTENT-->
 		
 				<div class="row-fluid ">
-		
-					<div class="span12 news-page blog-page">
-		
-						<div class="row-fluid">
-		
-							
-							<div class="span9 article-block" >
-								<div class="row-fluid" ng-repeat="x in manual">
-									
-									<div class="span8 unstyled blog-tags">
+					<div class="progress-vertical process-danger">
 
-						
-										<a style="font-size:15px" href="/epics_manual/title/{{x.title}}"><i class="icon-book"></i>标题:&nbsp&nbsp {{x.title}}</a>
-									
-									</div>
-									<div class="span4 "> 
-											<ul class="unstyled inline blog-tags">
-										
-													<li>
-														<a>作者：{{x.author}}&nbsp&nbsp&nbsp </a>
-										
-														<a>日期：{{x.date}}</a>
-										
-										
-													</li>
-										
-												</ul>
+						<div style="width: 60%;" class="bar"></div>
 
-									</div>
-									<hr />
-									
-								 </div>
-									<!-- <div class="blog-tag-data ">
-										<div class="row-fluid">
-											<div class="span6">
-										
-												<ul class="unstyled inline blog-tags">
-										
-													<li>
-										
-														<i class="icon-tags"></i>
-										
-														<a href="#">类型：{{x.category}}&nbsp&nbsp&nbsp </a>
-										
-														<a href="#">作者：{{x.author}}</a>
-										
-										
-													</li>
-										
-												</ul>
-										
-											</div>
-										
-											<div class="span6 blog-tag-data-inner">
-										
-												<ul class="unstyled inline">
-										
-													<li>
-														<i class="icon-calendar"></i>
-														<a href="#">日期：{{x.date}}</a>
-													</li>
-										
-												</ul>
-										
-											</div>
-										</div>
-										<div  style="text-indent: 2em" >
-											<p class="manual well text-muted"  >
-											 {{x.body}}
-																					
-											</p>
-										
-										</div>
-									</div>	 -->
-									
+					</div>
+					<div class="span6">
+						<div class="portlet-body">
 
+							<div class="alert">
 
+								Tank 或 Bar 控件可以用来显示液位，进度等。
+							</div>
+
+							<h3>Basic</h3>
+
+							<div class="progress">
+
+								<div style="width: 60%;" class="bar"></div>
 
 							</div>
 
-						</div>		
-								<!-- <div class="span3">
-							
+							<div class="progress progress-success">
 
-							
-								<div class="container-fluid">
-							
-									<button type="submit" onclick="jump()" class="btn-primary btn-lg">添加留言&nbsp<i class="icon-comments-alt"></i></button>
-																
-																						
-								</div>
-						
-							
-							</div> -->
+								<div style="width: 60%;" class="bar"></div>
 
-		
+							</div>
+
+							<div class="progress progress-warning">
+
+								<div style="width: 60%;" class="bar"></div>
+
+							</div>
+
+							<div class="progress progress-danger">
+
+								<div style="width: 60%;" class="bar"></div>
+
+							</div>
+
+							<h3>Striped</h3>
+
+							<div class="progress progress-striped">
+
+								<div style="width: 60%;" class="bar"></div>
+
+							</div>
+
+							<div class="progress progress-striped progress-success">
+
+								<div style="width: 60%;" class="bar"></div>
+
+							</div>
+
+							<div class="progress progress-striped progress-warning">
+
+								<div style="width: 60%;" class="bar"></div>
+
+							</div>
+
+							<div class="progress progress-striped progress-danger">
+
+								<div style="width: 60%;" class="bar"></div>
+
+							</div>
+
+							<h3>Animated</h3>
+
+							<div class="progress progress-striped active">
+
+								<div style="width: 60%;" class="bar"></div>
+
+							</div>
+
+							<div class="progress progress-striped progress-success active">
+
+								<div style="width: 60%;" class="bar"></div>
+
+							</div>
+
+							<div class="progress progress-striped progress-warning active">
+
+								<div style="width: 60%;" class="bar"></div>
+
+							</div>
+
+							<div class="progress progress-striped progress-danger active">
+
+								<div style="width: 60%;" class="bar"></div>
+
+							</div>
+
+
+
+						</div>
 					</div>
 		
 				<!-- END PAGE CONTENT-->
