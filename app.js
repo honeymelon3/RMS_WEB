@@ -14,7 +14,7 @@ var flash = require('connect-flash');
 var index = require('./routes/index');
 var system_structure = require('./routes/system_structure');
 var comment = require('./routes/comment');
-var comment = require('./routes/control_system');
+var control_system = require('./routes/control_system');
 var manual = require('./routes/manual');
 var cors =require('cors');
 
