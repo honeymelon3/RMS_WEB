@@ -51,7 +51,7 @@ router.get('/test', function (req, res, next) {
   sql = 'select * from posts where category=\'测试\' order by index desc ;';
   pg.query(sql, function (result) {
     res.jsonp(result.rows);
-    // console.log(result.rows); 
+    console.log(result.rows); 
 
   });
   });
