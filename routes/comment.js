@@ -90,7 +90,7 @@ router.get('/title/:post_name', function (req, res, next) {
 
 
 router.get('/category', function (req, res, next) {
-  sql = "select category from categories index < '10' order by index;";
+  sql = "select category from categories where index < '10' order by index;";
   pg1.query(sql, function (result) {
     res.jsonp(result.rows);
     //console.log(result.rows); 
