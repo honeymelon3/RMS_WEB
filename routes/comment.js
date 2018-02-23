@@ -49,9 +49,11 @@ router.get('/support', function (req, res, next) {
 router.get('/test', function (req, res, next) {
   process.env.TZ = "Asia/Shanghai";
   sql = 'select * from posts where category=\'测试\' order by index desc ;';
+  console.log("good");
   pg.query(sql, function (result) {
-    res.jsonp(result.rows);
-    console.log(result.rows); 
+     console.log(result.rows); 
+      res.jsonp(result.rows);
+  
 
   });
   });
