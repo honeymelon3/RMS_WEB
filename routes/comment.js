@@ -29,7 +29,7 @@ router.get('/posts', function(req, res, next) {
 router.get('/info', function (req, res, next) {
   process.env.TZ = "Asia/Shanghai";
   sql = 'select * from posts where category=\'讯息\' order by index desc ;';
-  pg.query(sql, function (result) {
+  pg1.query(sql, function (result) {
     res.jsonp(result.rows);
     // console.log(result.rows); 
 
@@ -39,7 +39,7 @@ router.get('/info', function (req, res, next) {
 router.get('/support', function (req, res, next) {
   process.env.TZ = "Asia/Shanghai";
   sql = 'select * from posts where category=\'鼓励\' order by index desc ;';
-  pg.query(sql, function (result) {
+  pg1.query(sql, function (result) {
     res.jsonp(result.rows);
     // console.log(result.rows); 
 
@@ -50,7 +50,7 @@ router.get('/test', function (req, res, next) {
   process.env.TZ = "Asia/Shanghai";
   sql = 'select * from posts where category=\'测试\' order by index desc ;';
   console.log("good");
-  pg.query(sql, function (result) {
+  pg1.query(sql, function (result) {
      console.log(result.rows); 
       res.jsonp(result.rows);
   
@@ -61,7 +61,7 @@ router.get('/test', function (req, res, next) {
 router.get('/advise', function (req, res, next) {
   process.env.TZ = "Asia/Shanghai";
   sql = 'select * from posts where category=\'建议\' order by index desc ;';
-  pg.query(sql, function (result) {
+  pg1.query(sql, function (result) {
     res.jsonp(result.rows);
     // console.log(result.rows); 
 
@@ -74,7 +74,7 @@ router.get('/title/:post_name', function (req, res, next) {
   // console.log(req.params)
   sql = 'select * from posts where title= \'' + req.params.post_name + '\';';
   // console.log(sql);
-  pg.query(sql, function (result) {
+  pg1.query(sql, function (result) {
 
     console.log(result.rows[0].title);
     console.log(result.rows[0].author);
