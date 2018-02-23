@@ -24,6 +24,68 @@ router.get('/posts', function(req, res, next) {
   }); 
   });
 
+
+router.get('/info', function (req, res, next) {
+  process.env.TZ = "Asia/Shanghai";
+  sql = 'select * from posts where category=\'讯息\' order by index desc ;';
+  pg.query(sql, function (result) {
+    res.jsonp(result.rows);
+    // console.log(result.rows); 
+
+  });
+});
+
+router.get('/support', function (req, res, next) {
+  process.env.TZ = "Asia/Shanghai";
+  sql = 'select * from posts where category=\'鼓励\' order by index desc ;';
+  pg.query(sql, function (result) {
+    res.jsonp(result.rows);
+    // console.log(result.rows); 
+
+  });
+});
+
+router.get('/test', function (req, res, next) {
+  process.env.TZ = "Asia/Shanghai";
+  sql = 'select * from posts where category=\'测试\' order by index desc ;';
+  pg.query(sql, function (result) {
+    res.jsonp(result.rows);
+    // console.log(result.rows); 
+
+  });
+});
+
+router.get('/advise', function (req, res, next) {
+  process.env.TZ = "Asia/Shanghai";
+  sql = 'select * from posts where category=\'建议\' order by index desc ;';
+  pg.query(sql, function (result) {
+    res.jsonp(result.rows);
+    // console.log(result.rows); 
+
+  });
+});
+
+
+
+router.get('/title/:post_name', function (req, res, next) {
+  // console.log(req.params)
+  sql = 'select * from posts where title= \'' + req.params.post_name + '\';';
+  // console.log(sql);
+  pg.query(sql, function (result) {
+
+    console.log(result.rows[0].title);
+    console.log(result.rows[0].author);
+    console.log(result.rows[0].date);
+    console.log(result.rows[0].body);
+    // console.log(result.rows[1]);
+    res.render('page_comment_content', { title: result.rows[0].title, author: result.rows[0].author, date: result.rows[0].date, body: result.rows[0].body });
+    // console.log(result.rows[1]); 
+
+  });
+
+})
+
+
 router.get('/category', function (req, res, next) {
   sql = "select category from categories order by index;";
   pg1.query(sql, function (result) {
@@ -108,5 +170,7 @@ router.post('/uploadImg',function(req,res,next){
     res.send(info);
   });
 })
+
+
 
 module.exports = router;
