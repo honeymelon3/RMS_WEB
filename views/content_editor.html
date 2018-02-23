@@ -50,7 +50,7 @@
 		  var options = {
      //    height:"600px",   //规定高度
      //    width:"550px",    //规定宽度
-        uploadJson: '/comment/uploadImg',   //规定服务端处理的路由地址
+        uploadJson: '/control_system/uploadImg',   //规定服务端处理的路由地址
         allowImageUpload : true,     //是否允许本地上传图片
     //     items : [
     //         'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic',
@@ -90,7 +90,7 @@
              
 	var app = angular.module('myApp', []);
 	app.controller('myCtrl', function($scope, $http) {   
-	var myUrl = "http://47.100.41.42/comment/category?callback=JSON_CALLBACK";
+	var myUrl = "http://47.100.41.42/control_system/category?callback=JSON_CALLBACK";
 	$http.jsonp(myUrl).success(function(response) {
 	    $scope.category = response;
 
@@ -234,7 +234,7 @@
 
 		</li>
 
-		<li>
+		<li class="active">
 
 			<a href="javascript:;">
 
@@ -261,7 +261,7 @@
 
 
 
-				<li>
+				<li class="active">
 
 					<a href="/control_system">
 
@@ -439,7 +439,7 @@
 			</ul>
 
 		</li>
-		<li class="active">
+		<li >
 
 			<a href="/comment">
 
@@ -625,8 +625,8 @@
 		
 						<h3 class="page-title">
 		
-							添加留言
-							<small>欢迎打call</small>
+							添加内容
+							<small>控制系统</small>
 		
 						</h3>
 		
@@ -644,7 +644,7 @@
 		
 							<li>
 		
-								<a href="#">Comments</a>
+								<a href="#">Content Editor</a>
 		
 							</li>
 		
@@ -668,7 +668,7 @@
 							<div class="span8 blog-tag-data">
 							<h3>添加评论:&nbsp&nbsp {{x.title}}</h3>
 
-								<form method="post" action="/comment/add"  class="horizontal-form" >
+								<form method="post" action="/control_system/add"  class="horizontal-form" >
 									<label>标题:</label>
 									<input type="text" class="control-group form-control" name="title" id="title" required="required" data-validation-required-message="标题" ></input>
 
@@ -799,7 +799,7 @@
 	<script src="../media/js/app.js"></script>      
 	<script>
 			function jump(){
-				window.open("/comment/add",'','',true)
+				window.open("/control_system/add",'','',true)
 			}
 	</script>
 	<script>

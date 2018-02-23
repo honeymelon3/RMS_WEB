@@ -9,26 +9,36 @@ var path = require('path')
 
 router.get('/', function(req, res, next) {
 
-    res.render('page_comment', { title: 'Comments' });
+    res.render('page_control_list', { title: 'Control System' });
 
 });
 
-router.get('/posts', function(req, res, next) {
-  process.env.TZ = "Asia/Shanghai";
-  sql ='select * from posts where category != \'配置说明\' and category != \'测试\' order by index desc limit 15;';
-  console.log(sql);
-  pg1.query(sql,function(result){		
-		res.jsonp(result.rows);
-    // console.log(result.rows); 
+// router.get('/posts', function(req, res, next) {
+//   process.env.TZ = "Asia/Shanghai";
+//   sql ='select * from posts where category != \'配置说明\' and category != \'测试\' order by index desc limit 15;';
+//   console.log(sql);
+//   pg1.query(sql,function(result){		
+// 		res.jsonp(result.rows);
+//     // console.log(result.rows); 
     
-  }); 
+//   }); 
+//   });
+
+
+
+router.get('/system_concept', function (req, res, next) {
+  process.env.TZ = "Asia/Shanghai";
+  sql = 'select * from posts where category=\'控制系统\' order by index desc ;';
+  pg1.query(sql, function (result) {
+    res.jsonp(result.rows);
+    // console.log(result.rows); 
+
   });
-
-
+  });
 
 router.get('/info', function (req, res, next) {
   process.env.TZ = "Asia/Shanghai";
-  sql = 'select * from posts where category=\'讯息\' order by index desc ;';
+  sql = 'select * from posts where category=\'EPICS系统\' order by index desc ;';
   pg1.query(sql, function (result) {
     res.jsonp(result.rows);
     // console.log(result.rows); 
@@ -36,37 +46,27 @@ router.get('/info', function (req, res, next) {
   });
   });
 
-router.get('/support', function (req, res, next) {
-  process.env.TZ = "Asia/Shanghai";
-  sql = 'select * from posts where category=\'鼓励\' order by index desc ;';
-  pg1.query(sql, function (result) {
-    res.jsonp(result.rows);
-    // console.log(result.rows); 
-
-  });
-  });
-
-router.get('/test', function (req, res, next) {
-  process.env.TZ = "Asia/Shanghai";
-  sql = 'select * from posts where category=\'测试\' order by index desc ;';
-  // console.log("good");
-  pg1.query(sql, function (result) {
-    //  console.log(result.rows); 
-      res.jsonp(result.rows);
+// router.get('/test', function (req, res, next) {
+//   process.env.TZ = "Asia/Shanghai";
+//   sql = 'select * from posts where category=\'测试\' order by index desc ;';
+//   // console.log("good");
+//   pg1.query(sql, function (result) {
+//     //  console.log(result.rows); 
+//       res.jsonp(result.rows);
   
 
-  });
-  });
+//   });
+//   });
 
-router.get('/advise', function (req, res, next) {
-  process.env.TZ = "Asia/Shanghai";
-  sql = 'select * from posts where category=\'建议\' order by index desc ;';
-  pg1.query(sql, function (result) {
-    res.jsonp(result.rows);
-    // console.log(result.rows); 
+// router.get('/advise', function (req, res, next) {
+//   process.env.TZ = "Asia/Shanghai";
+//   sql = 'select * from posts where category=\'建议\' order by index desc ;';
+//   pg1.query(sql, function (result) {
+//     res.jsonp(result.rows);
+//     // console.log(result.rows); 
 
-  });
-  });
+//   });
+//   });
 
 
 
@@ -90,7 +90,7 @@ router.get('/title/:post_name', function (req, res, next) {
 
 
 router.get('/category', function (req, res, next) {
-  sql = "select category from categories index < '10' order by index;";
+  sql = "select category from categories index >= '10' order by index;";
   pg1.query(sql, function (result) {
     res.jsonp(result.rows);
     //console.log(result.rows); 
@@ -99,7 +99,7 @@ router.get('/category', function (req, res, next) {
   });
 router.get('/add', function (req, res, next) {
 
-    res.render('add_comment', { title: 'Add comments' });
+    res.render('content_editor', { title: 'Add contents' });
 
   });
 router.post('/add', function (req, res, next) {
