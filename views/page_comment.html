@@ -76,67 +76,48 @@
 		var myUrl = "http://47.100.41.42/comment/info?callback=JSON_CALLBACK";
 		$http.jsonp(myUrl).success(function (response) {
 			$scope.info = response;
-			 console.log("when");
-		     console.log(response);
+			// console.log("when");
+			//     console.log(response);
 
 		});
-
-
-	});
-</script>
-
-<!-- <script>
-                
-                
-	var app = angular.module('myApp', []);
-	app.controller('myCtrl', function($scope, $http) {   
-	var myUrl = "http://47.100.41.42/comment/advise?callback=JSON_CALLBACK";
-	$http.jsonp(myUrl).success(function(response) {
-	    $scope.advise = response;
-		// console.log("when");
-	    // console.log(response);
- 
-		});		
-
-
-	});
-</script>
-
-<script>
-
-
-	var app = angular.module('myApp', []);
-	app.controller('myCtrl', function ($scope, $http) {
-		var myUrl = "http://47.100.41.42/comment/support?callback=JSON_CALLBACK";
+			var myUrl = "http://47.100.41.42/comment/advise?callback=JSON_CALLBACK";
 		$http.jsonp(myUrl).success(function (response) {
-			$scope.support = response;
-		// console.log("when");
-	    // console.log(response);
- 
-		});		
-
-
-	});
-</script>
-
-
-<script>
-
-
-	var app = angular.module('myApp', []);
-	app.controller('myCtrl', function ($scope, $http) {
-		var myUrl = "http://47.100.41.42/comment/test?callback=JSON_CALLBACK";
-		$http.jsonp(myUrl).success(function (response) {
-			$scope.test = response;
+			$scope.advise = response;
 			// console.log("when");
 			// console.log(response);
 
+		});	
+
+		var myUrl = "http://47.100.41.42/comment/support?callback=JSON_CALLBACK";
+		$http.jsonp(myUrl).success(function (response) {
+			$scope.support = response;
+			// console.log("when");
+			// console.log(response);
+
+		});		
+
+	});
+
+		var myUrl = "http://47.100.41.42/comment/test?callback=JSON_CALLBACK";
+		$http.jsonp(myUrl).success(function (response) {
+			$scope.test = response;
+					// console.log("when");
+					// console.log(response);
+
 		});
 
 
-	});
+	
 </script>
-<script>
+
+
+
+
+
+
+
+
+<!-- <script>
 	function load()
 	{
 		$(".post").each(function () {
@@ -158,7 +139,7 @@
 
 <!-- BEGIN BODY -->
 
-<body class="page-header-fixed" ng-app="myApp" ng-controller="myCtrl" >
+<body class="page-header-fixed" ng-app="myApp" ng-controller="myCtrl">
 
 	<!-- BEGIN HEADER -->
 
@@ -717,23 +698,18 @@
 						<div class="row-fluid">
 		
 							
-							<div class="span10 article-block" >
-													<div class="span6 news-page blog-page">
+
+							<div class="span6 news-page blog-page">
 													
 														<div class="portlet box green">
 													
 															<div class="portlet-title">
 													
 																<div class="caption">
-																	<i class="icon-reorder"></i>
+																	<a><i class="icon-pencil"></i>讯息</a>
 																</div>
 													
-																<div class="actions">
-													
-																	<a href="/comment/add" class="btn green mini">
-																		<i class="icon-plus"></i> Add</a>
-													
-																</div>
+
 													
 															</div>
 													
@@ -777,9 +753,183 @@
 															</div>
 
 														</div>	
-													</div>
 								</div>
-								<div class="span2">
+
+							<div class="span6 news-page blog-page">
+							
+								<div class="portlet box green">
+							
+									<div class="portlet-title">
+							
+										<div class="caption">
+											<a>
+												<i class="icon-bullhorn"></i>建议</a>
+										</div>
+							
+							
+							
+									</div>
+							
+									<div class="portlet-body">
+										<div class="row-fluid">
+							
+							
+											<div class="span12 article-block">
+												<div class="row-fluid" ng-repeat="x in advise">
+							
+													<div class="span8 unstyled blog-tags">
+							
+							
+														<a style="font-size:15px" href="/comment/title/{{x.title}}">
+															<i class="icon-book"></i>标题:&nbsp&nbsp {{x.title}}</a>
+							
+													</div>
+													<div class="span4 ">
+														<ul class="unstyled inline blog-tags">
+							
+															<li>
+																<a>作者：{{x.author}}&nbsp&nbsp&nbsp </a>
+							
+																<a>日期：{{x.date}}</a>
+							
+							
+															</li>
+							
+														</ul>
+							
+													</div>
+													<hr />
+							
+												</div>
+											</div>
+							
+										</div>
+							
+							
+							
+									</div>
+							
+								</div>
+							</div>
+
+
+
+							<div class="span6 news-page blog-page">
+							
+								<div class="portlet box green">
+							
+									<div class="portlet-title">
+							
+										<div class="caption">
+											<a>
+												<i class="icon-heart"></i>支持</a>
+										</div>
+							
+							
+							
+									</div>
+							
+									<div class="portlet-body">
+										<div class="row-fluid">
+							
+							
+											<div class="span12 article-block">
+												<div class="row-fluid" ng-repeat="x in support">
+							
+													<div class="span8 unstyled blog-tags">
+							
+							
+														<a style="font-size:15px" href="/comment/title/{{x.title}}">
+															<i class="icon-book"></i>标题:&nbsp&nbsp {{x.title}}</a>
+							
+													</div>
+													<div class="span4 ">
+														<ul class="unstyled inline blog-tags">
+							
+															<li>
+																<a>作者：{{x.author}}&nbsp&nbsp&nbsp </a>
+							
+																<a>日期：{{x.date}}</a>
+							
+							
+															</li>
+							
+														</ul>
+							
+													</div>
+													<hr />
+							
+												</div>
+											</div>
+							
+										</div>
+							
+							
+							
+									</div>
+							
+								</div>
+							</div>
+
+
+							<div class="span6 news-page blog-page">
+							
+								<div class="portlet box green">
+							
+									<div class="portlet-title">
+							
+										<div class="caption">
+											<a>
+												<i class="icon-compressed"></i>测试</a>
+										</div>
+							
+							
+							
+									</div>
+							
+									<div class="portlet-body">
+										<div class="row-fluid">
+							
+							
+											<div class="span12 article-block">
+												<div class="row-fluid" ng-repeat="x in test">
+							
+													<div class="span8 unstyled blog-tags">
+							
+							
+														<a style="font-size:15px" href="/comment/title/{{x.title}}">
+															<i class="icon-book"></i>标题:&nbsp&nbsp {{x.title}}</a>
+							
+													</div>
+													<div class="span4 ">
+														<ul class="unstyled inline blog-tags">
+							
+															<li>
+																<a>作者：{{x.author}}&nbsp&nbsp&nbsp </a>
+							
+																<a>日期：{{x.date}}</a>
+							
+							
+															</li>
+							
+														</ul>
+							
+													</div>
+													<hr />
+							
+												</div>
+											</div>
+							
+										</div>
+							
+							
+							
+									</div>
+							
+								</div>
+							</div>
+
+							<div class="span3">
 							
 
 								<div class="row-fluid">
