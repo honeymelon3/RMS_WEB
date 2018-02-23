@@ -25,6 +25,7 @@ router.get('/posts', function(req, res, next) {
   });
 
 
+
 router.get('/info', function (req, res, next) {
   process.env.TZ = "Asia/Shanghai";
   sql = 'select * from posts where category=\'讯息\' order by index desc ;';
@@ -33,7 +34,7 @@ router.get('/info', function (req, res, next) {
     // console.log(result.rows); 
 
   });
-});
+  });
 
 router.get('/support', function (req, res, next) {
   process.env.TZ = "Asia/Shanghai";
@@ -43,7 +44,7 @@ router.get('/support', function (req, res, next) {
     // console.log(result.rows); 
 
   });
-});
+  });
 
 router.get('/test', function (req, res, next) {
   process.env.TZ = "Asia/Shanghai";
@@ -53,7 +54,7 @@ router.get('/test', function (req, res, next) {
     // console.log(result.rows); 
 
   });
-});
+  });
 
 router.get('/advise', function (req, res, next) {
   process.env.TZ = "Asia/Shanghai";
@@ -63,7 +64,7 @@ router.get('/advise', function (req, res, next) {
     // console.log(result.rows); 
 
   });
-});
+  });
 
 
 
@@ -83,7 +84,7 @@ router.get('/title/:post_name', function (req, res, next) {
 
   });
 
-})
+  })
 
 
 router.get('/category', function (req, res, next) {
@@ -93,7 +94,7 @@ router.get('/category', function (req, res, next) {
     //console.log(result.rows); 
 
   });
-});
+  });
 router.get('/add', function (req, res, next) {
 
     res.render('add_comment', { title: 'Add comments' });
@@ -169,7 +170,7 @@ router.post('/uploadImg',function(req,res,next){
     // res.setHeader("P3P", "CP=CAO PSA OUR");
     res.send(info);
   });
-})
+  })
 
 
 
