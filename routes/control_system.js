@@ -46,17 +46,17 @@ router.get('/info', function (req, res, next) {
   });
   });
 
-// router.get('/test', function (req, res, next) {
-//   process.env.TZ = "Asia/Shanghai";
-//   sql = 'select * from posts where category=\'测试\' order by index desc ;';
-//   // console.log("good");
-//   pg1.query(sql, function (result) {
-//     //  console.log(result.rows); 
-//       res.jsonp(result.rows);
+router.get('/database', function (req, res, next) {
+  process.env.TZ = "Asia/Shanghai";
+  sql = 'select * from posts where category=\'数据库\' order by index desc ;';
+  // console.log("good");
+  pg1.query(sql, function (result) {
+    //  console.log(result.rows); 
+      res.jsonp(result.rows);
   
 
-//   });
-//   });
+  });
+  });
 
 // router.get('/advise', function (req, res, next) {
 //   process.env.TZ = "Asia/Shanghai";
