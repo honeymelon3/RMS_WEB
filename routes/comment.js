@@ -125,7 +125,7 @@ router.post('/add', function (req, res, next) {
       //   var mainImageName = "noimage.png";
       // }; 
       sql='insert into posts(title,category,body,author,date) values (\'' +title+'\',\''+category+'\',\''+body+'\',\''+author+'\',\''+date+'\');';
-      // console.log(sql);
+      console.log(sql);
       pg1.query(sql,function(error,result){	
         // console.log(result);	
         // if(error){  
@@ -135,7 +135,7 @@ router.post('/add', function (req, res, next) {
         // }else{
         //   console.log('Inserted: ' + result.affectedRows + ' row.'),  
           console.log('insert comment success...\n'); 
-          res.redirect('/comment');
+          res.redirect('/control_system');
         // }
       }); 
        
