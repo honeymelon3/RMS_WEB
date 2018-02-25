@@ -28,7 +28,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/system_concept', function (req, res, next) {
   process.env.TZ = "Asia/Shanghai";
-  sql = 'select * from posts where category=\'控制系统\' order by index desc ;';
+  sql = 'select * from posts where category=\'控制系统\'  ;';
   pg1.query(sql, function (result) {
     res.jsonp(result.rows);
     // console.log(result.rows); 
@@ -38,7 +38,7 @@ router.get('/system_concept', function (req, res, next) {
 
 router.get('/info', function (req, res, next) {
   process.env.TZ = "Asia/Shanghai";
-  sql = 'select * from posts where category=\'EPICS系统\' order by index desc ;';
+  sql = 'select * from posts where category=\'EPICS系统\' ;';
   pg1.query(sql, function (result) {
     res.jsonp(result.rows);
     // console.log(result.rows); 
@@ -48,7 +48,7 @@ router.get('/info', function (req, res, next) {
 
 router.get('/database', function (req, res, next) {
   process.env.TZ = "Asia/Shanghai";
-  sql = 'select * from posts where category=\'数据库\' order by index desc ;';
+  sql = 'select * from posts where category=\'数据库\' ;';
   // console.log("good");
   pg1.query(sql, function (result) {
     //  console.log(result.rows); 
