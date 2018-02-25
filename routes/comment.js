@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
 router.get('/posts', function(req, res, next) {
   process.env.TZ = "Asia/Shanghai";
   sql ='select * from posts where category != \'配置说明\' and category != \'测试\' order by index desc limit 15;';
-  console.log(sql);
+  // console.log(sql);
   pg1.query(sql,function(result){		
 		res.jsonp(result.rows);
     // console.log(result.rows); 
@@ -125,7 +125,7 @@ router.post('/add', function (req, res, next) {
       //   var mainImageName = "noimage.png";
       // }; 
       sql='insert into posts(title,category,body,author,date) values (\'' +title+'\',\''+category+'\',\''+body+'\',\''+author+'\',\''+date+'\');';
-      console.log(sql);
+      // console.log(sql);
       pg1.query(sql,function(error,result){	
         // console.log(result);	
         // if(error){  
@@ -135,7 +135,7 @@ router.post('/add', function (req, res, next) {
         // }else{
         //   console.log('Inserted: ' + result.affectedRows + ' row.'),  
           console.log('insert comment success...\n'); 
-          res.redirect('/control_system');
+          res.redirect('/comment');
         // }
       }); 
        
