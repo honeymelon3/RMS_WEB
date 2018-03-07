@@ -67,7 +67,17 @@ router.get('/database', function (req, res, next) {
 
 //   });
 //   });
+router.get('/epics', function (req, res, next) {
+  process.env.TZ = "Asia/Shanghai";
+  sql = 'select * from posts where category=\'EPICS系统\' ;';
+  // console.log("good");
+  pg1.query(sql, function (result) {
+    //  console.log(result.rows); 
+    res.jsonp(result.rows);
 
+
+  });
+});
 
 
 router.get('/title/:post_name', function (req, res, next) {
