@@ -83,7 +83,7 @@ router.get('/epics', function (req, res, next) {
 router.get('/title/:post_name', function (req, res, next) {
   // console.log(req.params)
   sql = 'select * from posts where title= \'' + req.params.post_name + '\';';
-  // console.log(sql);
+   console.log(sql);
   pg1.query(sql, function (result) {
 
     console.log(result.rows[0].title);
