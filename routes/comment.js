@@ -80,6 +80,7 @@ router.get('/advise', function (req, res, next) {
 
 router.get('/title/:post_name', function (req, res, next) {
   // console.log(req.params)
+  process.env.TZ = "Asia/Shanghai";
   sql = 'select * from posts where title= \'' + req.params.post_name + '\';';
   // console.log(sql);
   pg1.query(sql, function (result) {
