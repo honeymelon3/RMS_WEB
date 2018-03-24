@@ -67,7 +67,15 @@ router.get('/advise', function (req, res, next) {
 
   });
   });
-
+  router.get('/comments/:index', function (req, res, next) {
+    process.env.TZ = "Asia/Shanghai";
+    sql = 'select * from comments where index=\'' + req.params.index +  '\';';
+    pg1.query(sql, function (result) {
+      res.jsonp(result.rows);
+      // console.log(result.rows); 
+  
+    });
+    });
 
 
 router.get('/title/:post_name', function (req, res, next) {
@@ -75,13 +83,13 @@ router.get('/title/:post_name', function (req, res, next) {
   sql = 'select * from posts where title= \'' + req.params.post_name + '\';';
   // console.log(sql);
   pg1.query(sql, function (result) {
-
+    console.log(result.rows[0].index);
     console.log(result.rows[0].title);
     console.log(result.rows[0].author);
     console.log(result.rows[0].date);
     console.log(result.rows[0].body);
     // console.log(result.rows[1]);
-    res.render('page_comment_content', { title: result.rows[0].title, author: result.rows[0].author, date: result.rows[0].date, body: result.rows[0].body });
+    res.render('page_comment_content', {index:result.rows[0].index, title: result.rows[0].title, author: result.rows[0].author, date: result.rows[0].date, body: result.rows[0].body });
     // console.log(result.rows[1]); 
 
   });
@@ -141,6 +149,48 @@ router.post('/add', function (req, res, next) {
        
 
   });
+
+
+//上传图片
+
+outer.post('/add_comment', function (req, res, next) {
+  // 获得form Value
+// console.log(req);
+// console.log(req.file);
+
+var  title =req.body.index;
+// console.log(title);
+var  body = req.body.content;
+var  author = req.body.author;
+var  date   = new Date().toFormat("YYYY-MM-DD HH24:MI:SS");
+
+// if (req.files.mainimage){
+//    var mainImageOriginalName= req.files.mainimage.originalname;
+//    var mainImageName = req.file.mainImage.name;
+//    var mainImageMime = req.file.mainImage.mimetype;
+//    var mainImagePath = req.file.mainImage.path;
+//    var mainImageExt = req.file.mainImage.extension;
+//    var mainImageSize = req.file.mainImage.size;
+// } else{
+//   var mainImageName = "noimage.png";
+// }; 
+sql='insert into comments(post_id,comment_content,comment_author,comment_time) values (\'' +index+'\',\''+body+'\',\''+author+'\',\''+date+'\');';
+// console.log(sql);
+pg1.query(sql,function(error,result){	
+  // console.log(result);	
+  // if(error){  
+  //   console.log('ClientConnectionReady Error: ' + error.message);  
+  //   pg.disconn();  
+  //   return;  
+  // }else{
+  //   console.log('Inserted: ' + result.affectedRows + ' row.'),  
+    console.log('insert comment success...\n'); 
+    res.redirect('/comment');
+  // }
+}); 
+ 
+
+});
 
 
 //上传图片
