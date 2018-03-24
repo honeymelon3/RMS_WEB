@@ -153,7 +153,7 @@ router.post('/add', function (req, res, next) {
 
 //上传图片
 
-outer.post('/add_comment', function (req, res, next) {
+router.post('/add_comment', function (req, res, next) {
   // 获得form Value
 // console.log(req);
 // console.log(req.file);
