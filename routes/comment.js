@@ -84,10 +84,10 @@ router.get('/title/:post_name', function (req, res, next) {
   // console.log(sql);
   pg1.query(sql, function (result) {
     console.log(result.rows[0].index);
-    console.log(result.rows[0].title);
-    console.log(result.rows[0].author);
-    console.log(result.rows[0].date);
-    console.log(result.rows[0].body);
+    // console.log(result.rows[0].title);
+    // console.log(result.rows[0].author);
+    // console.log(result.rows[0].date);
+    // console.log(result.rows[0].body);
     // console.log(result.rows[1]);
     res.render('page_comment_content', {index:result.rows[0].index, title: result.rows[0].title, author: result.rows[0].author, date: result.rows[0].date, body: result.rows[0].body });
     // console.log(result.rows[1]); 
