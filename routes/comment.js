@@ -84,7 +84,7 @@ router.get('/title/:post_name', function (req, res, next) {
   // console.log(sql);
   pg1.query(sql, function (result) {
     console.log(result.rows[0].index);
-    // console.log(result.rows[0].title);
+    console.log(result.rows[0].title);
     // console.log(result.rows[0].author);
     // console.log(result.rows[0].date);
     // console.log(result.rows[0].body);
