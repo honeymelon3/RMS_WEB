@@ -750,21 +750,21 @@
 										</div>
 											
 											<hr>
-										<div class="blog-comments">
-												<h3 class="sbold blog-comments-title">评论：</h3>
-										<div class="media"  ng-repeat="x in comments">
+										<div class="blog-comments" style="border:thin solid gray">
+											<h3 class="sbold blog-comments-title">评论：</h3>
+											<div class="media"  ng-repeat="x in comments">
 											<!-- <div class="media-body"
 											<p>{{x.comment_content}}</p>
 											<a>{{x.comment_time}}</a> -->
-											<div class="media-body">
+												<div class="media-body">
 													<h4 class="media-heading">
 														<a href="#">{{x.comment_author}}</a> on
 														<span class="c-date">{{x.comment_time}}</span>
 														
 															</h4> &nbsp&nbsp&nbsp&nbsp{{x.comment_content}}
-											</div>
-											<br>
-										</div>	
+												</div>
+												<br>
+											</div>	
 										
 											<br><br>
 
