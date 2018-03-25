@@ -751,11 +751,15 @@
 									
 									<div>
 										<form  method="post" action="/comment/add_comment" required data-validation-required-message="请输入内容">
-											<div class="floatRight" style="width:80%;">
-												<input type="text" id="post_id"></input>
+											<div class="floatRight" style="width:90%;">
+												<input type="text" id="post_id" style="display:none;  width: 100%;"></input>
 												<textarea name="content" id="content" placeholder="写下你的评论..." style="display: block;  width: 100%;"></textarea>
 												<footer>
-													<button  type="submit" class="btn btn-gray" name="submit"  style="margin-top:10px"> 发送</button>
+													<div class="row-fluid" style="margin-top:10px">
+													<input id="author" placeholder="称呼" style="display: block;"></input>
+													<button  type="submit" class="btn btn-gray" name="submit"> 发送</button>
+													</div>
+													
 												</footer>
 										   </div>
 										</form>
@@ -792,26 +796,7 @@
 												</a>
 										</div>	
 										
-										<!-- <div class="blog-twitter" style="bottom:0px">
-		
-												<div class="blog-twitter-block">
-		
-														<a><i class="icon-music top-news-icon"></i>&nbsp   爱的箴言</a>
-														<br>
-														<p> 我将真心付给了你 将悲伤留给我自己</p>
-														<p>我将青春付给了你 将岁月留给我自己</p>
-														<p>我将生命付给了你 将孤独留给我自己</p>
-														<p>我将春天付给了你 将冬天留给我自己</p>
-														<p>爱是没有人能了解的东西 爱是永恒的旋律</p>
-														<p>爱是欢笑泪珠飘落的过程 爱曾经是我也是你</p>
-														<p>我将春天付给了你 将冬天留给我自己</p>
-														<p>我将你的背影留给我自己 却将自己给了你</p>
-																			 
 					
-											</a>
-										
-											</div>
-										</div> -->
 								
 									
 									</div>
