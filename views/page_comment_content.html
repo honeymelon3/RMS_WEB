@@ -745,8 +745,8 @@
 									<div>
 										<form  method="post" action="/comment/add_comment" required data-validation-required-message="请输入内容">
 											<textarea name="content" id="content"></textarea>
-											<p ng-show="false" name="title" id="title"><%= title %></p>
-											<p ng-show="false" name="index" id="index"><%= index %></p>
+											<input type="text" name="title" id="title"><%= title %></input>
+											<input  type="text" name="index" id="index"><%= index %></input>
 											<div>
 											<label>作者:</label>
 											<input type="text"  name="author" id="author" required="required" data-validation-required-message="作者姓名" ></input>
