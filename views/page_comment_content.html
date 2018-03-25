@@ -743,9 +743,14 @@
 									</div>	
 									
 									<div>
-										<form required data-validation-required-message="请输入内容">
+										<form  action="comment/add_comment" required data-validation-required-message="请输入内容">
 											<textarea name="content" ></textarea>
-											<button  class="btn btn-lg btn-gray" name="submit"  style="margin-top:10px;background-color:#006dcc"> 添加评论</button>
+											<p name="index"><%= index %></p>
+											<div>
+											<label>作者:</label>
+											<input type="text"  name="author" id="author" required="required" data-validation-required-message="作者姓名" ></input>
+											</div>	
+											<button  type="submit" class="btn btn-gray" name="submit"  style="margin-top:10px"> 添加评论</button>
 
 
 										</form>
