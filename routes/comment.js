@@ -158,10 +158,9 @@ router.post('/add_comment', function (req, res, next) {
   // 获得form Value
  console.log(req);
 // console.log(req.file);
-var  title =req.body.title;
 
-var  index =req.body.index;
-console.log(title);
+var  index =req.body.post_id;
+console.log(index);
 var  body = req.body.content;
 var  author = req.body.author;
 var  date   = new Date().toFormat("YYYY-MM-DD HH24:MI:SS");
