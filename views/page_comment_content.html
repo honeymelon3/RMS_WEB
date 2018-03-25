@@ -747,10 +747,17 @@
 										</div>
 											
 											<hr>
-										<div class="alert alert-info" style="text-indent: 2em" ng-repeat="x in comments">
+										<div class="media" style="text-indent: 2em" ng-repeat="x in comments">
+											<!-- <div class="media-body"
 											<p>{{x.comment_content}}</p>
-											<a>{{x.comment_time}}</a>
+											<a>{{x.comment_time}}</a> -->
+											<div class="media-body">
+													<h4 class="media-heading">
+														<a href="#">{{x.comment_author}}</a> on
+														<span class="c-date">{{x.comment_time}}</span>
+													</h4> {{x.comment_content}} </div>
 										</div>	
+										
 											<br><br>
 
 									</div>	
