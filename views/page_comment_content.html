@@ -87,11 +87,8 @@
 	});
 </script> -->
 <script>
-	var index= <%= index%>;
-	console.log(index);
-	<% 
-	console.log(title);
-	%>
+	
+
 </script>
 <script>
 	function load()
@@ -103,6 +100,9 @@
 
 
 			 })
+	    var index= <%= index%>;
+		$("#post_id").attr("value",index);	  
+
 			// console.log("结束");	
 	// window.status="Page is loaded"
 	}
@@ -752,10 +752,11 @@
 									<div>
 										<form  method="post" action="/comment/add_comment" required data-validation-required-message="请输入内容">
 											<div class="floatRight" style="width:80%;">
-											<textarea name="content" id="content" placeholder="写下你的评论..." style="display: block;  width: 100%;"></textarea>
-											<footer>
-											<button  type="submit" class="btn btn-gray" name="submit"  style="margin-top:10px"> 发送</button>
-											</footer>
+												<input type="text" id="post_id"></input>
+												<textarea name="content" id="content" placeholder="写下你的评论..." style="display: block;  width: 100%;"></textarea>
+												<footer>
+													<button  type="submit" class="btn btn-gray" name="submit"  style="margin-top:10px"> 发送</button>
+												</footer>
 										   </div>
 										</form>
 										
