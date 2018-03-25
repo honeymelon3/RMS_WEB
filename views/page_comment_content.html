@@ -745,8 +745,8 @@
 									<div>
 										<form  method="post" action="/comment/add_comment" required data-validation-required-message="请输入内容">
 											<textarea name="content" id="content"></textarea>
-											<input type="text" name="title" id="title"><%= title %></input>
-											<input  type="text" name="index" id="index"><%= index %></input>
+											<p type="text" name="title" id="title" value=<%= title %>></p>
+											<p  type="text" name="index" id="index"><%= index %></p>
 											<div>
 											<label>作者:</label>
 											<input type="text"  name="author" id="author" required="required" data-validation-required-message="作者姓名" ></input>
