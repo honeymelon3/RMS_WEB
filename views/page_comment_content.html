@@ -113,7 +113,7 @@
     //   resizeType:0                 //是否可以拖动'
   };
 	  KindEditor.ready(function(K) {
-			 window.editor = K.create('#editor_id',options);
+			 window.editor = K.create('#comment_id',options);
 	  });
 </script>
 
@@ -745,7 +745,9 @@
 											<br><br>
 									</div>	
 									
-
+									<div>
+										<textarea id="comment_id",name="content" style="width:700px;height:300px;" ></textarea>
+									</div>
 
 
 							    </div>
