@@ -156,7 +156,7 @@ router.post('/add', function (req, res, next) {
 
 router.post('/add_comment', function (req, res, next) {
   // 获得form Value
-// console.log(req);
+ console.log(req);
 // console.log(req.file);
 var  title =req.body.title;
 
@@ -177,7 +177,7 @@ var  date   = new Date().toFormat("YYYY-MM-DD HH24:MI:SS");
 //   var mainImageName = "noimage.png";
 // }; 
 sql='insert into comments(post_id,comment_content,comment_author,comment_time) values (\'' +index+'\',\''+body+'\',\''+author+'\',\''+date+'\');';
-// console.log(sql);
+ console.log(sql);
 pg1.query(sql,function(error,result){	
   // console.log(result);	
   // if(error){  
