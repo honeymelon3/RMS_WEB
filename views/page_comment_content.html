@@ -72,7 +72,7 @@
 </script> -->
 <script>
                 
-    var index =    var index= <%= index%>;         
+    var index= <%= index%>;         
 	var app = angular.module('comments', []);
 	app.controller('myCtrl', function($scope, $http) {   
 	var myUrl = 'http://47.100.41.42/comment/comments/' + index  + '?callback=JSON_CALLBACK';
@@ -749,6 +749,7 @@
 											<hr>
 										<div class="alert allert-gray" style="text-indent: 2em" ng-repead="x in comments">
 											<p>{{comments.comment_content}}</p>
+											<a>{{comments.comment_time}}</a>
 										</div>	
 											<br><br>
 
