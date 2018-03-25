@@ -70,6 +70,7 @@ router.get('/advise', function (req, res, next) {
   router.get('/comments/:index', function (req, res, next) {
     process.env.TZ = "Asia/Shanghai";
     sql = 'select * from comments where post_id=\'' + req.params.index +  '\';';
+    console.log(sql);
     pg1.query(sql, function (result) {
       res.jsonp(result.rows);
       // console.log(result.rows); 
