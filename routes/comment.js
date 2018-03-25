@@ -159,7 +159,7 @@ router.post('/add_comment', function (req, res, next) {
   // 获得form Value
  console.log(req);
 // console.log(req.file);
-
+var  title =req.body.post_title
 var  index =req.body.post_id;
 console.log(index);
 var  body = req.body.content;
@@ -187,7 +187,7 @@ pg1.query(sql,function(error,result){
   // }else{
   //   console.log('Inserted: ' + result.affectedRows + ' row.'),  
     console.log('insert comment success...\n'); 
-    res.redirect('/comment');
+    res.redirect('/title/'+title);
   // }
 }); 
  

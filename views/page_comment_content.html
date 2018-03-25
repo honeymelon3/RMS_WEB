@@ -71,7 +71,7 @@
 
 </script> -->
 <script>
-                
+            
     var index= <%= index%>;         
 	var app = angular.module('comments', []);
 	app.controller('myCtrl', function($scope, $http) {   
@@ -100,8 +100,10 @@
 
 
 			 })
+	    var title=<%= title%> 	
 	    var index= <%= index%>;
 		$("#post_id").attr("value",index);	  
+		$("#post_title").attr("value",title);	  
 
 			// console.log("结束");	
 	// window.status="Page is loaded"
@@ -778,7 +780,9 @@
 													
 												</footer>
 												<input type="text" name="post_id" id="post_id" style="display:none;  width: 100%;"></input>
-										   </div>
+												<input type="text" name="post_title" id="post_title" style="display:none;  width: 100%;"></input>
+
+											</div>
 										</form>
 										
 									</div>
