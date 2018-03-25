@@ -101,21 +101,18 @@
 	}
 </script>
 
-<script>
+<!-- <script>
 		var options = {
-   //    height:"600px",   //规定高度
-   //    width:"550px",    //规定宽度
 	  uploadJson: '/comment/uploadImg',   //规定服务端处理的路由地址
 	  allowImageUpload : false,     //是否允许本地上传图片
       items : [
           'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic',
           'underline', 'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright',    'insertorderedlist', 'insertunorderedlist', '|', 'emoticons', 'image', 'link']       //各种可显示的图标
-    //   resizeType:0                 //是否可以拖动'
   };
 	  KindEditor.ready(function(K) {
 			 window.editor = K.create('#comment_id',options);
 	  });
-</script>
+</script> -->
 
 </head>
 
@@ -746,8 +743,13 @@
 									</div>	
 									
 									<div>
+										<form required data-validation-required-message="请输入内容">
+											<textarea name="content" ></textarea>
+											<button  class="btn btn-lg btn-gray" name="submit"  style="margin-top:10px;background-color:#006dcc"> 添加评论</button>
+
+
+										</form>
 										
-										<textarea id="comment_id",name="content" ></textarea>
 									</div>
 
 
@@ -761,12 +763,7 @@
 
 							
 									<div class="row-fluid">
-										<!-- <div class="container-fluid">
-									
-											<button type="submit" onclick="jump()" class="btn-primary btn-lg">添加留言&nbsp<i class="icon-comments-alt"></i></button>
-																		
-																								
-										</div> -->
+					
 										<div class="top-news">
 												<a href="/comment/add" class="btn purple">
 														<i class="icon-edit top-news-icon"></i>  
@@ -890,11 +887,11 @@
 	<!-- END CORE PLUGINS -->
 
 	<script src="../../media/js/app.js"></script>      
-	<script>
+	<!-- <script>
 			function jump(){
 				window.open("/comment/add",'','',true)
 			}
-	</script>
+	</script> -->
 	
 	<script>
 
