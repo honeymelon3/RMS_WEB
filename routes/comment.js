@@ -187,7 +187,7 @@ pg1.query(sql,function(error,result){
   // }else{
   //   console.log('Inserted: ' + result.affectedRows + ' row.'),  
     console.log('insert comment success...\n'); 
-    res.redirect('/title/'+title);
+    res.redirect('/comment/title/'+title);
   // }
 }); 
  
