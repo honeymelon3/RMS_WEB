@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>欢迎登录韩利峰个人网站</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="bootstrap/css/bootstrap.min.2.css" rel="stylesheet">
+    <link href="bootstrap/css/login.css" rel="stylesheet" type="text/css"/>
+
+    <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+    
+      <link href="bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    
+      <link href="bootstrap/css/style-metro.css" rel="stylesheet" type="text/css"/>
+    
+      <link href="bootstrap/css/style.css" rel="stylesheet" type="text/css"/>
+    
+      <link href="bootstrap/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+    
+      <link href="bootstrap/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+    
+      <link href="bootstrap/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+    <!-- Custom CSS -->
+    <!--<link href="bootstrap/css/modern-business.css" rel="stylesheet">-->
+
+    <!-- Custom Fonts -->
+    <!--<link href="bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<style>
+
+	#footer {
+        width: 100%;
+        height: 50px;
+        position: fixed;
+        bottom: 100px;
+		font-family:"微软雅黑"
+    }
+  .txtunderline{
+		text-decoration:underline;
+	}
+	
+	</style>
+
+</head>
+
+<body class="login" style="background-color:#133364;overflow-x: hidden" >
+<!--用户登录注册页面-->
+  <div class="logo">
+    <img src="image/logo.png" alt="" /> 
+  </div> 
+
+  <div class="content">
+    <!-- 开始登陆界面 -->
+      <form class="form-vertical login-form"  role="form" id="form1" onsubmit="return false">
+          
+                <h3 class="form-title">请登陆您的账户</h3>
+          
+                <div class="alert alert-error hide">
+          
+                  <button class="close" data-dismiss="alert"></button>
+          
+                  <span>Enter any username and password.</span>
+          
+                </div>
+          
+                <div class="control-group">
+          
+                  <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+          
+                   <label class="control-label visible-ie8 visible-ie9">用户名</label>
+          
+                   <div class="controls">
+          
+                   <div class="input-icon left">
+          
+                      <i class="icon-user"></i>
+          
+                      <input class="m-wrap placeholder-no-fix" id="name" type="text" placeholder="Username" name="username"/>
+          
+                   </div>
+          
+                  </div>
+          
+                </div>
+          
+                <div class="control-group">
+          
+                  <label class="control-label visible-ie8 visible-ie9">密码</label>
+          
+                  <div class="controls">
+          
+                    <div class="input-icon left">
+          
+                      <i class="icon-lock"></i>
+          
+                      <input class="m-wrap placeholder-no-fix" id="pw1" type="password" placeholder="Password" name="password"/>
+          
+                    </div>
+          
+                  </div>
+          
+                </div>
+                
+                <p id="myhint" style="display:none;font-size:16px;color:red;"align="center">hint</p>
+                <div class="form-actions">
+                  <button type="submit" id="login0"  class="btn green pull-right">         
+                  登陆 <i class="m-icon-swapright m-icon-white"></i>          
+                  </button>            
+          
+                </div>
+                <h4>没有账户 ?</h4>
+                <div class="create-account"></div>
+          
+                
+                              <p>
+                      
+                                 请注册并申请数据库访问权限！&nbsp!&nbsp  
+                      
+                                <a href="javascript:;" id="register-btn" class="" style="float:right" data-toggle="modal" data-target="#myModal">注册新用户</a>
+                      
+                              </p>
+                      
+                </div>
+               
+       </form>
+    
+ 
+ 
+  </div>
+
+
+
+	<div class="copyright">
+    
+        <strong>TMSR &copy; 2017  &nbsp  &nbsp &nbsp钍基熔盐堆先进核能系统</strong>
+    
+   </div>
+  <!-- <div id="footer">
+	<h1 align="center" style="font-size:10px;color:white;margin-bottom:-50px"><strong>TMSR &copy; 2017  &nbsp  &nbsp &nbsp钍基熔盐堆先进核能系统</strong></h1>
+</div> -->
+
+
+   
+
+
+    <!--注册用户  -->
+    
+
+    <!--注册用户  -->
+    <div class="modal fade" id="myModal"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="height:720px;    display: none" >
+        <div class="modal-dialog" >
+
+         <div class="modal-content" >
+          
+           <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <!-- &times; -->
+            </button>
+            <h3 class="modal-title" id="myModalLabel">
+              用户注册
+            </h3>
+           <p>Enter your account details below:</p>
+          </div>
+
+          <div class="modal-body" style="max-height:600px;" >
+
+            <form class="form-vertical" style="height:600px" role="form"  id="form2" action="/register" method="post"   role="form">
+              <!-- <div class="form-group">
+              <label for="name" class="col-sm-2 control-label">用户名</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" name= "username" id="username" check-type="required" required-message="请输入姓名">
+              </div>  </div>-->
+
+          
+             <div class="form-group">
+                  
+                          <label for="name" class="control-label visible-ie8 visible-ie9">Username</label>
+                  
+                          <div class="controls">
+                  
+                            <div class="input-icon left">
+                              <i class="icon-user"></i>
+                  
+                              <input class="form-control" type="text" id="username" check-type="required"  placeholder="用户名" name="username" required-message="请输入姓名" aria-hidden="true"/>
+                            </div>
+                  
+                          </div>
+              
+              </div>
+               
+
+
+             
+               <!-- <div class="form-group">
+              <label for="name" class="col-sm-2 control-label">部门</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" name= "department" id="dep" check-type="required" required-message="请输入部门名称">
+              </div>
+              </div> -->
+
+              <div class="form-group">
+                  
+                          <label for="name" class="col-sm-2  control-label  visible-ie8 visible-ie9">公司</label>
+                  
+                          <div class="controls">
+                  
+                            <div class="input-icon left">
+                  
+                              <i class="icon-home"></i>
+                  
+                              <input class="form-control" type="text" id="com" check-type="required"   required-message="请输入公司名称" placeholder="公司名称" name="company" aria-hidden="true"/>
+                  
+                            </div>
+                  
+                          </div>
+                  
+              </div>
+
+              <div class="form-group">
+                  
+                          <label for="name" class="control-label visible-ie8 visible-ie9">部门</label>
+                  
+                          <div class="controls">
+                  
+                            <div class="input-icon left">
+                  
+                              <i class="icon-flag"></i>
+                  
+                              <input class="form-control" type="text" id="dep" check-type="required"   required-message="请输入部门名称" placeholder="部门名称" name="department" aria-hidden="true"/>
+                  
+                            </div>
+                  
+                          </div>
+                  
+              </div>
+
+
+
+               <!-- <div class="form-group">
+              <label for="name" class="col-sm-2 control-label">公司</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" name= "company" id="com" check-type="required" required-message="请输入公司名称">
+              </div>
+              </div> -->
+  
+
+               <!-- <div class="form-group">
+              <label for="name" class="col-sm-2 control-label">手机</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" name= "phone" id="email" check-type="mobile" >
+              </div>
+              </div> -->
+              <div class="form-group">
+                  
+                          <label for="name" class="control-label visible-ie8 visible-ie9">手机</label>
+                  
+                          <div class="controls">
+                  
+                            <div class="input-icon left">
+                  
+                              <i class="icon-phone"></i>
+                  
+                              <input class="form-control" type="text" id="email" check-type="mobile"   required-message="请输入手机号码" placeholder="手机号码" name="phone" aria-hidden="true"/>
+                  
+                            </div>
+                  
+                          </div>
+                  
+              </div>
+
+              <!-- <div class="form-group">
+              <label for="pw1" class="col-sm-2 control-label">密码</label>
+              <div class="col-sm-6">
+                <input type="password" class="form-control" name= "password" id="password1" check-type="required" minlength="6">
+              </div>
+              </div> -->
+  
+
+
+              <div class="form-group">
+                  
+                          <label for="pw1" class="control-label visible-ie8 visible-ie9">Password</label>
+                  
+                          <div class="controls">
+                  
+                            <div class="input-icon left">
+                  
+                              <i class="icon-lock"></i>
+                  
+                              <input class="form-control" name= "password" id="password1" type="password" id="register_password" minlength="6" placeholder="密码" aria-hidden="true"/>
+                  
+                            </div>
+                  
+                          </div>
+                  
+              </div>
+<!-- 
+              <div class="form-group">
+              <label for="pw2" class="col-sm-2 control-label">确认密码</label>
+              <div class="col-sm-6">
+                <input type="password" class="form-control"  check-type="required" minlength="6">
+              </div>
+              </div> -->
+
+              <div class="form-group">
+                  
+                          <label for=“pw2” class="control-label visible-ie8 visible-ie9" >Re-type Your Password</label>
+                  
+                          <div class="controls">
+                  
+                            <div class="input-icon left">
+                  
+                              <i class="icon-ok"></i>
+                  
+                              <input class="form-control" type="password" check-type="required" minlength="6"  placeholder="密码确认"  aria-hidden="true"/>
+                  
+                            </div>
+                  
+                          </div>
+                  
+               </div>
+
+
+              <div class="form-group " >
+                   <div >
+                      <label class="controls" for="name">请选择您要申请的数据库权限</label>
+
+
+                      <div >
+                          <label class="controls"><input type="checkbox" name= "alloy" value="1">&nbsp &nbsp合金数据库</label>
+                      </div>
+
+                      <div >
+                          <label class="controls"><input type="checkbox" name= "graphite" value="1">&nbsp &nbsp石墨数据库</label>
+                      </div>
+
+                      <div >
+                                <label class="controls"><input type="checkbox" name= "salt" value="1">&nbsp &nbsp熔盐数据库</label>
+                      </div>
+                      
+                      <div >
+                            <label class="controls"><input type="checkbox" name= "irradiation" value="1">&nbsp &nbsp辐照数据库</label>
+                      </div>
+                      
+                      <div >
+                          <label class="controls"><input type="checkbox" name= "corrode" value="1">&nbsp &nbsp熔盐浸润数据库</label>
+                      </div>
+
+                </div>
+            </div>
+  
+            <br></br>   
+            
+              <div >
+                 
+                    
+                     <button type="reset"  class="btn" >重置&nbsp<i class="m-icon-swapdown m-icon-white"></i></button>
+                     <button type="submit" id="register0" class="btn green pull-right" >提交&nbsp<i class="m-icon-swapright m-icon-white"></i></button>
+                    
+              </div>
+
+
+
+
+          </form>
+            </div>
+            
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+      </div>
+  
+
+
+    <script src="bootstrap/js/jquery.min.js"></script>
+
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap3-validation.js"></script>
+
+
+
+
+    <script type="text/javascript">
+    $(function(){
+	  $("#form2").validation(function(obj,params){
+		if (obj.id=='username'){
+			$.get("/user_exist",{username:$(obj).val()},function(data){
+			//alert(data[0]);
+			if(data.rowCount!=0){
+			params.err = true;
+			params.msg = "用户已存在";
+			};
+			});
+			}}
+			,{reqmark:true} //这个参数是设必填不要显示有星号，默认是有星号的
+		);
+      $("#login0").click(function(){
+        var username = $("#name").val();
+        var password = $("#pw1").val();
+        var data = {"username":username,"password":password};
+        // console.log("good");
+        $.ajax({
+          url:'/login',
+          type:'post',
+          data: data,
+          success: function(data,status){
+          console.log(status);
+          if(status == 'success'){
+            location.href = '/home';
+            }
+          },
+          error: function(data,status){
+            if(status == 'error'){
+              if (data.status == 404){
+              $("#myhint").text("用户名或密码不正确");
+              $("#myhint").css("display","block");;
+              }
+            //location.href = '/login';
+            }
+          }
+        });
+      });
+
+$("#register0").click(function(){ 
+      if ($("#form2").valid('填写信息不正确')==false){
+        //alert('填写信息不完整。');
+       return false;
+           };
+  $("#form2").submit();
+
+		});
+
+
+    });
+    </script>
+
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
+
+
+
+</body></html>
