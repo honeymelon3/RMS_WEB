@@ -18,8 +18,9 @@ router.route("/login").get(function(req,res){    // 到达此路径则渲染logi
 	var user =req.body;
 	var myDate = new Date();
 	var loginTime = myDate.toLocaleString();
-   	var sql = 'select * from users where user_name =\'' + user.username + '\' and password = \''+ user.password + '\'';	
-		// sql_record = 'insert into login_record(user_name,login_time) values (\''+user.username+'\',\''+loginTime+'\')';
+   	var sql = 'select * from users where username =\'' + user.username + '\' and password = \''+ user.password + '\'';	
+    // sql_record = 'insert into login_record(user_name,login_time) values (\''+user.username+'\',\''+loginTime+'\')';
+    console.log(sql);
 	   my_conn.query(sql,function(result){
 		////console.log(result.rowCount)
 		if(result.rowCount == 0){ 
@@ -41,12 +42,16 @@ router.route("/login").get(function(req,res){    // 到达此路径则渲染logi
 
 });
 
+
+
+
+
 router.get('/task', function(req, res, next) {
 	if(req.session.user.corrode == 1){ 					//到达/home路径首先判断是否已经登录
-		res.render("data_corrode", { title: '熔盐数据库', alloy_name:'Hastelloy N'});   			//未登录则重定向到 /login 路径
+		res.render("task", { title: '任务清单'});   			//未登录则重定向到 /login 路径
 	} ;	
 	if(req.session.user.corrode == 0){ 					//到达/home路径首先判断是否已经登录
-		res.render("/"); 			//未登录则重定向到 /login 路径
+		res.render("/login"); 			//未登录则重定向到 /login 路径
 	} ;	
   
 });
