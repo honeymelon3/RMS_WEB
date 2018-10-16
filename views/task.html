@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+
+<head>
+
+	<meta charset="utf-8" />
+
+	<title>小韩 | EPICS - <%= title %></title>
+
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+	<meta content="" name="description" />
+
+	<meta content="" name="author" />
+
+	<!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+	<link href="media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+	<link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+
+	<link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+	<link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+
+	<link href="media/css/style.css" rel="stylesheet" type="text/css"/>
+
+	<link href="media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+
+	<link href="media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+
+	<link href="media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+
+	<!-- END GLOBAL MANDATORY STYLES -->
+
+	<link rel="shortcut icon" href="media/image/favicon.ico" />
+
+	<script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+	
+	<script src="js/angular.min.js"></script> 
+<!-- 
+<script>
+		var serverIP="210.72.8.90";
+		var socket = io.connect(serverIP+':80');
+		var pvs={ai:[{pvname:"hanlfHost:ai1"},{pvname:"hanlfHost:ai2"},{pvname:"hanlfHost:ai3"}],
+         ao:[{pvname:"hanlfHost:ao1"}, {pvname:"hanlfHost:ao2"}, {pvname:"hanlfHost:ao3"}]
+        }
+		// console.log(pvs.ai);
+       async.map(pvs.ai,function(item,callback){
+          console.log(item.pvname);
+          socket.on(item.pvname, function (data) {
+            if(document.getElementById(item.pvname)){
+             document.getElementById(item.pvname).innerHTML=data;
+            }
+               });
+               
+       }, function(err,results){
+         callback(err,results); 
+         console.log(results);
+       });
+
+</script> -->
+<script>
+                
+                
+	var app = angular.module('myApp', []);
+	app.controller('myCtrl', function($scope, $http) {   
+	var myUrl = "http://47.100.41.42/epics_manual/manual?callback=JSON_CALLBACK";
+	$http.jsonp(myUrl).success(function(response) {
+	    $scope.manual = response;
+		// console.log("when");
+	//     console.log(response);
+ 
+		});		
+
+
+	});
+</script>
+<script>
+	function load()
+	{
+		$(".manual").each(function () {
+				 var content = $(this).text();
+				//  console.log(content);
+				 $(this).html(content);
+
+
+			 })
+			// console.log("结束");	
+	// window.status="Page is loaded"
+	}
+</script>
+
+
+</head>
+
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+
+<body class="page-header-fixed" ng-app="myApp" ng-controller="myCtrl" onload="load()">
+
+	<!-- BEGIN HEADER -->
+
+	<div class="header navbar navbar-custom navbar-fixed-top">
+
+		<!-- BEGIN TOP NAVIGATION BAR -->
+
+		<div class="navbar-inner">
+
+			<div class="container-fluid">
+
+				<!-- BEGIN LOGO -->
+
+				<a class="brand" href="/">
+
+				<img src="media/image/logo.png" alt="logo" />
+
+				</a>
+
+				<!-- END LOGO -->
+
+				<!-- BEGIN HORIZANTAL MENU -->
+
+			
+
+				<!-- END HORIZANTAL MENU -->
+
+				<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+
+				<a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+
+				<img src="media/image/menu-toggler.png" alt="" />
+
+				</a>          
+
+				<!-- END RESPONSIVE MENU TOGGLER -->            
+
+				<!-- BEGIN TOP NAVIGATION MENU -->              
+
+				<ul class="nav pull-right">
+
+					
+
+				
+
+					<!-- BEGIN USER LOGIN DROPDOWN -->
+
+					<li class="dropdown user">
+
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+						<img alt="" src="media/image/avatar1_small.jpg" />
+
+						<span class="username">韩 利峰</span>
+
+						<i class="icon-angle-down"></i>
+
+						</a>
+
+						<ul class="dropdown-menu">
+							<li><a href="/comment"><i class="icon-comment"></i>留言板</a></li>
+
+
+						</ul>
+
+					</li>
+
+					<!-- END USER LOGIN DROPDOWN -->
+
+				</ul>
+
+				<!-- END TOP NAVIGATION MENU --> 
+
+			</div>
+
+		</div>
+
+		<!-- END TOP NAVIGATION BAR -->
+
+	</div>
+
+	<!-- END HEADER -->
+
+	<!-- BEGIN CONTAINER -->   
+
+	<div class="page-container row-fluid" >
+
+		<!-- BEGIN HORIZONTAL MENU PAGE SIDEBAR1 -->
+
+		<div class="page-sidebar nav-collapse collapse">
+
+			<ul class="page-sidebar-menu hidden-phone hidden-tablet">
+
+				<li>
+
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+
+					<div class="sidebar-toggler hidden-phone"></div>
+
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+
+				</li>
+
+				<li>
+
+					<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+
+					<form class="sidebar-search">
+
+						<div class="input-box">
+
+							<a href="javascript:;" class="remove"></a>
+
+							<input type="text" placeholder="Search..." />            
+
+							<input type="button" class="submit" value=" " />
+
+						</div>
+
+					</form>
+
+					<!-- END RESPONSIVE QUICK SEARCH FORM -->
+
+				</li>
+
+				<li class="active" >
+
+					<a href="javascript:;">
+
+					<i class="icon-cogs"></i> 
+
+					<span class="title"></span>概述</span>
+
+					<span class="selected "></span>
+
+					<span class="arrow open"></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li>
+
+							<a href="/system_structure">
+
+							 	系统结构                    </a>
+
+						</li>
+
+
+
+						
+						<li >
+												
+							<a href="/control_system">
+												
+								控制系统 </a>
+
+								<!-- <ul class="sub-menu">
+
+									<li >
+			
+										<a href="portlet_general.html">
+			
+											信号变量</a>
+			
+									</li>
+								</ul> -->
+
+												
+						</li>
+
+						
+						<li class="active">
+						
+							<a href="/epics_manual">
+						
+								安装配置 </a>
+						
+						</li>
+
+
+
+
+					</ul>
+
+				</li>
+
+				<li >
+
+					<a href="javascript:;">
+
+					<i class="icon-dashboard"></i> 
+
+					<span class="title">监视控件</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="/widget_tank">
+
+								Tank</a>
+
+						</li>
+
+						<li >
+
+							<a href="portlet_draggable.html">
+
+							   Process Bar </a>
+
+						</li>
+						
+						<li>
+							<a href="portlet_general.html">
+												
+						    	LED</a>
+												
+						</li>
+												
+						<li>
+												
+							<a href="portlet_draggable.html">
+												
+								Text Update </a>
+												
+						</li>
+						<li>
+						
+							<a href="portlet_draggable.html">
+						
+								Meter </a>
+						
+						</li>
+						<li>
+												
+							<a href="portlet_draggable.html">
+												
+						 		Guage </a>
+												
+							</li>
+
+					</ul>
+
+				</li>
+
+				<li >
+
+					<a href="javascript:;">
+
+					<i class="icon-puzzle-piece"></i> 
+
+					<span class="title">控制控件</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="TextInput.html">
+
+							TextInput                  </a>
+
+						</li>
+
+						<li >
+
+							<a href="maps_vector.html">
+
+							Vector Maps                   </a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li >
+
+					<a href="charts.html">
+
+					<i class="icon-film"></i> 
+
+					<span class="title">其它</span>
+
+					</a>
+
+				</li>
+
+				<li >
+
+					<a href="javascript:;">
+
+					<i class="icon-puzzle-piece"></i> 
+
+					<span class="title">系统应用</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="TextInput.html">
+
+							智能监控                  </a>
+
+						</li>
+
+						<li >
+
+							<a href="maps_vector.html">
+
+							辐射监测                   </a>
+
+						</li>
+
+					</ul>
+
+				</li>
+				<li>
+				
+					<a href="/comment">
+					
+						<i class="icon-comment"></i>
+					
+						<span class="title">留言板</span>
+						<span class="badge" style="background-color: #e02222;padding: 2px 6px 2px 6px;-webkit-border-radius: 12px !important; -moz-border-radius: 12px !important; border-radius: 12px !important; text-shadow: none !important" >new</span>
+
+					</a>
+				
+				</li>
+				<li>
+				
+					<a href="/task">
+					
+						<i class="icon-tasks"></i>
+					
+						<span class="title">任务清单</span>
+						<span class="badge" style="background-color: #e02222;padding: 2px 6px 2px 6px;-webkit-border-radius: 12px !important; -moz-border-radius: 12px !important; border-radius: 12px !important; text-shadow: none !important" >new</span>
+
+					</a>
+				
+				</li>	
+			</ul>
+
+			<!--HORIZONTAL AND SIDEBAR MENU FOR MOBILE & TABLETS-->
+
+			<ul class="page-sidebar-menu visible-phone visible-tablet">
+
+
+				<li class="start active">
+
+					<a href="/">
+
+					概述
+
+					<span class="selected"></span>
+
+					<span class="arrow open"></span>
+
+					</a>
+
+                         <ul class="sub-menu">
+						<li >
+
+							<a href="/system_structure">
+
+							<i class="icon-cogs"></i> 
+
+							<span class="title" >系统结构</span>
+
+							<span class="arrow open"></span>
+
+							</a>
+
+						</li>
+						<li>
+
+							<a href="/control_system">
+		
+								<i class="icon-wrench"></i>
+		
+								<span class="title">控制系统</span>
+		
+								<span class="arrow open"></span>
+		
+							</a>
+		
+						</li>
+						<li>
+						
+							<a href="/epics_manual">
+
+								<i class="icon-wrench"></i> 
+						
+								<span class="title" >安装配置</span>
+
+								<span class="arrow open"></span>
+							
+							</a>
+						
+						</li>
+					</ul>
+                    </li>
+			</ul>
+
+		</div>
+
+		<!-- END BEGIN HORIZONTAL MENU PAGE SIDEBAR -->
+
+		<!-- BEGIN PAGE -->
+
+		<div class="page-content">
+		
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+		
+			<div id="portlet-config" class="modal hide">
+		
+				<div class="modal-header">
+		
+					<button data-dismiss="modal" class="close" type="button"></button>
+		
+					<h3>portlet Settings</h3>
+		
+				</div>
+		
+				<div class="modal-body">
+		
+					<p>Here will be a configuration form</p>
+		
+				</div>
+		
+			</div>
+		
+			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+		
+			<!-- BEGIN PAGE CONTAINER-->
+		
+			<div class="container-fluid">
+		
+				<!-- BEGIN PAGE HEADER-->
+		
+				<div class="row-fluid">
+		
+					<div class="span12">
+		
+						<!-- BEGIN STYLE CUSTOMIZER -->
+		
+						<div class="color-panel hidden-phone">
+		
+							<div class="color-mode-icons icon-color"></div>
+		
+							<div class="color-mode-icons icon-color-close"></div>
+		
+							<div class="color-mode">
+		
+								<p>THEME COLOR</p>
+		
+								<ul class="inline">
+		
+									<li class="color-white color-light" data-style="light"></li>
+		
+								</ul>
+		
+								<label>
+		
+									<span>Layout</span>
+		
+									<select class="layout-option m-wrap small">
+		
+										<option value="fluid" selected>Fluid</option>
+		
+										<option value="boxed">Boxed</option>
+		
+									</select>
+		
+								</label>
+		
+								<label>
+		
+									<span>Header</span>
+		
+									<select class="header-option m-wrap small">
+		
+										<option value="fixed" selected>Fixed</option>
+		
+										<option value="default">Default</option>
+		
+									</select>
+		
+								</label>
+		
+								<label>
+		
+									<span>Sidebar</span>
+		
+									<select class="sidebar-option m-wrap small">
+		
+										<option value="fixed">Fixed</option>
+		
+										<option value="default" selected>Default</option>
+		
+									</select>
+		
+								</label>
+		
+								<label>
+		
+									<span>Footer</span>
+		
+									<select class="footer-option m-wrap small">
+		
+										<option value="fixed">Fixed</option>
+		
+										<option value="default" selected>Default</option>
+		
+									</select>
+		
+								</label>
+		
+							</div>
+		
+						</div>
+		
+						<!-- END BEGIN STYLE CUSTOMIZER -->
+		
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+		
+						<h3 class="page-title">
+		
+							EPICS软件
+							<small>配置说明</small>
+		
+						</h3>
+		
+						<ul class="breadcrumb">
+		
+							<li>
+		
+								<i class="icon-home"></i>
+		
+								<a href="/">Home</a>
+		
+								<i class="icon-angle-right"></i>
+		
+							</li>
+		
+							<li>
+		
+								<a href="#">Manuals</a>
+		
+							</li>
+		
+						</ul>
+		
+						<!-- END PAGE TITLE & BREADCRUMB-->
+		
+					</div>
+		
+				</div>
+		
+				<!-- END PAGE HEADER-->
+		
+				<!-- BEGIN PAGE CONTENT-->
+		
+				<div class="row-fluid ">
+		
+					<div class="span10 news-page blog-page">
+		
+						<div class="portlet box green">
+						
+							<div class="portlet-title">
+						
+								<div class="caption">
+									<i class="icon-reorder"></i></div>
+						
+								<div class="actions">
+						
+									<a href="/comment/add" class="btn green mini">
+										<i class="icon-plus"></i> Add</a>
+						
+								</div>
+						
+							</div>
+						
+							<div class="portlet-body">
+								<div class="row-fluid">
+		
+							
+									<div class="span12 article-block" >
+										<div class="row-fluid" ng-repeat="x in manual">
+									
+										<div class="span8 unstyled blog-tags">
+
+						
+										<a style="font-size:15px" href="/epics_manual/title/{{x.title}}"><i class="icon-book"></i>标题:&nbsp&nbsp {{x.title}}</a>
+									
+									</div>
+									<div class="span4 "> 
+											<ul class="unstyled inline blog-tags">
+										
+													<li>
+														<a>作者：{{x.author}}&nbsp&nbsp&nbsp </a>
+										
+														<a>日期：{{x.date}}</a>
+										
+										
+													</li>
+										
+												</ul>
+
+									</div>
+									<hr />
+									
+								 </div>
+									<!-- <div class="blog-tag-data ">
+										<div class="row-fluid">
+											<div class="span6">
+										
+												<ul class="unstyled inline blog-tags">
+										
+													<li>
+										
+														<i class="icon-tags"></i>
+										
+														<a href="#">类型：{{x.category}}&nbsp&nbsp&nbsp </a>
+										
+														<a href="#">作者：{{x.author}}</a>
+										
+										
+													</li>
+										
+												</ul>
+										
+											</div>
+										
+											<div class="span6 blog-tag-data-inner">
+										
+												<ul class="unstyled inline">
+										
+													<li>
+														<i class="icon-calendar"></i>
+														<a href="#">日期：{{x.date}}</a>
+													</li>
+										
+												</ul>
+										
+											</div>
+										</div>
+										<div  style="text-indent: 2em" >
+											<p class="manual well text-muted"  >
+											 {{x.body}}
+																					
+											</p>
+										
+										</div>
+									</div>	 -->
+									
+
+
+
+									</div>
+
+						</div>		
+								<!-- <div class="span3">
+							
+
+							
+								<div class="container-fluid">
+							
+									<button type="submit" onclick="jump()" class="btn-primary btn-lg">添加文章&nbsp<i class="icon-comments-alt"></i></button>
+																
+																						
+								</div>
+						
+							
+							</div> -->
+
+		
+					</div>
+		
+				<!-- END PAGE CONTENT-->
+		
+						</div>
+	
+			<!-- END PAGE CONTAINER-->
+		
+					</div>
+
+		<!-- END PAGE -->    
+
+				</div>
+			</div>
+	</div>
+	<!-- END CONTAINER -->
+			
+		
+	<!-- BEGIN FOOTER -->
+
+	<div class="footer">
+
+		<div class="footer-inner">
+
+			2017 &copy; TMSR 钍基熔盐堆核能系统.
+
+		</div>
+
+		<div class="footer-tools">
+
+			<span class="go-top">
+
+			<i class="icon-angle-up"></i>
+
+			</span>
+
+		</div>
+
+	</div>
+
+	<!-- END FOOTER -->
+
+	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+	<!-- BEGIN CORE PLUGINS -->
+
+	<script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+
+	<!-- <script src="media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script> -->
+
+	<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+
+	<!-- <script src="media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>       -->
+
+	<script src="media/js/bootstrap.min.js" type="text/javascript"></script>
+
+	<!--[if lt IE 9]>
+
+	<script src="media/js/excanvas.min.js"></script>
+
+	<script src="media/js/respond.min.js"></script>  
+
+	<![endif]-->   
+
+	<!-- <script src="media/js/jquery.slimscroll.min.js" type="text/javascript"></script> -->
+
+	<!-- <script src="media/js/jquery.blockui.min.js" type="text/javascript"></script>   -->
+
+	<!-- <script src="media/js/jquery.cookie.min.js" type="text/javascript"></script> -->
+
+	<!-- <script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script> -->
+
+	<!-- END CORE PLUGINS -->
+
+	<script src="media/js/app.js"></script>      
+	<script>
+			function jump(){
+				window.open("/comment/add",'','',true)
+			}
+	</script>
+	
+	<script>
+
+		jQuery(document).ready(function() {  
+			// console.log("开始");
+
+			
+		   App.init();
+
+		});
+
+	</script>
+
+
+
+
+
+
+
+
+	<!-- END JAVASCRIPTS -->
+
+<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script>
+</body>
+
+<!-- END BODY -->
+
+</html>
