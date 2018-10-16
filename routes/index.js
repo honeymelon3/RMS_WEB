@@ -45,10 +45,10 @@ router.route("/login").get(function(req,res){    // 到达此路径则渲染logi
 
 router.get('/task_data', function (req, res, next) {
 	process.env.TZ = "Asia/Shanghai";
-	sql = 'select * from tasks order by index  ;';
+	sql = 'select * from tasks order by index;';
 	pg1.query(sql, function (result) {
 	  res.jsonp(result.rows);
-	  // console.log(result.rows); 
+	  console.log(result.rows); 
    
 	});
 	});
