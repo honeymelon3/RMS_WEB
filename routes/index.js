@@ -56,7 +56,7 @@ router.get('/task_data', function (req, res, next) {
 
 
 router.get('/task', function(req, res, next) {
-	console.log(typeof req.session.user);
+	// console.log(typeof req.session.user);
 	if("undefined" != typeof req.session.user){ 					//到达/home路径首先判断是否已经登录
 		res.render('task', { title: '任务清单'});   			//未登录则重定向到 /login 路径
 	} ;	
