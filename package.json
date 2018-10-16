@@ -17,15 +17,15 @@
     "morgan": "~1.9.0",
     "serve-favicon": "~2.4.5",
     "socket.io": "*",
-    "pg":"*",
-    "connect-flash":"*",
-    "express-validator":"*",
-    "express-session":"*",
-    "express-messages":"*",
-    "multer":"*",
-    "date-utils":"*",
-    "formidable":"*",
-    "linspace":"*",
-    "cors":"*"
+    "pg": "*",
+    "connect-flash": "*",
+    "express-validator": "*",
+    "express-session": "*",
+    "express-messages": "*",
+    "multer": "*",
+    "date-utils": "*",
+    "formidable": "*",
+    "linspace": "*",
+    "cors": "*"
   }
 }

@@ -43,13 +43,21 @@ router.route("/login").get(function(req,res){    // 到达此路径则渲染logi
 
 });
 
-
+router.get('/task_data', function (req, res, next) {
+	process.env.TZ = "Asia/Shanghai";
+	sql = 'select * from tasks order by index  ;';
+	pg1.query(sql, function (result) {
+	  res.jsonp(result.rows);
+	  // console.log(result.rows); 
+   
+	});
+	});
 
 
 
 router.get('/task', function(req, res, next) {
 	if(req.session.user.corrode == 1){ 					//到达/home路径首先判断是否已经登录
-		res.render("index", { title: '任务清单'});   			//未登录则重定向到 /login 路径
+		res.render('task', { title: '任务清单'});   			//未登录则重定向到 /login 路径
 	} ;	
 	if(req.session.user.corrode == 0){ 					//到达/home路径首先判断是否已经登录
 		res.render("/login"); 			//未登录则重定向到 /login 路径
