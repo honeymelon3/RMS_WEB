@@ -32,7 +32,7 @@ router.route("/login").get(function(req,res){    // 到达此路径则渲染logi
 			// console.log(result.rows[0]);
 			req.session.user = result.rows[0]; 
 			console.log(req.session.user);
-			res.redirect("/task");
+			res.sendStatus(200);
 			// my_conn.query(sql_record,function(result){
 			// 	//req.session.user = req.body.username;
 			// 	////console.log(req.session.user);
@@ -53,7 +53,16 @@ router.get('/task_data', function (req, res, next) {
 	});
 	});
 
-
+router.get('/home', function(req, res, next) {
+		console.log(req.session.user);
+		if(req.session.user){ 					//到达/home路径首先判断是否已经登录
+			res.render('task', { title: '任务清单'});   			//未登录则重定向到 /login 路径
+		} ;	
+		if(!req.session.user){ 					//到达/home路径首先判断是否已经登录
+			res.redirect("/login");			//未登录则重定向到 /login 路径
+		} ;	
+	  
+	});
 
 router.get('/task', function(req, res, next) {
 	console.log(req.session.user);
