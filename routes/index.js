@@ -32,7 +32,7 @@ router.route("/login").get(function(req,res){    // 到达此路径则渲染logi
 			// console.log(result.rows[0]);
 			req.session.user = result.rows[0]; 
 			// console.log(result.rows[0]);
-		res.sendStatus(200);
+			res.render('task', { title: '任务清单'}); 
 			// my_conn.query(sql_record,function(result){
 			// 	//req.session.user = req.body.username;
 			// 	////console.log(req.session.user);
