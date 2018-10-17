@@ -43,7 +43,7 @@ router.route("/login").get(function(req,res){    // 到达此路径则渲染logi
 
 });
 
-<<<<<<< HEAD
+
 router.get('/task_data', function (req, res, next) {
 	process.env.TZ = "Asia/Shanghai";
 	sql = 'select * from tasks order by index where status<>\'完成\';';
@@ -62,8 +62,6 @@ router.get('/task_finish', function (req, res, next) {
 	   
 		});
 		});	
-=======
->>>>>>> 64d7fc6e9e0232e617071795ea57fa4f52c644f6
 
 
 
