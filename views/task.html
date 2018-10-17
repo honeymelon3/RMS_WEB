@@ -75,12 +75,12 @@
 	var myUrl = "http://47.100.41.42/task_data?callback=JSON_CALLBACK";
 	$http.jsonp(myUrl).success(function(response) {
 	    $scope.manual = response;
-		// console.log("when");
-	//     console.log(response);
- 
 		});		
-
-
+	});
+	var myUrl = "http://47.100.41.42/task_finish?callback=JSON_CALLBACK";
+	$http.jsonp(myUrl).success(function(response) {
+	    $scope.manual2 = response;
+		});		
 	});
 </script>
 
@@ -653,7 +653,7 @@
 		
 							<li>
 		
-								<a href="#">Manuals</a>
+								<a href="#">Tasks</a>
 		
 							</li>
 		
@@ -752,6 +752,87 @@
 			<!-- END PAGE CONTAINER-->
 		
 					</div>
+					<div class="span12 news-page blog-page">
+		
+						<div class="portlet box green">
+						
+							<div class="portlet-title">
+						
+								<div class="caption">
+									<i class="icon-reorder"></i></div>
+						
+								<div class="actions">
+						
+
+						
+								</div>
+						
+							</div>
+						
+							<div class="portlet-body">
+								<div class="row-fluid">
+		
+									<table class="table">
+										<thead>
+										  <tr>
+										    <th scope="col">序号</th>
+										    <th scope="col">类别</th>
+										    <th scope="col">创建时间</th>
+										    <th scope="col">题目</th>
+										    <th scope="col">负责人</th>
+										    <th scope="col">行动项</th>
+										    <th scope="col">描述</th>
+										    <th scope="col">截止日期</th>
+										    <th scope="col">交付物</th>
+										    <th scope="col">状态</th>
+										</tr>
+										</thead>
+										<tbody>
+										  <tr ng-repeat="x in manual2">
+
+										    <td> {{x.index}}</td>
+										    <td> {{x.category}}</td>
+										    <td> {{x.create_time}}</td>
+										    <td> {{x.subject}}</td>
+										    <td> {{x.performer}}</td>
+										    <td> {{x.actions}}</td>
+										    <td> {{x.description}}</td>
+										    <td> {{x.deadline}}</td>
+										    <td> {{x.deliverables}}</td>
+										    <td> {{x.status}}</td>
+
+										  </tr>
+										  
+										</tbody>
+									   </table>
+	
+
+						</div>		
+								<!-- <div class="span3">
+							
+
+							
+								<div class="container-fluid">
+							
+									<button type="submit" onclick="jump()" class="btn-primary btn-lg">添加文章&nbsp<i class="icon-comments-alt"></i></button>
+																
+																						
+								</div>
+						
+							
+							</div> -->
+
+		
+					</div>
+		
+				<!-- END PAGE CONTENT-->
+		
+						</div>
+	
+			<!-- END PAGE CONTAINER-->
+		
+					</div>
+
 
 		<!-- END PAGE -->    
 
