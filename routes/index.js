@@ -29,9 +29,9 @@ router.route("/login").get(function(req,res){    // 到达此路径则渲染logi
 			res.sendStatus(404);							//	状态码返回404
 			//	res.redirect("/login");
 		}else if(result.rowCount == 1){
-			// console.log(result.rows[0]);
+			////console.log(result.rows[0].username);
 			req.session.user = result.rows[0]; 
-			console.log(req.session.user);
+			console.log(result.rows[0]);
 			res.sendStatus(200);
 			// my_conn.query(sql_record,function(result){
 			// 	//req.session.user = req.body.username;
@@ -43,6 +43,7 @@ router.route("/login").get(function(req,res){    // 到达此路径则渲染logi
 
 });
 
+<<<<<<< HEAD
 router.get('/task_data', function (req, res, next) {
 	process.env.TZ = "Asia/Shanghai";
 	sql = 'select * from tasks order by index where status<>\'完成\';';
@@ -61,25 +62,18 @@ router.get('/task_finish', function (req, res, next) {
 	   
 		});
 		});	
+=======
+>>>>>>> 64d7fc6e9e0232e617071795ea57fa4f52c644f6
 
-router.get('/home', function(req, res, next) {
-		console.log(req.session.user);
-		if(req.session.user){ 					//到达/home路径首先判断是否已经登录
-			res.render('task', { title: '任务清单'});   			//未登录则重定向到 /login 路径
-		} ;	
-		if(!req.session.user){ 					//到达/home路径首先判断是否已经登录
-			res.redirect("/login");			//未登录则重定向到 /login 路径
-		} ;	
-	  
-	});
+
+
 
 router.get('/task', function(req, res, next) {
-	console.log(req.session.user);
-	if(req.session.user){ 					//到达/home路径首先判断是否已经登录
-		res.render('task', { title: '任务清单'});   			//未登录则重定向到 /login 路径
+	if(req.session.user.corrode == 1){ 					//到达/home路径首先判断是否已经登录
+		res.render("index", { title: '任务清单'});   			//未登录则重定向到 /login 路径
 	} ;	
-	if(!req.session.user){ 					//到达/home路径首先判断是否已经登录
-		res.redirect("/login");			//未登录则重定向到 /login 路径
+	if(req.session.user.corrode == 0){ 					//到达/home路径首先判断是否已经登录
+		res.render("/login"); 			//未登录则重定向到 /login 路径
 	} ;	
   
 });
