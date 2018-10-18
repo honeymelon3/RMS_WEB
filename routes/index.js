@@ -45,7 +45,7 @@ router.route("/login").get(function (req, res) {    // 到达此路径则渲染l
 
 router.get('/task_data', function (req, res, next) {
 	process.env.TZ = "Asia/Shanghai";
-	sql = 'select * from tasks order by index where status<>\'完成\';';
+	sql = 'select * from tasks where status<>\'完成\'  order by index;';
 	my_conn.query(sql, function (result) {
 		res.jsonp(result.rows);
 		console.log(result.rows);
@@ -54,7 +54,7 @@ router.get('/task_data', function (req, res, next) {
 });
 router.get('/task_finish', function (req, res, next) {
 	process.env.TZ = "Asia/Shanghai";
-	sql = 'select * from tasks order by index where status=\'完成\';';
+	sql = 'select * from tasks where status=\'完成\' order by index;';
 	my_conn.query(sql, function (result) {
 		res.jsonp(result.rows);
 		console.log(result.rows);
