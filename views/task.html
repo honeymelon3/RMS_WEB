@@ -85,7 +85,6 @@
 		$http.jsonp(myUrl).success(function (response) {
 			$scope.manual2 = response;
 		});		
-	});
 	</script>
 
 
@@ -756,26 +755,33 @@
 						<!-- END PAGE CONTAINER-->
 
 					</div>
+
+
+
+					<!-- END PAGE -->
+
+				</div>
+				<div class="row-fluid">
 					<div class="span12 news-page blog-page">
-
+					
 						<div class="portlet box green">
-
+					
 							<div class="portlet-title">
-
+					
 								<div class="caption">
 									<i class="icon-reorder"></i></div>
-
+					
 								<div class="actions">
-
-
-
+					
+					
+					
 								</div>
-
+					
 							</div>
-
+					
 							<div class="portlet-body">
 								<div class="row-fluid">
-
+					
 									<table class="table">
 										<thead>
 											<tr>
@@ -793,7 +799,7 @@
 										</thead>
 										<tbody>
 											<tr ng-repeat="x in manual2">
-
+					
 												<td> {{x.index}}</td>
 												<td> {{x.category}}</td>
 												<td> {{x.create_time}}</td>
@@ -804,42 +810,38 @@
 												<td> {{x.deadline}}</td>
 												<td> {{x.deliverables}}</td>
 												<td> {{x.status}}</td>
-
+					
 											</tr>
-
+					
 										</tbody>
 									</table>
-
-
+					
+					
 								</div>
 								<!-- <div class="span3">
-							
-
-							
-								<div class="container-fluid">
-							
-									<button type="submit" onclick="jump()" class="btn-primary btn-lg">添加文章&nbsp<i class="icon-comments-alt"></i></button>
-																
-																						
-								</div>
-						
-							
-							</div> -->
-
-
+												
+					
+												
+													<div class="container-fluid">
+												
+														<button type="submit" onclick="jump()" class="btn-primary btn-lg">添加文章&nbsp<i class="icon-comments-alt"></i></button>
+																					
+																											
+													</div>
+											
+												
+												</div> -->
+					
+					
 							</div>
-
+					
 							<!-- END PAGE CONTENT-->
-
+					
 						</div>
-
+					
 						<!-- END PAGE CONTAINER-->
-
+					
 					</div>
-
-
-					<!-- END PAGE -->
-
 				</div>
 			</div>
 		</div>
