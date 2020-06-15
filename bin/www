@@ -8,7 +8,7 @@ var app = require('../app');
 var debug = require('debug')('rms_web:server');
 var http = require('http');
 var my_conn = require("../routes/pgconn");
-
+var io2=require('../socketio');
 /**
  * Get port from environment and store in Express.
  */
@@ -30,6 +30,7 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 var io = require('socket.io')(server);
+io2.getSocketio(io);
 server.listen(port,'0.0.0.0',function(){
     console.log("Express server listening on port " + app.get('port'));
 });
@@ -49,7 +50,7 @@ var pvs={ai:[{pvname:"hanlfHost:ai1"},{pvname:"hanlfHost:ai2"},{pvname:"hanlfHos
  * 监听变量值的变化或报警状态的变化
  *  */
 io.on('connection', function (socket) {
-  console.log('Connection from remote ip addr:'+socket.handshake.address);
+   console.log('Connection from remote ip addr:'+socket.handshake.address);
   
   var myDate = new Date();
   var loginTime = myDate.toLocaleString();
@@ -66,7 +67,7 @@ io.on('connection', function (socket) {
   connect_pvs(pvs.ai,function(err,results){
       async.map(results,function(item,callback){
         item.on("value", function(data) {
-        // console.log('Value:',item.pvName,data);
+        //console.log('Value:',item.pvName,data);
         socket.emit(item.pvName, data);
         console.log(item.pvName+" value change socket evnet emit")
         });  
@@ -109,18 +110,18 @@ io.on('connection', function (socket) {
  *  Monitor AO : configure from the web client;
  */
 
-  connect_pvs(pvs.ao,function(err,results){
-    async.map(results,function(item,callback){
-      socket.on(item.pvName, function(data) {
-      // console.log('Value:',item.pvName,data);
+ connect_pvs(pvs.ao,function(err,results){
+  async.map(results,function(item,callback){
+    socket.on(item.pvName, function(data) {
+      console.log('Value:',item.pvName,data);
       item.put(item.pvName, data);
-      // console.log(item.pvName+"Set pv value from web client  ")
+       console.log(item.pvName+"Set pv value from web client  ")
        });  
       })
   });
 
 
- });
+});
 
 server.on('error', onError);
 server.on('listening', onListening);

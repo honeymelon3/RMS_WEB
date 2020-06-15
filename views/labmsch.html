@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>MCSH主界面</title> 
+<link rel="stylesheet" type="text/css" href="stylesheets/msch.css"/>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>-->
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.css"/>
+<script type="text/javascript" src="bootstrap/js/jquery.min.js"></script>-->
+<script type="text/javascript" src="dist/socket.io.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<style>
+    a.font1 {
+        font-size: 30px;
+        color:aquamarine;
+    }
+    table.nbord1 {
+        border: 3px solid black;
+    }
+    td.nbord2 {
+        border:1px solid black;
+    }
+    div.her {
+        display: flex;
+    }
+    div.loc1 {
+        position: absolute;
+        left: 0px;
+        top:80px;
+        height: 1000px;
+        width:2100px;
+    }
+    div.loc2 {
+        position: absolute;
+        height: 100%;
+        width:400px;
+        left:1520px;
+        top:100px;
+        font-size: 20px;
+    }
+    div.loc3 {
+        position: absolute;
+        height: 100%;
+        width:400px;
+        left:1970px;
+        top:100px;
+        font-size: 20px;
+    }
+    div.loc4 {
+        position: absolute;
+        top:150px;
+        height: 100%;
+        left:480px;
+        width:150px;
+        font-size: 20px;
+    }
+    div.loc5 {
+        position: absolute;
+        top:150px;
+        height: 100%;
+        left:840px;
+        width:150px;
+        font-size: 20px;
+    }
+    div.loc6 {
+        position: absolute;
+        top:150px;
+        height: 100%;
+        left:1100px;
+        width:150px;
+        font-size: 20px;
+    }
+    div.loc7 {
+        position: absolute;
+        top:400px;
+        height: 100%;
+        left:260px;
+        width:150px;
+        font-size: 20px;
+    }
+    div.loc8 {
+        position: absolute;
+        top:400px;
+        height: 100%;
+        left:1000px;
+        width:150px;
+        font-size: 20px;
+    }
+    div.loc9 {
+        position: absolute;
+        top:320px;
+        height: 100%;
+        left:1030px;
+        width:150px;
+        font-size: 20px;
+    }
+    div.loc10 {
+        position: absolute;
+        top:500px;
+        height: 100%;
+        left:260px;
+        width:150px;
+        font-size: 20px;
+    }
+    div.loc11 {
+        position: absolute;
+        top:700px;
+        height: 100%;
+        left:340px;
+        width:150px;
+        font-size: 20px;
+    }
+    div.loc12 {
+        position: absolute;
+        top:880px;
+        height: 100%;
+        left:340px;
+        width:150px;
+        font-size: 20px;
+    }
+    div.loc13 {
+        position: absolute;
+        top:880px;
+        height: 100%;
+        left:980px;
+        width:150px;
+        font-size: 20px;
+    }
+    div.loc14 {
+        position: absolute;
+        top:620px;
+        height: 100%;
+        left:800px;
+        width:180px;
+        font-size: 20px;
+    }
+    div.label {
+        position:absolute;
+        left:1970px;
+    }
+    img.show {
+        height:100%;
+        width: 70%;
+    }
+</style>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand font1" href="#">MSCH主界面</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a class="font1" href="#">TMSR材料数据库</a></li>
+                    <li><a class="font1" href="192.168.10.9:8080">日志系统</a></li>
+             </ul>
+            </div>
+        </div>
+    </nav>
+    <div class='her'>
+        <div class='loc1'>
+            <img class='show' src='./MSCH.PNG'></img>
+        </div>
+        <div class='loc2'>
+            <table class="table" >
+                <caption>MSCH信号表1</caption>
+                <thead>
+                  <tr><th>信号点</th><th>实时值</th><th>单位</th></tr>
+               </thead>
+               <tbody>
+                  <tr class="success"><td>熔盐流量</td><td id="ddd">182.2</td><td>Kg/s</td></tr>
+                  <tr class="success"><td>熔盐进口温度</td><td id="BY14AX082">BY14AX082</td><td>℃</td></tr>
+                  <tr class="success"><td>熔盐出口温度</td><td id="BY14AX087">BY14AX087</td><td>℃</td></tr>
+                  <tr class="success"><td>熔盐压差</td><td id="BY14AX047">BY14AX047</td><td>Kpa</td></tr>
+                  <tr class="success"><td>空气流量</td><td id="BY14AX044">BY14AX044</td><td>Kg/s</td></tr>
+                  <tr class="success"><td>空气进口温度</td><td id="BY14AX079">BY14AX079</td><td>℃</td></tr>
+                  <tr class="success"><td>空气出口温度</td><td id="BY14AX081">BY14AX081</td><td>℃</td></tr>
+                  <tr class="success"><td>空气压差</td><td id="BY14AX045">BY14AX045</td><td>Kpa</td></tr>
+                  <tr class="success"><td>风机频率</td><td id="BY14AX070">BY14AX070</td><td>HZ</td></tr>
+                  <tr class="success"><td>进风阀开度</td><td id="BY14AX067">BY14AX067</td><td>%</td></tr>
+                  <tr class="success"><td>回风阀开度</td><td id="BY14AX068">BY14AX068</td><td>%</td></tr>
+                  <tr class="success"><td>热罐回流量</td><td id="BY14AX040">BY14AX040</td><td>Kg/s</td></tr>
+                  <tr class="success"><td>1号阀开度</td><td id="BY14AX064">BY14AX064</td><td>%</td></tr>
+                  <tr class="success"><td>2号阀开度</td><td id="BY14AX065">BY14AX065</td><td>%</td></tr>
+                  <tr class="success"><td>3号阀开度</td><td id="BY14AX066">BY14AX066</td><td>%</td></tr>
+               </tbody>
+            </table>
+        </div>
+        <div class='loc3'>
+                <table class="table " >
+                    <caption>MSCH信号表2</caption>
+                    <thead>
+                      <tr><th>信号点</th><th>实时值</th><th>单位</th></tr>
+                   </thead>
+                   <tbody>
+                      <tr class="success"><td>主流量</td><td id="BY14AX041">BY14AX041</td><td>Kg/s</td></tr>
+                      <tr class="success"><td>热罐液位</td><td id="BY14AX051">BY14AX051</td><td>mm</td></tr>
+                      <tr class="success"><td>热罐温度</td><td id="ST01AX004">ST01AX004</td><td>℃</td></tr>
+                      <tr class="success"><td>储能容量</td><td id="ddd">7.3</td><td>KWh</td></tr>
+                      <tr class="success"><td>主加热器流量</td><td id="ddd">30</td><td>Kg/s</td></tr>
+                      <tr class="success"><td>主加热器功率</td><td id="ST01AX003">ST01AX003</td><td>KW</td></tr>
+                      <tr class="success"><td>主加热器进口温度</td><td id="ddd">400.4</td><td>℃</td></tr>
+                      <tr class="success"><td>主加热器出口温度</td><td id="ST03AX004">ST03AX004</td><td>℃</td></tr>
+                      <tr class="success"><td>冷罐液位</td><td id="BY14AX052">BY14AX052</td><td>mm</td></tr>
+                      <tr class="success"><td>冷罐温度</td><td id="ST01AX006">ST01AX006</td><td>℃</td></tr>
+                   </tbody>
+                </table>
+            </div>
+    </div>
+    <div class="loc4 ">
+        <table class="table nbord1 table-condensed" >
+            <tbody>
+                <tr><td class="nbord2">熔盐流量</td></tr>
+                <tr><td class="nbord2">熔盐进口温度</td></tr>
+                <tr><td class="nbord2">熔盐出口温度</td></tr>
+                <tr><td class="nbord2">熔盐压差</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="loc5 ">
+        <table class="table nbord1 table-condensed" >
+            <tbody>
+                <tr><td class="nbord2">空气流量</td></tr>
+                <tr><td class="nbord2">空气进口温度</td></tr>
+                <tr><td class="nbord2">空气出口温度</td></tr>
+                <tr><td class="nbord2">空气压差</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="loc6 ">
+        <table class="table nbord1 table-condensed" >
+            <tbody>
+                <tr><td class="nbord2">风机频率</td></tr>
+                <tr><td class="nbord2">进风阀开度</td></tr>
+                <tr><td class="nbord2">回风阀开度</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="loc10 ">
+        <table class="table nbord1 table-condensed" >
+            <tbody>
+                <tr><td class="nbord2">热罐回流量</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="loc7 ">
+            <table class="table nbord1 table-condensed" >
+                <tbody>
+                    <tr><td class="nbord2">1号阀开度</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="loc8 ">
+            <table class="table nbord1 table-condensed" >
+                <tbody>
+                    <tr><td class="nbord2">2号阀开度</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="loc9 ">
+            <table class="table nbord1 table-condensed" >
+                <tbody>
+                    <tr><td class="nbord2">3号阀开度</td></tr>
+                </tbody>
+            </table>
+        </div> 
+        <div class="loc11">
+            <table class="table nbord1 table-condensed" >
+                <tbody>
+                    <tr><td class="nbord2">主流量</td></tr>
+                </tbody>
+            </table>
+        </div> 
+        <div class="loc12">
+            <table class="table nbord1 table-condensed" >
+                <tbody>
+                    <tr><td class="nbord2">热罐液位</td></tr>
+                    <tr><td class="nbord2">热罐温度</td></tr>
+                    <tr><td class="nbord2">储能容量</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="loc13">
+            <table class="table nbord1 table-condensed" >
+                <tbody>
+                    <tr><td class="nbord2">冷罐液位</td></tr>
+                    <tr><td class="nbord2">冷罐温度</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="loc14">
+            <table class="table nbord1 table-condensed" >
+                <tbody>
+                    <tr><td class="nbord2">主加热器流量</td></tr>
+                    <tr><td class="nbord2">主加热器功率</td></tr>
+                    <tr><td class="nbord2">主加热器进口温度</td></tr>
+                    <tr><td class="nbord2">主加热器出口温度</td></tr>
+                </tbody>
+            </table>
+        </div>
+</body>
+</html>
