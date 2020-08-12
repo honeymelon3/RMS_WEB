@@ -71,11 +71,7 @@ app.use('/system_structure', system_structure);
 app.use('/comment', comment);
 app.use('/control_system', control_system);
 app.use('/epics_manual', manual);
-<<<<<<< HEAD
 app.use('/inverter',inverter);
-=======
-app.use('/labcloud/mcsh',msch);
->>>>>>> 6f630194a53141ab1d241c31eb1dd3cf2d8aade1
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
