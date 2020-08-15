@@ -10,7 +10,7 @@ var my_conn = require('./pgconn');
 
 router.post('/data', function(req, res, next) { //获取电站列表
     var StationList = req.body;
-    console.log(StationList.inerter1.pv[1].u);
+    console.log(StationList.inerter1.ac[1]);
 })
 
 
